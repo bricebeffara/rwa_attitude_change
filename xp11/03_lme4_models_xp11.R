@@ -1,7 +1,7 @@
 # File name: brms_models_xp11.R
 # Online archive: gitlab
 # Authors: Brice Beffara & Amélie Bret 
-# Tue Jun 26 14:56:10 2018 ------------------------------
+# Tue Jul 03 14:24:51 2018 ------------------------------
 # Contact: brice.beffara@slowpen.science amelie.bret@univ-grenoble-alpes.fr http://slowpen.science
 #
 # This R script was used to build and compute brms models
@@ -10,10 +10,10 @@
 # This R script defines and computes brms models
 # main effects, interaction effects, and simple slopes of interest
 # 
-# 3 independent variables of interest :
+# 3 posependent variables of interest :
 # RWA (continuous, centered and scaled)
 # usvalence : positive (0.5) vs. negative (-0.5)
-# and warning : direct (0.5) vs. indirect (-0.5) conditioning
+# and warning : no warn (-0.5) vs. warn (0.5)
 #
 # and 1 ordinal dependent variables :
 # Ratings of Greebles from 1 (very negative) to 9 (very positive)
@@ -27,7 +27,7 @@
 ### 1. Install the general-purpose programming language R from  
 ###      http://www.r-project.org/
 ###    Install the version of R appropriate for your computer's operating
-###    system (Windows, MacOS, or Linux).   
+###    system (Wposows, MacOS, or Linux).   
 ### 2. Install the R editor, RStudio, from
 ###      http://rstudio.org/
 ###    This editor is not necessary, but highly recommended.
@@ -57,11 +57,11 @@ col2keep <- c("Estimate", "l-95% CI", "u-95% CI")
 
 # model
 warn_resp_lme4 <- lmer(response ~ usvalence * warn * RWAscore + (1|ppt) + (1|stim1),
-                   data = warn_df)
+                         data = warn_df)
 
 # Save summary & confint
 model_gen_xp11_lme4 <- round(cbind(summary(warn_resp_lme4)$coefficients,
-                             confint(warn_resp_lme4)[c(4:11),]), 2)
+                                   confint(warn_resp_lme4)[c(4:11),]), 2)
 
 # export output
 png("tables/lme4/model_gen_xp11_lme4.png", height=480, width=720)
@@ -71,128 +71,88 @@ dev.off()
 
 #------------------------------------------------------------------------------------
 # Then we run our second step models to decompose interactions effects
-# We look at the interaction between RWA and warning at each level of usvalence
+# We look at the interaction between RWA and usvalence at each level of conditioning
 #------------------------------------------------------------------------------------
 
 #-------------
-### RWA * warning in the !!positive!! valence condition
+### RWA * valence in the !!no warning!! condition
 #-------------
 
 # model
-warn_resp_uspos_lme4 <- lmer(response ~ usvalence_pos * warn * RWAscore + (1|ppt) + (1|stim1),
-                         data = warn_df)
-
-# Save summary & confint
-model_uspos_xp11_lme4 <- round(cbind(summary(warn_resp_uspos_lme4)$coefficients,
-                                   confint(warn_resp_uspos_lme4)[c(4:11),]), 2)
-
-# export output
-png("tables/lme4/model_uspos_xp11_lme42.png", height=480, width=720)
-p<-tableGrob(model_uspos_xp11_lme4)
-grid.arrange(p)
-dev.off()
-
-#-------------
-### RWA * warning in the !!negative!! valence condition
-#-------------
-
-# model
-warn_resp_usneg_lme4 <- lmer(response ~ usvalence_neg * warn * RWAscore + (1|ppt) + (1|stim1),
+warn_resp_nowa_lme4 <- lmer(response ~ usvalence * no_warn  * RWAscore + (1|ppt) + (1|stim1),
                                data = warn_df)
 
 # Save summary & confint
-model_usneg_xp11_lme4 <- round(cbind(summary(warn_resp_usneg_lme4)$coefficients,
-                                     confint(warn_resp_usneg_lme4)[c(4:11),]), 2)
+model_nowa_xp11_lme4 <- round(cbind(summary(warn_resp_nowa_lme4)$coefficients,
+                                     confint(warn_resp_nowa_lme4)[c(4:11),]), 2)
 
 # export output
-png("tables/lme4/model_usneg_xp11_lme4.png", height=480, width=720)
-p<-tableGrob(model_usneg_xp11_lme4)
+png("tables/lme4/model_nowa_xp11_lme4.png", height=480, width=720)
+p<-tableGrob(model_nowa_xp11_lme4)
 grid.arrange(p)
 dev.off()
 
-#------------------------------------------------------------------------------------
-# Then we run our third step models to decompose the interaction 
-# between RWA and warning in the usvalence positive condition
-# (We don't decompose the interaction in the usvalence positive condition
-# the parameter includes 0. See table model_usneg_xp11_lme4.png)
-#------------------------------------------------------------------------------------
-
 #-------------
-### Simple slope of RWA in the !!direct!! conditioning & !!positive!! valence condition
+### RWA * usvalence in the !!warning!! condition
 #-------------
 
-#model
-warn_resp_uspos_dir_lme4 <- lmer(response ~ usvalence_pos * warn_dir * RWAscore + (1|ppt) + (1|stim1),
-                              data = warn_df)
+# model
+warn_resp_yewa_lme4 <- lmer(response ~ usvalence * ye_warn  * RWAscore + (1|ppt) + (1|stim1),
+                               data = warn_df)
 
 # Save summary & confint
-model_uspos_dir_xp11_lme4 <- round(cbind(summary(warn_resp_uspos_dir_lme4)$coefficients,
-                                     confint(warn_resp_uspos_dir_lme4)[c(4:11),]), 2)
+model_yewa_xp11_lme4 <- round(cbind(summary(warn_resp_yewa_lme4)$coefficients,
+                                     confint(warn_resp_yewa_lme4)[c(4:11),]), 2)
 
 # export output
-png("tables/lme4/model_uspos_dir_xp11_lme4.png", height=480, width=720)
-p<-tableGrob(model_uspos_dir_xp11_lme4)
+png("tables/lme4/model_yewa_xp11_lme4.png", height=480, width=720)
+p<-tableGrob(model_yewa_xp11_lme4)
 grid.arrange(p)
 dev.off()
 
+#------------------------------------------------------------------------------------
+# Then we run our third step model to decompose the interaction 
+# between RWA and usvalence in the no warning conditioning condition
+# The interaction slope between RWA and usvalence includes 0 in the warning condition
+#------------------------------------------------------------------------------------
+
+#############################
+##################### no warning
+#############################
+
 #-------------
-### Simple slope of RWA in the !!indirect!! conditioning & !!positive!! valence condition
+### Simple slope of RWA in the !!negative!! valence & !!no warning!! condition
 #-------------
 
-## first step = recode variable warning
-## We interpret parameters for a 0 level of others
 
 #model
-warn_resp_uspos_ind_lme4 <- lmer(response ~ usvalence_pos * warn_ind * RWAscore + (1|ppt) + (1|stim1),
+warn_resp_nowa_neg_lme4 <- lmer(response ~ usvalence_neg * no_warn  * RWAscore + (1|ppt) + (1|stim1),
                                    data = warn_df)
 
 # Save summary & confint
-model_uspos_ind_xp11_lme4 <- round(cbind(summary(warn_resp_uspos_ind_lme4)$coefficients,
-                                         confint(warn_resp_uspos_ind_lme4)[c(4:11),]), 2)
+model_nowa_neg_xp11_lme4 <- round(cbind(summary(warn_resp_nowa_neg_lme4)$coefficients,
+                                         confint(warn_resp_nowa_neg_lme4)[c(4:11),]), 2)
 
 # export output
-png("tables/lme4/model_uspos_ind_xp11_lme4.png", height=480, width=720)
-p<-tableGrob(model_uspos_ind_xp11_lme4)
+png("tables/lme4/model_nowa_neg_xp11_lme4.png", height=480, width=720)
+p<-tableGrob(model_nowa_neg_xp11_lme4)
 grid.arrange(p)
 dev.off()
 
-
-# other effects -----------------------------------------------------------
-
-
 #-------------
-### Simple slopes of valence and RWA in the !!direct! conditioning condition
+### Simple slope of RWA in the !!positive!! valence & !!no warning!! condition
 #-------------
 
 #model
-warn_resp_dir_lme4 <- lmer(response ~ usvalence * warn_dir * RWAscore + (1|ppt) + (1|stim1),
-                             data = warn_df)
+warn_resp_nowa_pos_lme4 <- lmer(response ~ usvalence_pos * no_warn  * RWAscore + (1|ppt) + (1|stim1),
+                                   data = warn_df)
 
 # Save summary & confint
-model_dir_xp11_lme4 <- round(cbind(summary(warn_resp_dir_lme4)$coefficients,
-                                   confint(warn_resp_dir_lme4)[c(4:11),]), 2)
+model_nowa_pos_xp11_lme4 <- round(cbind(summary(warn_resp_nowa_pos_lme4)$coefficients,
+                                         confint(warn_resp_nowa_pos_lme4)[c(4:11),]), 2)
 
 # export output
-png("tables/lme4/model_dir_xp11_lme4.png", height=480, width=720)
-p<-tableGrob(model_dir_xp11_lme4)
-grid.arrange(p)
-dev.off()
-
-
-#-------------
-### Simple slopes of valence and RWA in the !!indirect! conditioning condition
-#-------------
-
-#model
-warn_resp_ind_lme4 <- lmer(response ~ usvalence * warn_ind * RWAscore + (1|ppt) + (1|stim1),
-                             data = warn_df)
-
-# Save summary & confint
-model_ind_xp11_lme4 <- round(cbind(summary(warn_resp_ind_lme4)$coefficients,
-                                   confint(warn_resp_ind_lme4)[c(4:11),]), 2)
-
-# export output
-png("tables/lme4/model_ind_xp11_lme4.png", height=480, width=720)
-p<-tableGrob(model_ind_xp11_lme4)
+png("tables/lme4/model_nowa_pos_xp11_lme4.png", height=480, width=720)
+p<-tableGrob(model_nowa_pos_xp11_lme4)
 grid.arrange(p)
 dev.off()

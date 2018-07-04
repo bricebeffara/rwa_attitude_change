@@ -1,7 +1,7 @@
-# File name: 04a_plot_marg_fitted_xp11.R
+# File name: plot_marg_xp11.R
 # Online archive: gitlab
 # Authors: Brice Beffara & Amélie Bret 
-# Tue Jun 26 11:57:07 2018 ------------------------------
+# Thu Jun 07 15:48:36 2018 ------------------------------
 # Contact: brice.beffara@slowpen.science amelie.bret@univ-grenoble-alpes.fr http://slowpen.science
 #
 # This R script was used to create the marginal plots from brms models
@@ -10,7 +10,7 @@
 # This R script plots marginal effect corresponding to the association
 # of RWA with grebles' ratings in all combinations of the other indepentdent variables :
 # usvalence : positive (0.5) vs. negative (-0.5)
-# and warn : warning (0.5) vs. no warning (-0.5)
+# and warn : level 1 (-0.5) vs. level 2 (0.5) conditioning
 #
 # This program is believed to be free of errors, but it comes with no guarantee! 
 # The user bears all responsibility for interpreting the results.
@@ -51,46 +51,46 @@ p_load(ggplot2, # main package for plots
 # "warn" and "usvalence"
 #------------------------------------------------------------------------------------
 
-# !!orginally!! conditioned stimuli with !!negative!! valence
-cond_on <- data.frame(warn = -0.5, usvalence = -0.5,
-                      cond__ = "nowarn_negative")
+# !!no warning!! with !!negative!! valence
+cond_nowneg <- data.frame(warn = -0.5, usvalence = -0.5,
+                          cond__ = "level1_negative")
 
-# !!orginally!! conditioned stimuli with !!positive!! valence
-cond_op <- data.frame(warn = -0.5, usvalence = 0.5,
-                      cond__ = "nowarn_positive")
+# !!no warning!! with !!positive!! valence
+cond_nowpos <- data.frame(warn = -0.5, usvalence = 0.5,
+                          cond__ = "level1_positive")
 
-# !!spread!! conditionned stimuli with !!negative!! valence
-cond_sn <- data.frame(warn = 0.5, usvalence = -0.5,
-                      cond__ = "warn_negative")
+# !!warning!! with !!negative!! valence
+cond_yewneg <- data.frame(warn = 0.5, usvalence = -0.5,
+                          cond__ = "level2_negative")
 
-# !!spread!! conditionned stimuli with !!positive!! valence
-cond_sp <- data.frame(warn = 0.5, usvalence = 0.5,
-                      cond__ = "warn_positive")
+# !!warning!! with !!positive!! valence
+cond_yewpos <- data.frame(warn = 0.5, usvalence = 0.5,
+                          cond__ = "level2_positive")
 
 #------------------------------------------------------------------------------------
 # We then select the marginal effects of RWA from the model
 # for each combination of modalities
 #------------------------------------------------------------------------------------
 
-# !!orginally!! conditioned stimuli with !!negative!! valence
-marg_on <- marginal_effects(warn_resp, effects = "RWAscore", ordinal = TRUE, 
-                            conditions = cond_on, method = c("fitted"), # here his where we specify the combination
-                            re_formula = NULL)
+# !!no warning!! with !!negative!! valence
+marg_nowneg <- marginal_effects(warn_resp, effects = "RWAscore", ordinal = TRUE, 
+                                conditions = cond_nowneg, method = c("fitted"), # here his where we specify the combination
+                                re_formula = NULL)
 
-# !!orginally!! conditioned stimuli with !!positive!! valence
-marg_op <- marginal_effects(warn_resp, effects = "RWAscore", ordinal = TRUE, 
-                            conditions = cond_op, method = c("fitted"), # here his where we specify the combination
-                            re_formula = NULL)
+# !!no warning!! with !!positive!! valence
+marg_nowpos <- marginal_effects(warn_resp, effects = "RWAscore", ordinal = TRUE, 
+                                conditions = cond_nowpos, method = c("fitted"), # here his where we specify the combination
+                                re_formula = NULL)
 
-# !!spread!! conditionned stimuli with !!negative!! valence
-marg_sn <- marginal_effects(warn_resp, effects = "RWAscore", ordinal = TRUE, 
-                            conditions = cond_sn, method = c("fitted"), # here his where we specify the combination
-                            re_formula = NULL)
+# !!warning!! with !!negative!! valence
+marg_yewneg <- marginal_effects(warn_resp, effects = "RWAscore", ordinal = TRUE, 
+                                conditions = cond_yewneg, method = c("fitted"), # here his where we specify the combination
+                                re_formula = NULL)
 
-# !!spread!! conditionned stimuli with !!positive!! valence
-marg_sp <- marginal_effects(warn_resp, effects = "RWAscore", ordinal = TRUE, 
-                            conditions = cond_sp, method = c("fitted"), # here his where we specify the combination
-                            re_formula = NULL)
+# !!warning!! with !!positive!! valence
+marg_yewpos <- marginal_effects(warn_resp, effects = "RWAscore", ordinal = TRUE, 
+                                conditions = cond_yewpos, method = c("fitted"), # here his where we specify the combination
+                                re_formula = NULL)
 
 #------------------------------------------------------------------------------------
 # Now we can plot marginal effects for each combination of conditions...
@@ -100,52 +100,52 @@ marg_sp <- marginal_effects(warn_resp, effects = "RWAscore", ordinal = TRUE,
 hrbrthemes::import_roboto_condensed()
 loadfonts()
 
-# !!orginally!! conditioned stimuli with !!negative!! valence
-marg_plot_on = plot(marg_on, plot = FALSE)[[1]] + # here his where we specify the marginal effects of interest
+# !!no warning!! with !!negative!! valence
+marg_plot_nowneg = plot(marg_nowneg, plot = FALSE)[[1]] + # here his where we specify the marginal effects of interest
   scale_fill_gradientn(colors = matlab.like(10), na.value = "transparent") +
   scale_y_continuous(name="Évaluations", breaks = c(1, 2, 3, 4, 5, 6, 7, 8, 9), expand = c(0,0)) +
   scale_x_continuous(name="RWA", breaks = scales::pretty_breaks(n = 10), expand=c(0,0)) +
   labs(fill="Probabilité",
-       subtitle="Conditionnement négatif sans avertissement de contre-conditionnement positif") + # here his where we mention the marginal effects of interest
-  theme_ipsum_rc(base_size = 13,
-                 subtitle_size = 20,
-                 axis_title_size = 15) +
-  theme(panel.grid.major = element_blank(),
-        panel.grid.minor = element_blank())
-  
-# !!orginally!! conditioned stimuli with !!positive!! valence
-marg_plot_op = plot(marg_op, plot = FALSE)[[1]] + # here his where we specify the marginal effects of interest
-  scale_fill_gradientn(colors = matlab.like(10), na.value = "transparent") +
-  scale_y_continuous(name="Évaluations", breaks = c(1, 2, 3, 4, 5, 6, 7, 8, 9), expand = c(0,0)) +
-  scale_x_continuous(name="RWA", breaks = scales::pretty_breaks(n = 10), expand=c(0,0)) +
-  labs(fill="Probabilité",
-       subtitle="Conditionnement positif sans avertissement de contre-conditionnement négatif") + # here his where we mention the marginal effects of interest
+       subtitle="Conditionnnement négatif sans avertissement de contre-conditionnement positif") + # here his where we mention the marginal effects of interest
   theme_ipsum_rc(base_size = 13,
                  subtitle_size = 20,
                  axis_title_size = 15) +
   theme(panel.grid.major = element_blank(),
         panel.grid.minor = element_blank())
 
-# !!spread!! conditionned stimuli with !!negative!! valence
-marg_plot_sn = plot(marg_sn, plot = FALSE)[[1]] + # here his where we specify the marginal effects of interest
+# !!no warning!! with !!positive!! valence
+marg_plot_nowpos = plot(marg_nowpos, plot = FALSE)[[1]] + # here his where we specify the marginal effects of interest
   scale_fill_gradientn(colors = matlab.like(10), na.value = "transparent") +
   scale_y_continuous(name="Évaluations", breaks = c(1, 2, 3, 4, 5, 6, 7, 8, 9), expand = c(0,0)) +
   scale_x_continuous(name="RWA", breaks = scales::pretty_breaks(n = 10), expand=c(0,0)) +
   labs(fill="Probabilité",
-       subtitle="Conditionnement négatif avec avertissement de contre-conditionnement positif") + # here his where we mention the marginal effects of interest
+       subtitle="Conditionnnement positif sans avertissement de contre-conditionnement négatif") + # here his where we mention the marginal effects of interest
   theme_ipsum_rc(base_size = 13,
                  subtitle_size = 20,
                  axis_title_size = 15) +
   theme(panel.grid.major = element_blank(),
-      panel.grid.minor = element_blank())
+        panel.grid.minor = element_blank())
 
-# !!spread!! conditionned stimuli with !!positive!! valence
-marg_plot_sp = plot(marg_sp, plot = FALSE)[[1]] + # here his where we specify the marginal effects of interest
+# !!warning!! with !!negative!! valence
+marg_plot_yewneg = plot(marg_yewneg, plot = FALSE)[[1]] + # here his where we specify the marginal effects of interest
   scale_fill_gradientn(colors = matlab.like(10), na.value = "transparent") +
   scale_y_continuous(name="Évaluations", breaks = c(1, 2, 3, 4, 5, 6, 7, 8, 9), expand = c(0,0)) +
   scale_x_continuous(name="RWA", breaks = scales::pretty_breaks(n = 10), expand=c(0,0)) +
   labs(fill="Probabilité",
-       subtitle="Conditionnement positif avec avertissement de contre-conditionnement négatif") + # here his where we mention the marginal effects of interest
+       subtitle="Conditionnnement négatif avec avertissement de contre-conditionnement positif") + # here his where we mention the marginal effects of interest
+  theme_ipsum_rc(base_size = 13,
+                 subtitle_size = 20,
+                 axis_title_size = 15) +
+  theme(panel.grid.major = element_blank(),
+        panel.grid.minor = element_blank())
+
+# !!warning!! with !!positive!! valence
+marg_plot_yewpos = plot(marg_yewpos, plot = FALSE)[[1]] + # here his where we specify the marginal effects of interest
+  scale_fill_gradientn(colors = matlab.like(10), na.value = "transparent") +
+  scale_y_continuous(name="Évaluations", breaks = c(1, 2, 3, 4, 5, 6, 7, 8, 9), expand = c(0,0)) +
+  scale_x_continuous(name="RWA", breaks = scales::pretty_breaks(n = 10), expand=c(0,0)) +
+  labs(fill="Probabilité",
+       subtitle="Conditionnnement positif avec avertissement de contre-conditionnement négatif") + # here his where we mention the marginal effects of interest
   theme_ipsum_rc(base_size = 13,
                  subtitle_size = 20,
                  axis_title_size = 15) +
@@ -158,17 +158,17 @@ marg_plot_sp = plot(marg_sp, plot = FALSE)[[1]] + # here his where we specify th
 #------------------------------------------------------------------------------------
 
 # Combine plot
-marg_all <- ggarrange(marg_plot_on,
-                      marg_plot_op,
-                      marg_plot_sn,
-                      marg_plot_sp,
+marg_all <- ggarrange(marg_plot_nowneg,
+                      marg_plot_yewneg,
+                      marg_plot_nowpos,
+                      marg_plot_yewpos,
                       ncol = 2, nrow = 2)
 
-# uncomment to display plot
+# uncomment to display and save plot
 # marg_all
-
-# save plot
-ggsave("plots/marg_all_xp11_french.pdf", width = 50, height = 30, units = "cm")
+# ggsave("plots/marg_xp11_french.jpg", width = 50, height = 30, units = "cm")
+# ggsave("plots/marg_xp11_french.pdf", width = 50, height = 30, units = "cm")
+# ggsave("plots/marg_xp11_french.tex", width = 50, height = 30, units = "cm")
 
 
 

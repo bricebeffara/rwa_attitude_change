@@ -127,7 +127,23 @@ RWA<- within(RWA,{
   RWAscore <- rowSums(RWA[, c("RWA_1","RWA10R","RWA_11","RWA12R","RWA_13","RWA14R","RWA_15","RWA2R","RWA_3","RWA4R", "RWA_5","RWA6R","RWA_7","RWA8R","RWA_9")], na.rm=TRUE)
 })
 
-## center RWA score
+#Check data & See data
+
+#boxplot(RWA$RWAscore)
+#hist(RWA$RWAscore)
+
+quart1 <- quantile(RWA$RWAscore)[2]
+quart3 <- quantile(RWA$RWAscore)[4]
+iqr <- IQR(RWA$RWAscore)
+
+#which(RWA$RWAscore<quart1-3*iqr)
+#which(RWA$RWAscore>quart3+3*iqr)
+
+# Remove highly extreme values of RWA
+RWA$RWAscore <-  ifelse (RWA$RWAscore<quart1-3*iqr | RWA$RWAscore>quart3+3*iqr, NA, RWA$RWAscore)
+RWA <- RWA[which(!is.na(RWA$RWA)),]
+
+# scale RWA score
 RWA$RWAscore<-scale(RWA$RWAscore, center = TRUE, scale = TRUE)
 
 ## create evaluative ratings dataframe ##

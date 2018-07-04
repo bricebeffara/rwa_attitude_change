@@ -1,0 +1,512 @@
+reshape2,
+dplyr,
+brms,
+BEST,
+data.table,
+grid,
+ggplot2,
+Rcpp,
+Matrix,
+rprime,
+lme4,
+cowplot)
+setwd("~/Desktop/LOAD")
+DF <- read_delim("mergeLOAD.csv",
+";", escape_double = FALSE, trim_ws = TRUE,
+skip = 1)
+View(DF)
+DF$Clock.Information<- NULL
+DF$DataFile.Basename<- NULL
+DF$Display.RefreshRate<- NULL
+DF$ExperimentVersion<- NULL
+DF$RandomSeed<- NULL
+DF$RuntimeCapabilities<- NULL
+DF$RuntimeVersion<- NULL
+DF$RuntimeVersionExpected<- NULL
+DF$SessionStartDateTimeUtc<- NULL
+DF$SessionTime<- NULL
+DF$StudioVersion<- NULL
+DF$SessionDate<- NULL
+DF$assignment.Cycle<- NULL
+DF$assignment.Sample<- NULL
+DF$familylearning.Cycle<- NULL
+DF$SoundOut1.ACC<- NULL
+DF$SoundOut1.CRESP<- NULL
+DF$SoundOut1.DurationError<- NULL
+DF$SoundOut1.OnsetDelay<- NULL
+DF$SoundOut1.OnsetTime<- NULL
+DF$SoundOut1.RESP<- NULL
+DF$SoundOut1.RT<- NULL
+DF$SmallCE.DurationError<- NULL
+DF$SmallCE.OnsetDelay<- NULL
+DF$SmallCE.OnsetTime<- NULL
+DF$SmallCE.OnsetToOnsetTime<- NULL
+DF$Black1.DurationError<- NULL
+DF$Black1.OnsetDelay<- NULL
+DF$Black1.OnsetTime<- NULL
+DF$Black1.OnsetToOnsetTime<- NULL
+DF$Group<- NULL
+DF$Ratings.Cycle<- NULL
+DF$RWAquest.RT<- NULL
+DF$Ratings<- NULL
+DF$Ratings.Sample<- NULL
+DF1$cond <- NULL
+DF$cond <- NULL
+DF$cond <- ifelse(grepl("COND1",DF$ExperimentName),+0.5,-0.5)
+DF$Slide1.RT<- NULL
+DF$ExperimentName<- NULL
+DF$Session<-NULL
+DF$Slide1.ACC<-NULL
+DF$SoundOut1.RTTime<-NULL
+DF$CE2.Sample<-NULL
+DF$CE1.Sample<-NULL
+DF$`Procedure[Block]`<-NULL
+DF$familylearning.Sample<-NULL
+DF$Mesure.Cycle<-NULL
+DF$Mesure.Sample<-NULL
+DF$`Running[Trial]`<-NULL
+DF$Questionaires.Cycle<-NULL
+DF$Questionaires.Sample<-NULL
+DF$`Running[Block]`<-NULL
+DF$CE1<-NULL
+DF$CE1.Cycle<-NULL
+DF$CE2<-NULL
+DF$CE2.Cycle<-NULL
+DF$Mesure<-NULL
+DF$`CS[Block]`<-NULL
+DF$USne<-NULL
+DF$USnestNEG<-NULL
+DF$USnestPOS<-NULL
+DF$USpos<-NULL
+DF$Block<-NULL
+DF$Questionaires<-NULL
+DF$Slide3.ACC<-NULL
+DF$Slide3.CRESP<-NULL
+DF$Slide3.RESP<-NULL
+DF$Slide3.RT<-NULL
+DF$Slide3.RTTime<-NULL
+DF$question<-NULL
+DF$correct<-NULL
+DF$familylearning<-NULL
+DF$RWARECOD<-ifelse(grepl("R",DF$codage),8-DF$RWAquest.RESP,DF$RWAquest.RESP)
+DFsum <- aggregate(RWARECOD ~ Subject,DF,FUN = sum)
+DF <- merge(DF,DFsum,by="Subject")
+DF$RWA<-DF$RWARECOD.y
+DF$RWARECOD.x<-NULL
+DF$RWARECOD.y<-NULL
+View(DF)
+unique(DF$assignment)
+DFassi <- aggregate(assignment ~ Subject, DF[which(!is.na(DF$assignment)),],FUN = sum)
+DFassi
+DFassi <- aggregate(assignment ~ Subject, DF[which(!is.na(DF$assignment)),],FUN = unique)
+DFassi
+merge(DF,DFassi,by="Subject")
+View(DF)
+(DF)
+DF <- merge(DF,DFassi,by="Subject")
+DF$assignment.x <- NULL
+DF$assignment <- DF$assignment.y
+DF$bloc1val <- ifelse ((DF$assignment == 1 & grepl("M",DF$CS)) | (DF$assignment == 2 & grepl("B",DF$CS)), +0.5, -0.5)
+DF <- DF[which(!is.na(DF$Slide1.RESP)),]
+DFassi
+DF$codage<-NULL
+DF$RWAquest.RESP<-NULL
+DF$assignment<-NULL
+DF$Trial<-NULL
+DF$`CS[Trial]`<-NULL
+DF$`Procedure[Trial]`<-NULL
+DF$Valence<-NULL
+DF$US<-NULL
+DF$assignment.y<-NULL
+hist(DF$RWA)
+library(lme4)
+DF$response<-DF$Slide1.RESP
+DF$Slide1.RESP<-NULL
+rm(list=ls())
+if (!"pacman" %in% installed.packages()[,"Package"] ) install.packages("pacman" )
+pacman::p_load(readr,
+reshape2,
+dplyr,
+brms,
+BEST,
+data.table,
+grid,
+ggplot2,
+Rcpp,
+Matrix,
+rprime,
+lme4,
+cowplot)
+setwd("~/Desktop/LOAD")
+DF <- read_delim("mergeLOAD.csv",
+";", escape_double = FALSE, trim_ws = TRUE,
+skip = 1)
+DF$Clock.Information<- NULL
+DF$DataFile.Basename<- NULL
+DF$Display.RefreshRate<- NULL
+DF$ExperimentVersion<- NULL
+DF$RandomSeed<- NULL
+DF$RuntimeCapabilities<- NULL
+DF$RuntimeVersion<- NULL
+DF$RuntimeVersionExpected<- NULL
+DF$SessionStartDateTimeUtc<- NULL
+DF$SessionTime<- NULL
+DF$StudioVersion<- NULL
+DF$SessionDate<- NULL
+DF$assignment.Cycle<- NULL
+DF$assignment.Sample<- NULL
+DF$familylearning.Cycle<- NULL
+DF$SoundOut1.ACC<- NULL
+DF$SoundOut1.CRESP<- NULL
+DF$SoundOut1.DurationError<- NULL
+DF$SoundOut1.OnsetDelay<- NULL
+DF$SoundOut1.OnsetTime<- NULL
+DF$SoundOut1.RESP<- NULL
+DF$SoundOut1.RT<- NULL
+DF$SmallCE.DurationError<- NULL
+DF$SmallCE.OnsetDelay<- NULL
+DF$SmallCE.OnsetTime<- NULL
+DF$SmallCE.OnsetToOnsetTime<- NULL
+DF$Black1.DurationError<- NULL
+DF$Black1.OnsetDelay<- NULL
+DF$Black1.OnsetTime<- NULL
+DF$Black1.OnsetToOnsetTime<- NULL
+DF$Group<- NULL
+DF$Ratings.Cycle<- NULL
+DF$RWAquest.RT<- NULL
+DF$Ratings<- NULL
+DF$Ratings.Sample<- NULL
+DF$cond <- NULL
+DF$cond <- ifelse(grepl("COND1",DF$ExperimentName),+0.5,-0.5)
+DF$Slide1.RT<- NULL
+DF$ExperimentName<- NULL
+DF$Session<-NULL
+DF$Slide1.ACC<-NULL
+DF$SoundOut1.RTTime<-NULL
+DF$CE2.Sample<-NULL
+DF$CE1.Sample<-NULL
+DF$`Procedure[Block]`<-NULL
+DF$familylearning.Sample<-NULL
+DF$Mesure.Cycle<-NULL
+DF$Mesure.Sample<-NULL
+DF$`Running[Trial]`<-NULL
+DF$Questionaires.Cycle<-NULL
+DF$Questionaires.Sample<-NULL
+DF$`Running[Block]`<-NULL
+DF$CE1<-NULL
+DF$CE1.Cycle<-NULL
+DF$CE2<-NULL
+DF$CE2.Cycle<-NULL
+DF$Mesure<-NULL
+DF$`CS[Block]`<-NULL
+DF$USne<-NULL
+DF$USnestNEG<-NULL
+DF$USnestPOS<-NULL
+DF$USpos<-NULL
+DF$Block<-NULL
+DF$Questionaires<-NULL
+DF$Slide3.ACC<-NULL
+DF$Slide3.CRESP<-NULL
+DF$Slide3.RESP<-NULL
+DF$Slide3.RT<-NULL
+DF$Slide3.RTTime<-NULL
+DF$question<-NULL
+DF$correct<-NULL
+DF$familylearning<-NULL
+DF$RWARECOD<-ifelse(grepl("R",DF$codage),8-DF$RWAquest.RESP,DF$RWAquest.RESP)
+DFsum <- aggregate(RWARECOD ~ Subject,DF,FUN = sum)
+DF <- merge(DF,DFsum,by="Subject")
+DF$RWA<-DF$RWARECOD.y
+DF$RWARECOD.x<-NULL
+DF$RWARECOD.y<-NULL
+DFassi <- aggregate(assignment ~ Subject, DF[which(!is.na(DF$assignment)),],FUN = unique)
+DF <- merge(DF,DFassi,by="Subject")
+DF$assignment.x <- NULL
+DF$assignment <- DF$assignment.y
+DF$bloc1val <- ifelse ((DF$assignment == 1 & grepl("M",DF$CS)) | (DF$assignment == 2 & grepl("B",DF$CS)), +0.5, -0.5)
+DF <- DF[which(!is.na(DF$Slide1.RESP)),]
+DF$codage<-NULL
+DF$RWAquest.RESP<-NULL
+DF$assignment<-NULL
+DF$Trial<-NULL
+DF$`Procedure[Trial]`<-NULL
+DF$Valence<-NULL
+DF$US<-NULL
+DF$assignment.y<-NULL
+DF$response<-DF$Slide1.RESP
+DF$Slide1.RESP<-NULL
+DF$CS<-DF$`CS[Trial]`
+DF$`CS[Trial]`<-NULL
+MA <- lmer(response~bloc1val*RWA*cond + (1|Subject) + (1|CS), DF)
+MC <- lmer(response~bloc1val*cond + (1|Subject) + (1|CS), DF)
+anova(MA,MC)
+summary(MA)
+MA <- lmer(response~bloc1val*RWA + (1|Subject) + (1|CS), DF)
+MC <- lmer(response~bloc1val + (1|Subject) + (1|CS), DF)
+anova(MA,MC)
+ggplot(DF,aes(x=RWA,y=response),colour=bloc1val)+
+geom_point(shape=19,position=position_jitter(width=0,height=0.1),size=1, aes(colour = order))+
+stat_smooth(method=lm,formula=y~poly(x,1), aes(fill = order, colour=order),size=1)+
+theme_bw()+
+theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank())+
+theme(panel.border = element_blank())+
+xlab("SECS")+
+theme(axis.ticks.length=unit(0.2, "cm"))+
+theme(axis.text=element_text(size=10))+
+theme(axis.title.x=element_text(size=10, vjust=-2.3,face="bold"))+
+theme(axis.title.y=element_text(size=10, vjust=2.3,face="bold"))+
+ylab("ratings")+
+theme(plot.margin = unit(c(1,1,1,1), "cm"))+
+theme(legend.key.size = unit(0.5, "cm"))+
+theme(legend.text = element_text(size = 10, colour = "black", angle = 0))+
+theme(legend.title = element_blank())+
+scale_colour_manual(values=c("#6699FF","#CC9966"), name="Ordre")+
+scale_fill_manual(values=c("#6699FF","#CC9966"), name="Ordre")
+ggplot(DF,aes(x=RWA,y=response),colour=bloc1val)+
+geom_point(shape=19,position=position_jitter(width=0,height=0.1),size=1, aes(colour = bloc1val))+
+stat_smooth(method=lm,formula=y~poly(x,1), aes(fill = bloc1val, colour=bloc1val),size=1)+
+theme_bw()+
+theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank())+
+theme(panel.border = element_blank())+
+xlab("SECS")+
+theme(axis.ticks.length=unit(0.2, "cm"))+
+theme(axis.text=element_text(size=10))+
+theme(axis.title.x=element_text(size=10, vjust=-2.3,face="bold"))+
+theme(axis.title.y=element_text(size=10, vjust=2.3,face="bold"))+
+ylab("ratings")+
+theme(plot.margin = unit(c(1,1,1,1), "cm"))+
+theme(legend.key.size = unit(0.5, "cm"))+
+theme(legend.text = element_text(size = 10, colour = "black", angle = 0))+
+theme(legend.title = element_blank())+
+scale_colour_manual(values=c("#6699FF","#CC9966"), name="Ordre")+
+scale_fill_manual(values=c("#6699FF","#CC9966"), name="Ordre")
+ggplot(DF,aes(x=RWA,y=response),colour=as.character(bloc1val))+
+geom_point(shape=19,position=position_jitter(width=0,height=0.1),size=1, aes(colour = bloc1val))+
+stat_smooth(method=lm,formula=y~poly(x,1), aes(fill = bloc1val, colour=bloc1val),size=1)+
+theme_bw()+
+theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank())+
+theme(panel.border = element_blank())+
+xlab("SECS")+
+theme(axis.ticks.length=unit(0.2, "cm"))+
+theme(axis.text=element_text(size=10))+
+theme(axis.title.x=element_text(size=10, vjust=-2.3,face="bold"))+
+theme(axis.title.y=element_text(size=10, vjust=2.3,face="bold"))+
+ylab("ratings")+
+theme(plot.margin = unit(c(1,1,1,1), "cm"))+
+theme(legend.key.size = unit(0.5, "cm"))+
+theme(legend.text = element_text(size = 10, colour = "black", angle = 0))+
+theme(legend.title = element_blank())+
+scale_colour_manual(values=c("#6699FF","#CC9966"), name="Ordre")+
+scale_fill_manual(values=c("#6699FF","#CC9966"), name="Ordre")
+ggplot(DF,aes(x=RWA,y=response),colour=as.character(bloc1val))+
+geom_point(shape=19,position=position_jitter(width=0,height=0.1),size=1, aes(colour = bloc1val))+
+stat_smooth(method=lm,formula=y~poly(x,1), aes(fill = as.character(bloc1val), colour=as.character(bloc1val)),size=1)+
+theme_bw()+
+theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank())+
+theme(panel.border = element_blank())+
+xlab("SECS")+
+theme(axis.ticks.length=unit(0.2, "cm"))+
+theme(axis.text=element_text(size=10))+
+theme(axis.title.x=element_text(size=10, vjust=-2.3,face="bold"))+
+theme(axis.title.y=element_text(size=10, vjust=2.3,face="bold"))+
+ylab("ratings")+
+theme(plot.margin = unit(c(1,1,1,1), "cm"))+
+theme(legend.key.size = unit(0.5, "cm"))+
+theme(legend.text = element_text(size = 10, colour = "black", angle = 0))+
+theme(legend.title = element_blank())+
+scale_colour_manual(values=c("#6699FF","#CC9966"), name="Ordre")+
+scale_fill_manual(values=c("#6699FF","#CC9966"), name="Ordre")
+DF$Bloc1usvalence <- ifelse(DF$bloc1val == 0.5, "Pos", "Neg")
+ggplot(DF,aes(x=RWA,y=response),colour=Bloc1usvalence)+
+geom_point(shape=19,position=position_jitter(width=0,height=0.1),size=1, aes(colour = Bloc1usvalence))+
+stat_smooth(method=lm,formula=y~poly(x,1), aes(fill = Bloc1usvalencel, colour=Bloc1usvalence),size=1)+
+theme_bw()+
+theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank())+
+theme(panel.border = element_blank())+
+xlab("SECS")+
+theme(axis.ticks.length=unit(0.2, "cm"))+
+theme(axis.text=element_text(size=10))+
+theme(axis.title.x=element_text(size=10, vjust=-2.3,face="bold"))+
+theme(axis.title.y=element_text(size=10, vjust=2.3,face="bold"))+
+ylab("ratings")+
+theme(plot.margin = unit(c(1,1,1,1), "cm"))+
+theme(legend.key.size = unit(0.5, "cm"))+
+theme(legend.text = element_text(size = 10, colour = "black", angle = 0))+
+theme(legend.title = element_blank())+
+scale_colour_manual(values=c("#6699FF","#CC9966"), name="Ordre")+
+scale_fill_manual(values=c("#6699FF","#CC9966"), name="Ordre")
+DF$Bloc1usvalence
+ggplot(DF,aes(x=RWA,y=response,colour=Bloc1usvalence))+
+geom_point(shape=19,position=position_jitter(width=0,height=0.1),size=1, aes(colour = Bloc1usvalence))+
+stat_smooth(method=lm,formula=y~poly(x,1), aes(fill = Bloc1usvalencel, colour=Bloc1usvalence),size=1)+
+theme_bw()+
+theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank())+
+theme(panel.border = element_blank())+
+xlab("SECS")+
+theme(axis.ticks.length=unit(0.2, "cm"))+
+theme(axis.text=element_text(size=10))+
+theme(axis.title.x=element_text(size=10, vjust=-2.3,face="bold"))+
+theme(axis.title.y=element_text(size=10, vjust=2.3,face="bold"))+
+ylab("ratings")+
+theme(plot.margin = unit(c(1,1,1,1), "cm"))+
+theme(legend.key.size = unit(0.5, "cm"))+
+theme(legend.text = element_text(size = 10, colour = "black", angle = 0))+
+theme(legend.title = element_blank())+
+scale_colour_manual(values=c("#6699FF","#CC9966"), name="Ordre")+
+scale_fill_manual(values=c("#6699FF","#CC9966"), name="Ordre")
+ggplot(DF,aes(x=RWA,y=response),colour=Bloc1usvalence)
+ggplot(DF,aes(x=RWA,y=response),colour=Bloc1usvalence)+
+geom_point(shape=19,position=position_jitter(width=0,height=0.1),size=1, aes(colour = Bloc1usvalence))
+ggplot(DF,aes(x=RWA,y=response),colour=Bloc1usvalence)+
+geom_point(shape=19,position=position_jitter(width=0,height=0.1),size=1, aes(colour = Bloc1usvalence))+
+stat_smooth(method=lm,formula=y~poly(x,1), aes(fill = Bloc1usvalencel, colour=Bloc1usvalence),size=1)
+ggplot(DF,aes(x=RWA,y=response),colour=Bloc1usvalence)+
+geom_point(shape=19,position=position_jitter(width=0,height=0.1),size=1, aes(colour = Bloc1usvalence))+
+stat_smooth(method=lm,formula=y~poly(x,1), aes(fill = Bloc1usvalence, colour=Bloc1usvalence),size=1)+
+theme_bw()+
+theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank())+
+theme(panel.border = element_blank())+
+xlab("SECS")+
+theme(axis.ticks.length=unit(0.2, "cm"))+
+theme(axis.text=element_text(size=10))+
+theme(axis.title.x=element_text(size=10, vjust=-2.3,face="bold"))+
+theme(axis.title.y=element_text(size=10, vjust=2.3,face="bold"))+
+ylab("ratings")+
+theme(plot.margin = unit(c(1,1,1,1), "cm"))+
+theme(legend.key.size = unit(0.5, "cm"))+
+theme(legend.text = element_text(size = 10, colour = "black", angle = 0))+
+theme(legend.title = element_blank())+
+scale_colour_manual(values=c("#6699FF","#CC9966"), name="Ordre")+
+scale_fill_manual(values=c("#6699FF","#CC9966"), name="Ordre")
+ggplot(DF[which(DF$cond==0.5),],aes(x=RWA,y=response),colour=Bloc1usvalence)+
+geom_point(shape=19,position=position_jitter(width=0,height=0.1),size=1, aes(colour = Bloc1usvalence))+
+stat_smooth(method=lm,formula=y~poly(x,1), aes(fill = Bloc1usvalence, colour=Bloc1usvalence),size=1)+
+theme_bw()+
+theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank())+
+theme(panel.border = element_blank())+
+xlab("SECS")+
+theme(axis.ticks.length=unit(0.2, "cm"))+
+theme(axis.text=element_text(size=10))+
+theme(axis.title.x=element_text(size=10, vjust=-2.3,face="bold"))+
+theme(axis.title.y=element_text(size=10, vjust=2.3,face="bold"))+
+ylab("ratings")+
+theme(plot.margin = unit(c(1,1,1,1), "cm"))+
+theme(legend.key.size = unit(0.5, "cm"))+
+theme(legend.text = element_text(size = 10, colour = "black", angle = 0))+
+theme(legend.title = element_blank())+
+scale_colour_manual(values=c("#6699FF","#CC9966"), name="Ordre")+
+scale_fill_manual(values=c("#6699FF","#CC9966"), name="Ordre")
+ggplot(DF[which(DF$cond==-0.5),],aes(x=RWA,y=response),colour=Bloc1usvalence)+
+geom_point(shape=19,position=position_jitter(width=0,height=0.1),size=1, aes(colour = Bloc1usvalence))+
+stat_smooth(method=lm,formula=y~poly(x,1), aes(fill = Bloc1usvalence, colour=Bloc1usvalence),size=1)+
+theme_bw()+
+theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank())+
+theme(panel.border = element_blank())+
+xlab("SECS")+
+theme(axis.ticks.length=unit(0.2, "cm"))+
+theme(axis.text=element_text(size=10))+
+theme(axis.title.x=element_text(size=10, vjust=-2.3,face="bold"))+
+theme(axis.title.y=element_text(size=10, vjust=2.3,face="bold"))+
+ylab("ratings")+
+theme(plot.margin = unit(c(1,1,1,1), "cm"))+
+theme(legend.key.size = unit(0.5, "cm"))+
+theme(legend.text = element_text(size = 10, colour = "black", angle = 0))+
+theme(legend.title = element_blank())+
+scale_colour_manual(values=c("#6699FF","#CC9966"), name="Ordre")+
+scale_fill_manual(values=c("#6699FF","#CC9966"), name="Ordre")
+ggplot(DF[which(DF$cond==-0.5),],aes(x=RWA,y=response),colour=Bloc1usvalence)+
+geom_point(shape=19,position=position_jitter(width=0,height=0.1),size=1, aes(colour = Bloc1usvalence))+
+stat_smooth(method=lm,formula=y~poly(x,1), aes(fill = Bloc1usvalence, colour=Bloc1usvalence),size=1)+
+theme_bw()+
+theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank())+
+theme(panel.border = element_blank())+
+xlab("RWA")+
+theme(axis.ticks.length=unit(0.2, "cm"))+
+theme(axis.text=element_text(size=10))+
+theme(axis.title.x=element_text(size=10, vjust=-2.3,face="bold"))+
+theme(axis.title.y=element_text(size=10, vjust=2.3,face="bold"))+
+ylab("ratings")+
+theme(plot.margin = unit(c(1,1,1,1), "cm"))+
+theme(legend.key.size = unit(0.5, "cm"))+
+theme(legend.text = element_text(size = 10, colour = "black", angle = 0))+
+theme(legend.title = element_blank())+
+scale_colour_manual(values=c("#6699FF","#CC9966"), name="Ordre")+
+scale_fill_manual(values=c("#6699FF","#CC9966"), name="Ordre")
+ggplot(DF[which(DF$cond==+0.5),],aes(x=RWA,y=response),colour=Bloc1usvalence)+
+geom_point(shape=19,position=position_jitter(width=0,height=0.1),size=1, aes(colour = Bloc1usvalence))+
+stat_smooth(method=lm,formula=y~poly(x,1), aes(fill = Bloc1usvalence, colour=Bloc1usvalence),size=1)+
+theme_bw()+
+theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank())+
+theme(panel.border = element_blank())+
+xlab("RWA")+
+theme(axis.ticks.length=unit(0.2, "cm"))+
+theme(axis.text=element_text(size=10))+
+theme(axis.title.x=element_text(size=10, vjust=-2.3,face="bold"))+
+theme(axis.title.y=element_text(size=10, vjust=2.3,face="bold"))+
+ylab("ratings")+
+theme(plot.margin = unit(c(1,1,1,1), "cm"))+
+theme(legend.key.size = unit(0.5, "cm"))+
+theme(legend.text = element_text(size = 10, colour = "black", angle = 0))+
+theme(legend.title = element_blank())+
+scale_colour_manual(values=c("#6699FF","#CC9966"), name="Ordre")+
+scale_fill_manual(values=c("#6699FF","#CC9966"), name="Ordre")
+ggplot(DF[which(DF,],aes(x=RWA,y=response),colour=Bloc1usvalence)+
+geom_point(shape=19,position=position_jitter(width=0,height=0.1),size=1, aes(colour = Bloc1usvalence))+
+stat_smooth(method=lm,formula=y~poly(x,1), aes(fill = Bloc1usvalence, colour=Bloc1usvalence),size=1)+
+theme_bw()+
+theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank())+
+theme(panel.border = element_blank())+
+xlab("RWA")+
+theme(axis.ticks.length=unit(0.2, "cm"))+
+theme(axis.text=element_text(size=10))+
+theme(axis.title.x=element_text(size=10, vjust=-2.3,face="bold"))+
+theme(axis.title.y=element_text(size=10, vjust=2.3,face="bold"))+
+ylab("ratings")+
+theme(plot.margin = unit(c(1,1,1,1), "cm"))+
+theme(legend.key.size = unit(0.5, "cm"))+
+theme(legend.text = element_text(size = 10, colour = "black", angle = 0))+
+theme(legend.title = element_blank())+
+scale_colour_manual(values=c("#6699FF","#CC9966"), name="Ordre")+
+scale_fill_manual(values=c("#6699FF","#CC9966"), name="Ordre")
+ggplot(DF[which(DF],aes(x=RWA,y=response),colour=Bloc1usvalence)+
+geom_point(shape=19,position=position_jitter(width=0,height=0.1),size=1, aes(colour = Bloc1usvalence))+
+stat_smooth(method=lm,formula=y~poly(x,1), aes(fill = Bloc1usvalence, colour=Bloc1usvalence),size=1)+
+theme_bw()+
+theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank())+
+theme(panel.border = element_blank())+
+xlab("RWA")+
+theme(axis.ticks.length=unit(0.2, "cm"))+
+theme(axis.text=element_text(size=10))+
+theme(axis.title.x=element_text(size=10, vjust=-2.3,face="bold"))+
+theme(axis.title.y=element_text(size=10, vjust=2.3,face="bold"))+
+ylab("ratings")+
+theme(plot.margin = unit(c(1,1,1,1), "cm"))+
+theme(legend.key.size = unit(0.5, "cm"))+
+theme(legend.text = element_text(size = 10, colour = "black", angle = 0))+
+theme(legend.title = element_blank())+
+scale_colour_manual(values=c("#6699FF","#CC9966"), name="Ordre")+
+scale_fill_manual(values=c("#6699FF","#CC9966"), name="Ordre")
+ggplot(DF,aes(x=RWA,y=response),colour=Bloc1usvalence)+
+geom_point(shape=19,position=position_jitter(width=0,height=0.1),size=1, aes(colour = Bloc1usvalence))+
+stat_smooth(method=lm,formula=y~poly(x,1), aes(fill = Bloc1usvalence, colour=Bloc1usvalence),size=1)+
+theme_bw()+
+theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank())+
+theme(panel.border = element_blank())+
+xlab("RWA")+
+theme(axis.ticks.length=unit(0.2, "cm"))+
+theme(axis.text=element_text(size=10))+
+theme(axis.title.x=element_text(size=10, vjust=-2.3,face="bold"))+
+theme(axis.title.y=element_text(size=10, vjust=2.3,face="bold"))+
+ylab("ratings")+
+theme(plot.margin = unit(c(1,1,1,1), "cm"))+
+theme(legend.key.size = unit(0.5, "cm"))+
+theme(legend.text = element_text(size = 10, colour = "black", angle = 0))+
+theme(legend.title = element_blank())+
+scale_colour_manual(values=c("#6699FF","#CC9966"), name="Ordre")+
+scale_fill_manual(values=c("#6699FF","#CC9966"), name="Ordre")
+hist(DF$RWA)
+hist(DF[which(DF$cond==+0.5),]$RWA)
+hist(DF[which(DF$cond==-0.5),]$RWA)
+hist(DF[which(DF$cond=0.5),]$RWA)
+hist(DF[which(DF$cond==+0.5),]$RWA)
+hist(DF[which(DF$cond==-0.5),]$RWA)

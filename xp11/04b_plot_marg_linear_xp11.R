@@ -1,7 +1,7 @@
-# File name: 04b_plot_marg_linear_xp11.R
+# File name: plot_marg_xp11.R
 # Online archive: gitlab
 # Authors: Brice Beffara & Amélie Bret 
-# Tue Jun 26 12:08:58 2018 ------------------------------
+# Tue Jul 03 15:53:05 2018 ------------------------------
 # Contact: brice.beffara@slowpen.science amelie.bret@univ-grenoble-alpes.fr http://slowpen.science
 #
 # This R script was used to create the marginal plots from brms models
@@ -10,7 +10,7 @@
 # This R script plots marginal effect corresponding to the association
 # of RWA with grebles' ratings in all combinations of the other indepentdent variables :
 # usvalence : positive (0.5) vs. negative (-0.5)
-# and warn : nor warning (0.5) vs. warning (-0.5)
+# and warn_df : no warning (- 0.5) vs. warning (0.5)
 #
 # This program is believed to be free of errors, but it comes with no guarantee! 
 # The user bears all responsibility for interpreting the results.
@@ -48,16 +48,16 @@ p_load(ggplot2, # main package for plots
 #------------------------------------------------------------------------------------
 # First we determine all the possible combinations of modalities
 # between the two categorical independent variables :
-# "warn" and "usvalence"
+# "warn_df" and "usvalence"
 #------------------------------------------------------------------------------------
 
 # !!orginally!! conditioned stimuli with !!negative!! valence
-cond_n <- data.frame(usvalence = -0.5,
-                      cond__ = "negative")
+cond_nowa <- data.frame(warn = -0.5,
+                      cond__ = "No warning")
 
 # !!orginally!! conditioned stimuli with !!positive!! valence
-cond_p <- data.frame(usvalence = 0.5,
-                      cond__ = "positive")
+cond_yewa <- data.frame(warn = 0.5,
+                      cond__ = "Warning")
 
 #------------------------------------------------------------------------------------
 # We then select the marginal effects of RWA from the model
@@ -65,14 +65,14 @@ cond_p <- data.frame(usvalence = 0.5,
 #------------------------------------------------------------------------------------
 
 # !!orginally!! conditioned stimuli with !!negative!! valence
-marg_n <- marginal_effects(warn_resp, effects = "RWAscore:warn", 
-                            conditions = cond_n, method = c("fitted"), # here his where we specify the combination
+marg_nowa <- marginal_effects(warn_resp, effects = "RWAscore:usvalence", 
+                            conditions = cond_nowa, method = c("fitted"), # here his where we specify the combination
                             re_formula = NULL,
                             spaghetti = TRUE, nsamples = 500)
 
 # !!orginally!! conditioned stimuli with !!positive!! valence
-marg_p <- marginal_effects(warn_resp, effects = "RWAscore:warn", 
-                            conditions = cond_p, method = c("fitted"), # here his where we specify the combination
+marg_yewa <- marginal_effects(warn_resp, effects = "RWAscore:usvalence", 
+                            conditions = cond_yewa, method = c("fitted"), # here his where we specify the combination
                             re_formula = NULL,
                             spaghetti = TRUE, nsamples = 500)
 
@@ -86,39 +86,34 @@ loadfonts()
 
 # !!orginally!! conditioned stimuli with !!negative!! valence
 
-sawarn <- min((as.numeric(levels(unique(attr(marg_p$`RWAscore:warn`, "spaghetti")$warn)))))
+attr(marg_nowa$`RWAscore:usvalence`, "spaghetti") <- attr(marg_nowa$`RWAscore:usvalence`, "spaghetti")[grepl(0.5, attr(marg_nowa$`RWAscore:usvalence`, "spaghetti")$sample__),]
 
-zerwarn <- as.character ( min( abs( ((as.numeric(levels(unique(attr(marg_p$`RWAscore:warn`, "spaghetti")$warn))))))))
+attr(marg_yewa$`RWAscore:usvalence`, "spaghetti") <- attr(marg_yewa$`RWAscore:usvalence`, "spaghetti")[grepl(0.5, attr(marg_yewa$`RWAscore:usvalence`, "spaghetti")$sample__),]
 
-attr(marg_n$`RWAscore:warn`, "spaghetti") <- attr(marg_n$`RWAscore:warn`, "spaghetti")[!grepl(zerwarn, attr(marg_n$`RWAscore:warn`, "spaghetti")$sample__),]
+attr(marg_nowa$`RWAscore:usvalence`, "spaghetti")$usvalence <- ifelse (attr(marg_nowa$`RWAscore:usvalence`, "spaghetti")$usvalence == -0.5, "Négative", "Positive")
 
-attr(marg_p$`RWAscore:warn`, "spaghetti") <- attr(marg_p$`RWAscore:warn`, "spaghetti")[!grepl(zerwarn, attr(marg_n$`RWAscore:warn`, "spaghetti")$sample__),]
-
-attr(marg_n$`RWAscore:warn`, "spaghetti")$warn <- ifelse (attr(marg_n$`RWAscore:warn`, "spaghetti")$warn == sawarn, "Sans", "Avec")
-
-attr(marg_p$`RWAscore:warn`, "spaghetti")$warn <- ifelse (attr(marg_p$`RWAscore:warn`, "spaghetti")$warn == sawarn, "Sans", "Avec")
+attr(marg_yewa$`RWAscore:usvalence`, "spaghetti")$usvalence <- ifelse (attr(marg_yewa$`RWAscore:usvalence`, "spaghetti")$usvalence == -0.5, "Négative", "Positive")
 
 # !!orginally!! conditioned stimuli with !!positive!! valence
-marg_plot_n = plot(marg_n, plot = FALSE, mean = F)[[1]] + # here his where we specify the marginal effects of interest
+marg_plot_nowa = plot(marg_nowa, plot = FALSE, mean = F)[[1]] + # here his where we specify the marginal effects of interest
   scale_y_continuous(name="Évaluations", breaks = c(1, 2, 3, 4, 5, 6, 7, 8, 9), expand = c(0,0)) +
   coord_cartesian(ylim=c(1,9)) +
-  #scale_colour_hue(labels = c("Level 1", "Level 2")) +
   scale_x_continuous(name="RWA", breaks = scales::pretty_breaks(n = 10), expand=c(0.01,0)) +
-  labs(colour="Avertissement",
-       subtitle="Valence négative") + # here his where we mention the marginal effects of interest
+  labs(colour="Valence conditionnement",
+       subtitle="Sans avertissement de contre-conditionnement") + # here his where we mention the marginal effects of interest
   theme_ipsum_rc(base_size = 13,
                  subtitle_size = 20,
                  axis_title_size = 15)
 
 
 # !!orginally!! conditioned stimuli with !!positive!! valence
-marg_plot_p = plot(marg_p, plot = FALSE, mean = F)[[1]] + # here his where we specify the marginal effects of interest
+marg_plot_yewa = plot(marg_yewa, plot = FALSE, mean = F)[[1]] + # here his where we specify the marginal effects of interest
   scale_y_continuous(name="Évaluations", breaks = c(1, 2, 3, 4, 5, 6, 7, 8, 9), expand = c(0,0)) +
   coord_cartesian(ylim=c(1,9)) +
   #scale_colour_hue(labels = c("Level 1", "Level 2")) +
   scale_x_continuous(name="RWA", breaks = scales::pretty_breaks(n = 10), expand=c(0.01,0)) +
-  labs(colour="Avertissement",
-       subtitle="Valence positive") + # here his where we mention the marginal effects of interest
+  labs(colour="Valence conditionnement",
+       subtitle="Avec avertissement de contre-conditionnement") + # here his where we mention the marginal effects of interest
   theme_ipsum_rc(base_size = 13,
                  subtitle_size = 20,
                  axis_title_size = 15)
@@ -128,15 +123,16 @@ marg_plot_p = plot(marg_p, plot = FALSE, mean = F)[[1]] + # here his where we sp
 #------------------------------------------------------------------------------------
 
 # Combine plot
-marg_spag_all <- ggarrange(marg_plot_n,
-                      marg_plot_p,
+marg_spag_all <- ggarrange(marg_plot_nowa,
+                           marg_plot_yewa,
                       ncol = 2, nrow = 1)
 
-# uncomment to display plot
-# marg_spag_all
 
-# save plot
-ggsave("plots/marg_spag_xp11_french.pdf", width = 50, height = 15, units = "cm")
+# uncomment to display and save plot
+# marg_spag_all
+# ggsave("plots/marg_spag_xp11_french.jpg", width = 50, height = 15, units = "cm")
+# ggsave("plots/marg_spag_xp11_french.pdf", width = 50, height = 15, units = "cm")
+# ggsave("plots/marg_spag_xp11_french.tex", width = 50, height = 15, units = "cm")
 
 
 

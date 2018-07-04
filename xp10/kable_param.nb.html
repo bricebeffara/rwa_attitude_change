@@ -177,8 +177,6 @@ $(document).ready(function () {
 
 
 <!-- rnb-text-begin -->
-<!-- rnb-text-begin -->
-<!-- rnb-text-end -->
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
 
@@ -194,149 +192,186 @@ $(document).ready(function () {
    <th style="text-align:center;"> SE<sub>freq</sub> </th>
    <th style="text-align:center;"> t </th>
    <th style="text-align:center;"> β ≠ 0 </th>
-   <th style="text-align:center;"> % β<sub>Bayes</sub> dans rope </th>
+   <th style="text-align:center;"> ROPE </th>
+   <th style="text-align:center;"> % β<sub>Bayes</sub> dans ROPE </th>
   </tr>
  </thead>
 <tbody>
   <tr>
    <td style="text-align:center;"> Val </td>
-   <td style="text-align:center;"> 1.47 [1.34, 1.58] </td>
+   <td style="text-align:center;"> 1.46 [1.34, 1.59] </td>
    <td style="text-align:center;"> 0.06 </td>
    <td style="text-align:center;"> 1.64 [1.52, 1.76] </td>
    <td style="text-align:center;"> 0.06 </td>
    <td style="text-align:center;"> 26.49 </td>
    <td style="text-align:center;"> oui </td>
-   <td style="text-align:center;"> <span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #90ee90">0.00</span> </td>
+   <td style="text-align:center;"> -0.5, 0.5 </td>
+   <td style="text-align:center;"> <span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #90ee90">  0.00</span> </td>
   </tr>
   <tr>
    <td style="text-align:center;"> Lev </td>
-   <td style="text-align:center;"> -0.01 [-0.14, 0.11] </td>
+   <td style="text-align:center;"> -0.01 [-0.13, 0.11] </td>
    <td style="text-align:center;"> 0.06 </td>
    <td style="text-align:center;"> -0.05 [-0.17, 0.07] </td>
    <td style="text-align:center;"> 0.06 </td>
    <td style="text-align:center;"> -0.81 </td>
    <td style="text-align:center;"> non </td>
-   <td style="text-align:center;"> <span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #ffa500">99.65</span> </td>
+   <td style="text-align:center;"> -0.5, 0.5 </td>
+   <td style="text-align:center;"> <span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #ffa500">100.00</span> </td>
   </tr>
   <tr>
    <td style="text-align:center;"> RWA </td>
-   <td style="text-align:center;"> 0.06 [-0.1, 0.2] </td>
+   <td style="text-align:center;"> 0.06 [-0.09, 0.21] </td>
    <td style="text-align:center;"> 0.08 </td>
    <td style="text-align:center;"> 0.05 [-0.11, 0.21] </td>
    <td style="text-align:center;"> 0.08 </td>
    <td style="text-align:center;"> 0.61 </td>
    <td style="text-align:center;"> indécision </td>
-   <td style="text-align:center;"> <span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #fca603">97.17</span> </td>
+   <td style="text-align:center;"> -0.1, 0.1 </td>
+   <td style="text-align:center;"> <span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #d9bd30"> 66.10</span> </td>
   </tr>
   <tr>
    <td style="text-align:center;"> Val × Lev </td>
-   <td style="text-align:center;"> -2.35 [-2.56, -2.09] </td>
+   <td style="text-align:center;"> -2.35 [-2.59, -2.12] </td>
    <td style="text-align:center;"> 0.12 </td>
    <td style="text-align:center;"> -2.61 [-2.85, -2.36] </td>
    <td style="text-align:center;"> 0.12 </td>
    <td style="text-align:center;"> -21.00 </td>
    <td style="text-align:center;"> oui </td>
-   <td style="text-align:center;"> <span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #90ee90">0.00</span> </td>
+   <td style="text-align:center;"> -0.5, 0.5 </td>
+   <td style="text-align:center;"> <span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #90ee90">  0.00</span> </td>
   </tr>
   <tr>
    <td style="text-align:center;"> Val × RWA </td>
-   <td style="text-align:center;"> 0.07 [-0.05, 0.19] </td>
+   <td style="text-align:center;"> 0.07 [-0.04, 0.19] </td>
    <td style="text-align:center;"> 0.06 </td>
    <td style="text-align:center;"> 0.05 [-0.07, 0.18] </td>
    <td style="text-align:center;"> 0.06 </td>
    <td style="text-align:center;"> 0.87 </td>
-   <td style="text-align:center;"> non </td>
-   <td style="text-align:center;"> <span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #fda602">98.03</span> </td>
+   <td style="text-align:center;"> indécision </td>
+   <td style="text-align:center;"> -0.1, 0.1 </td>
+   <td style="text-align:center;"> <span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #dabc2e"> 67.45</span> </td>
   </tr>
   <tr>
    <td style="text-align:center;"> Lev × RWA </td>
-   <td style="text-align:center;"> -0.35 [-0.48, -0.24] </td>
+   <td style="text-align:center;"> -0.35 [-0.46, -0.23] </td>
    <td style="text-align:center;"> 0.06 </td>
    <td style="text-align:center;"> -0.36 [-0.48, -0.24] </td>
    <td style="text-align:center;"> 0.06 </td>
    <td style="text-align:center;"> -5.76 </td>
    <td style="text-align:center;"> oui </td>
-   <td style="text-align:center;"> <span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #90ed8e">0.72</span> </td>
+   <td style="text-align:center;"> -0.1, 0.1 </td>
+   <td style="text-align:center;"> <span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #90ee90">  0.00</span> </td>
   </tr>
   <tr>
    <td style="text-align:center;"> Val × Lev × RWA </td>
-   <td style="text-align:center;"> -0.58 [-0.8, -0.35] </td>
+   <td style="text-align:center;"> -0.58 [-0.82, -0.36] </td>
    <td style="text-align:center;"> 0.12 </td>
    <td style="text-align:center;"> -0.6 [-0.84, -0.35] </td>
    <td style="text-align:center;"> 0.12 </td>
    <td style="text-align:center;"> -4.78 </td>
    <td style="text-align:center;"> oui </td>
-   <td style="text-align:center;"> <span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #90ed8f">0.02</span> </td>
+   <td style="text-align:center;"> -0.1, 0.1 </td>
+   <td style="text-align:center;"> <span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #90ee90">  0.00</span> </td>
   </tr>
   <tr>
    <td style="text-align:center;"> Val <sub>lev 1</sub> </td>
-   <td style="text-align:center;"> 2.57 [2.4, 2.76] </td>
-   <td style="text-align:center;"> 0.09 </td>
+   <td style="text-align:center;"> 2.57 [2.40, 2.77] </td>
+   <td style="text-align:center;"> 0.10 </td>
    <td style="text-align:center;"> 2.95 [2.77, 3.12] </td>
    <td style="text-align:center;"> 0.09 </td>
    <td style="text-align:center;"> 33.58 </td>
    <td style="text-align:center;"> oui </td>
-   <td style="text-align:center;"> <span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #90ee90">0.00</span> </td>
+   <td style="text-align:center;"> -0.5, 0.5 </td>
+   <td style="text-align:center;"> <span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #90ee90">0.00  </span> </td>
   </tr>
   <tr>
    <td style="text-align:center;"> Val <sub>lev 2</sub> </td>
-   <td style="text-align:center;"> 0.3 [0.15, 0.45] </td>
+   <td style="text-align:center;"> 0.30 [0.15, 0.45] </td>
    <td style="text-align:center;"> 0.08 </td>
    <td style="text-align:center;"> 0.34 [0.17, 0.51] </td>
    <td style="text-align:center;"> 0.09 </td>
    <td style="text-align:center;"> 3.88 </td>
-   <td style="text-align:center;"> indécision </td>
-   <td style="text-align:center;"> <span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #9ae782">9.32</span> </td>
+   <td style="text-align:center;"> non </td>
+   <td style="text-align:center;"> -0.5, 0.5 </td>
+   <td style="text-align:center;"> <span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #fea500">99.33 </span> </td>
   </tr>
   <tr>
    <td style="text-align:center;"> RWA <sub>lev 1</sub> </td>
-   <td style="text-align:center;"> 0.23 [0.05, 0.38] </td>
+   <td style="text-align:center;"> 0.23 [0.07, 0.40] </td>
    <td style="text-align:center;"> 0.08 </td>
-   <td style="text-align:center;"> 0.23 [0.06, 0.4] </td>
+   <td style="text-align:center;"> 0.23 [0.06, 0.40] </td>
    <td style="text-align:center;"> 0.09 </td>
    <td style="text-align:center;"> 2.66 </td>
    <td style="text-align:center;"> indécision </td>
-   <td style="text-align:center;"> <span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #bad258">38.08</span> </td>
+   <td style="text-align:center;"> -0.1, 0.1 </td>
+   <td style="text-align:center;"> <span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #97e986">6.70  </span> </td>
   </tr>
   <tr>
    <td style="text-align:center;"> RWA <sub>lev 2</sub> </td>
-   <td style="text-align:center;"> -0.1 [-0.26, 0.06] </td>
+   <td style="text-align:center;"> -0.11 [-0.27, 0.05] </td>
    <td style="text-align:center;"> 0.08 </td>
-   <td style="text-align:center;"> -0.13 [-0.3, 0.04] </td>
+   <td style="text-align:center;"> -0.13 [-0.30, 0.04] </td>
    <td style="text-align:center;"> 0.09 </td>
    <td style="text-align:center;"> -1.52 </td>
    <td style="text-align:center;"> indécision </td>
-   <td style="text-align:center;"> <span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #f1ad11">87.85</span> </td>
+   <td style="text-align:center;"> -0.1, 0.1 </td>
+   <td style="text-align:center;"> <span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #c1cd4f">45.02 </span> </td>
   </tr>
   <tr>
-   <td style="text-align:center;"> (Lev × RWA) <sub>pos</sub> </td>
-   <td style="text-align:center;"> -0.62 [-0.77, -0.44] </td>
-   <td style="text-align:center;"> 0.08 </td>
-   <td style="text-align:center;"> -0.66 [-0.83, -0.48] </td>
+   <td style="text-align:center;"> (Val × RWA) <sub>lev 1</sub> </td>
+   <td style="text-align:center;"> 0.35 [0.18, 0.51] </td>
    <td style="text-align:center;"> 0.09 </td>
-   <td style="text-align:center;"> -7.45 </td>
+   <td style="text-align:center;"> 0.35 [0.18, 0.52] </td>
+   <td style="text-align:center;"> 0.09 </td>
+   <td style="text-align:center;"> 3.99 </td>
    <td style="text-align:center;"> oui </td>
-   <td style="text-align:center;"> <span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #90ee90">0.00</span> </td>
+   <td style="text-align:center;"> -0.1, 0.1 </td>
+   <td style="text-align:center;"> <span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #90ed8f">0.12  </span> </td>
   </tr>
   <tr>
-   <td style="text-align:center;"> (Lev × RWA) <sub>neg</sub> </td>
-   <td style="text-align:center;"> -0.06 [-0.22, 0.11] </td>
+   <td style="text-align:center;"> (Val × RWA) <sub>lev 1</sub> </td>
+   <td style="text-align:center;"> -0.21 [-0.36, -0.06] </td>
    <td style="text-align:center;"> 0.08 </td>
-   <td style="text-align:center;"> -0.13 [-0.41, 0.15] </td>
-   <td style="text-align:center;"> 0.14 </td>
-   <td style="text-align:center;"> -0.91 </td>
+   <td style="text-align:center;"> -0.24 [-0.42, -0.07] </td>
+   <td style="text-align:center;"> 0.09 </td>
+   <td style="text-align:center;"> -2.76 </td>
    <td style="text-align:center;"> indécision </td>
-   <td style="text-align:center;"> <span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #faa806">95.17</span> </td>
+   <td style="text-align:center;"> -0.1, 0.1 </td>
+   <td style="text-align:center;"> <span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #99e783">8.62  </span> </td>
+  </tr>
+  <tr>
+   <td style="text-align:center;"> RWA <sub>neg lev 1</sub> </td>
+   <td style="text-align:center;"> 0.06 [-0.12, 0.23] </td>
+   <td style="text-align:center;"> 0.09 </td>
+   <td style="text-align:center;"> 0.05 [-0.14, 0.24] </td>
+   <td style="text-align:center;"> 0.10 </td>
+   <td style="text-align:center;"> 0.54 </td>
+   <td style="text-align:center;"> indécision </td>
+   <td style="text-align:center;"> -0.1, 0.1 </td>
+   <td style="text-align:center;"> <span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #d5c035">62.62 </span> </td>
   </tr>
   <tr>
    <td style="text-align:center;"> RWA <sub>pos lev 1</sub> </td>
-   <td style="text-align:center;"> 0.38 [0.21, 0.57] </td>
+   <td style="text-align:center;"> 0.39 [0.22, 0.58] </td>
    <td style="text-align:center;"> 0.09 </td>
-   <td style="text-align:center;"> 0.4 [0.22, 0.59] </td>
+   <td style="text-align:center;"> 0.40 [0.22, 0.59] </td>
    <td style="text-align:center;"> 0.10 </td>
    <td style="text-align:center;"> 4.19 </td>
    <td style="text-align:center;"> oui </td>
-   <td style="text-align:center;"> <span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #92ec8c">2.38</span> </td>
+   <td style="text-align:center;"> -0.1, 0.1 </td>
+   <td style="text-align:center;"> <span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #90ed8f">0.25  </span> </td>
+  </tr>
+  <tr>
+   <td style="text-align:center;"> RWA <sub>neg lev 2</sub> </td>
+   <td style="text-align:center;"> -0.02 [-0.18, 0.17] </td>
+   <td style="text-align:center;"> 0.09 </td>
+   <td style="text-align:center;"> -0.01 [-0.20, 0.18] </td>
+   <td style="text-align:center;"> 0.10 </td>
+   <td style="text-align:center;"> -0.09 </td>
+   <td style="text-align:center;"> indécision </td>
+   <td style="text-align:center;"> -0.1, 0.1 </td>
+   <td style="text-align:center;"> <span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #e1b826">73.60 </span> </td>
   </tr>
   <tr>
    <td style="text-align:center;"> RWA <sub>pos lev 2</sub> </td>
@@ -346,7 +381,8 @@ $(document).ready(function () {
    <td style="text-align:center;"> 0.10 </td>
    <td style="text-align:center;"> -2.62 </td>
    <td style="text-align:center;"> indécision </td>
-   <td style="text-align:center;"> <span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #c5cb4b">47.70</span> </td>
+   <td style="text-align:center;"> -0.1, 0.1 </td>
+   <td style="text-align:center;"> <span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #9be680">10.75 </span> </td>
   </tr>
 </tbody>
 </table>
@@ -355,8 +391,6 @@ $(document).ready(function () {
 
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
-<!-- rnb-text-begin -->
-<!-- rnb-text-end -->
 <!-- rnb-text-end -->
 
 <div id="rmd-source-code">LS0tDQp0aXRsZTogIlN1bW1hcnkgcmVzdWx0cyB4cCAxMCINCm91dHB1dDoNCiAgaHRtbF9ub3RlYm9vazogZGVmYXVsdA0KICBwZGZfZG9jdW1lbnQ6IGRlZmF1bHQNCi0tLQ0KDQoNCg0KDQpgYGB7ciBlY2hvPUZBTFNFLCByZXN1bHRzID0gJ2FzaXMnfQ0KbGlicmFyeShrYWJsZUV4dHJhKQ0KDQprYWJsZSh0X2FsbCwgIGFsaWduID0gImMiLCBmb3JtYXQgPSAiaHRtbCIsDQogIGJvb2t0YWJzPVQsIGVzY2FwZSA9IEYpICU+JQ0KICBrYWJsZV9zdHlsaW5nKGJvb3RzdHJhcF9vcHRpb25zID0gYygic3RyaXBlZCIsICJob3ZlciIsICJjb25kZW5zZWQiKSkNCg0KYGBgDQoNCg0K</div>
