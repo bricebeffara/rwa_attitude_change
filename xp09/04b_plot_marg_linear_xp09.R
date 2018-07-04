@@ -1,16 +1,16 @@
-# File name: 04b_plot_marg_linear_xp09.R
+# File name: plot_marg_xp09.R
 # Online archive: gitlab
 # Authors: Brice Beffara & Amélie Bret 
-# Tue Jun 26 12:08:58 2018 ------------------------------
+# Wed Jul 04 15:00:51 2018 ------------------------------
 # Contact: brice.beffara@slowpen.science amelie.bret@univ-grenoble-alpes.fr http://slowpen.science
 #
 # This R script was used to create the marginal plots from brms models
-# corresponding to the 10th experiment of Amelie Bret's doctoral work
+# corresponding to the 9th experiment of Amelie Bret's doctoral work
 #
 # This R script plots marginal effect corresponding to the association
 # of RWA with grebles' ratings in all combinations of the other indepentdent variables :
 # usvalence : positive (0.5) vs. negative (-0.5)
-# and load : nor loading (0.5) vs. loading (-0.5)
+# and load_df : no load (- 0.5) vs. load (0.5)
 #
 # This program is believed to be free of errors, but it comes with no guarantee! 
 # The user bears all responsibility for interpreting the results.
@@ -46,38 +46,36 @@ p_load(ggplot2, # main package for plots
        character.only = FALSE)
 
 #------------------------------------------------------------------------------------
-# First we determine all the possible combinations of modalities
-# between the two categorical independent variables :
-# "load" and "usvalence"
+# First we determine the condition of the load variable
 #------------------------------------------------------------------------------------
 
-# !!orginally!! conditioned stimuli with !!negative!! valence
-cond_n <- data.frame(usvalence = -0.5,
-                      cond__ = "negative")
+# no load
+cond_nolo <- data.frame(load = -0.5,
+                      cond__ = "Sans")
 
-# !!orginally!! conditioned stimuli with !!positive!! valence
-cond_p <- data.frame(usvalence = 0.5,
-                      cond__ = "positive")
+# load
+cond_yelo <- data.frame(load = 0.5,
+                      cond__ = "Avec")
 
 #------------------------------------------------------------------------------------
-# We then select the marginal effects of RWA from the model
-# for each combination of modalities
+# We then select the marginal effects of RWA*usvalence from the model
+# for each condition of load
 #------------------------------------------------------------------------------------
 
-# !!orginally!! conditioned stimuli with !!negative!! valence
-marg_n <- marginal_effects(load_resp, effects = "RWAscore:load", 
-                            conditions = cond_n, method = c("fitted"), # here his where we specify the combination
+# no load
+marg_nolo <- marginal_effects(load_resp, effects = "RWAscore:usvalence", 
+                            conditions = cond_nolo, method = c("fitted"), # here his where we specify the combination
                             re_formula = NULL,
                             spaghetti = TRUE, nsamples = 500)
 
 # !!orginally!! conditioned stimuli with !!positive!! valence
-marg_p <- marginal_effects(load_resp, effects = "RWAscore:load", 
-                            conditions = cond_p, method = c("fitted"), # here his where we specify the combination
+marg_yelo <- marginal_effects(load_resp, effects = "RWAscore:usvalence", 
+                            conditions = cond_yelo, method = c("fitted"), # here his where we specify the combination
                             re_formula = NULL,
                             spaghetti = TRUE, nsamples = 500)
 
 #------------------------------------------------------------------------------------
-# Now we can plot marginal effects for each combination of conditions...
+# Now we can plot marginal effects of the interaction at each level
 #------------------------------------------------------------------------------------
 
 # load fonts and themes
@@ -86,39 +84,34 @@ loadfonts()
 
 # !!orginally!! conditioned stimuli with !!negative!! valence
 
-saload <- min((as.numeric(levels(unique(attr(marg_p$`RWAscore:load`, "spaghetti")$load)))))
+attr(marg_nolo$`RWAscore:usvalence`, "spaghetti") <- attr(marg_nolo$`RWAscore:usvalence`, "spaghetti")[grepl(0.5, attr(marg_nolo$`RWAscore:usvalence`, "spaghetti")$sample__),]
 
-zerload <- as.character ( min( abs( ((as.numeric(levels(unique(attr(marg_p$`RWAscore:load`, "spaghetti")$load))))))))
+attr(marg_yelo$`RWAscore:usvalence`, "spaghetti") <- attr(marg_yelo$`RWAscore:usvalence`, "spaghetti")[grepl(0.5, attr(marg_yelo$`RWAscore:usvalence`, "spaghetti")$sample__),]
 
-attr(marg_n$`RWAscore:load`, "spaghetti") <- attr(marg_n$`RWAscore:load`, "spaghetti")[!grepl(zerload, attr(marg_n$`RWAscore:load`, "spaghetti")$sample__),]
+attr(marg_nolo$`RWAscore:usvalence`, "spaghetti")$usvalence <- ifelse (attr(marg_nolo$`RWAscore:usvalence`, "spaghetti")$usvalence == -0.5, "Négative", "Positive")
 
-attr(marg_p$`RWAscore:load`, "spaghetti") <- attr(marg_p$`RWAscore:load`, "spaghetti")[!grepl(zerload, attr(marg_p$`RWAscore:load`, "spaghetti")$sample__),]
-
-attr(marg_n$`RWAscore:load`, "spaghetti")$load <- ifelse (attr(marg_n$`RWAscore:load`, "spaghetti")$load == saload, "Sans", "Avec")
-
-attr(marg_p$`RWAscore:load`, "spaghetti")$load <- ifelse (attr(marg_p$`RWAscore:load`, "spaghetti")$load == saload, "Sans", "Avec")
+attr(marg_yelo$`RWAscore:usvalence`, "spaghetti")$usvalence <- ifelse (attr(marg_yelo$`RWAscore:usvalence`, "spaghetti")$usvalence == -0.5, "Négative", "Positive")
 
 # !!orginally!! conditioned stimuli with !!positive!! valence
-marg_plot_n = plot(marg_n, plot = FALSE, mean = F)[[1]] + # here his where we specify the marginal effects of interest
+marg_plot_nolo = plot(marg_nolo, plot = FALSE, mean = F)[[1]] + # here his where we specify the marginal effects of interest
   scale_y_continuous(name="Évaluations", breaks = c(1, 2, 3, 4, 5, 6, 7, 8, 9), expand = c(0,0)) +
   coord_cartesian(ylim=c(1,9)) +
-  #scale_colour_hue(labels = c("Level 1", "Level 2")) +
   scale_x_continuous(name="RWA", breaks = scales::pretty_breaks(n = 10), expand=c(0.01,0)) +
-  labs(colour="Charge cognitive",
-       subtitle="Contre-conditionnement positif") + # here his where we mention the marginal effects of interest
+  labs(colour="Valence conditionnement",
+       subtitle="Contrôle (musique neutre) lors du contre-conditionnement") + # here his where we mention the marginal effects of interest
   theme_ipsum_rc(base_size = 13,
                  subtitle_size = 20,
                  axis_title_size = 15)
 
 
 # !!orginally!! conditioned stimuli with !!positive!! valence
-marg_plot_p = plot(marg_p, plot = FALSE, mean = F)[[1]] + # here his where we specify the marginal effects of interest
+marg_plot_yelo = plot(marg_yelo, plot = FALSE, mean = F)[[1]] + # here his where we specify the marginal effects of interest
   scale_y_continuous(name="Évaluations", breaks = c(1, 2, 3, 4, 5, 6, 7, 8, 9), expand = c(0,0)) +
   coord_cartesian(ylim=c(1,9)) +
   #scale_colour_hue(labels = c("Level 1", "Level 2")) +
   scale_x_continuous(name="RWA", breaks = scales::pretty_breaks(n = 10), expand=c(0.01,0)) +
-  labs(colour="Charge cognitive",
-       subtitle="Contre-conditionnement négatif") + # here his where we mention the marginal effects of interest
+  labs(colour="Valence conditionnement",
+       subtitle="Charge cognitive lors du contre-conditionnement") + # here his where we mention the marginal effects of interest
   theme_ipsum_rc(base_size = 13,
                  subtitle_size = 20,
                  axis_title_size = 15)
@@ -128,15 +121,16 @@ marg_plot_p = plot(marg_p, plot = FALSE, mean = F)[[1]] + # here his where we sp
 #------------------------------------------------------------------------------------
 
 # Combine plot
-marg_spag_all <- ggarrange(marg_plot_n,
-                      marg_plot_p,
+marg_spag_all <- ggarrange(marg_plot_nolo,
+                           marg_plot_yelo,
                       ncol = 2, nrow = 1)
 
-# uncomment to display plot
-# marg_spag_all
 
-# save plot
-ggsave("plots/marg_spag_xp09_french.pdf", width = 50, height = 15, units = "cm")
+# uncomment to display and save plot
+# marg_spag_all
+# ggsave("plots/marg_spag_xp09_french.jpg", width = 50, height = 15, units = "cm")
+# ggsave("plots/marg_spag_xp09_french.pdf", width = 50, height = 15, units = "cm")
+# ggsave("plots/marg_spag_xp09_french.tex", width = 50, height = 15, units = "cm")
 
 
 
