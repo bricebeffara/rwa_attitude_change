@@ -1,0 +1,49 @@
+---
+title: "Summary results xp 10"
+output:
+  html_notebook: default
+  pdf_document: default
+---
+
+
+
+
+```{r echo=FALSE, results = 'asis'}
+library(kableExtra)
+
+kable(t_all,  align = "c", format = "html",
+  booktabs=T, escape = F) %>%
+  kable_styling(bootstrap_options = c("striped", "hover", "condensed"))
+
+```
+
+```{r echo=FALSE, results = 'asis'}
+colA <- c("Deux contre conditionnements",
+          "Un contre conditionnement",
+          "Un contre conditionnement suivi d'un délai",
+          "Un délai suivi d'un contre-conditionnement")
+
+colB <- c(0.75,
+          -0.25,
+          -0.25,
+          -0.25)
+
+colC <- c(0,
+          0.5,
+          -0.25,
+          -0.25)
+
+colD <- c(0,
+          0,
+          0.25,
+          -0.25)
+
+contratable <- cbind( colA, colB, colC, colD)
+
+colnames( contratable) <- c("Style", "Contraste d'intérêt", "Contraste résiduel 1", "Contraste résiduel 2")
+
+kable(contratable,  align = "c", format = "html",
+  booktabs=T, escape = F) %>%
+  kable_styling(bootstrap_options = c("striped", "hover", "condensed"))
+
+```

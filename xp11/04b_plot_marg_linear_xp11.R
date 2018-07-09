@@ -46,10 +46,9 @@ p_load(ggplot2, # main package for plots
        character.only = FALSE)
 
 #------------------------------------------------------------------------------------
-# First we determine all the possible combinations of modalities
-# between the two categorical independent variables :
-# "warn_df" and "usvalence"
+# First we determine the condition of the warn variable
 #------------------------------------------------------------------------------------
+
 
 # !!orginally!! conditioned stimuli with !!negative!! valence
 cond_nowa <- data.frame(warn = -0.5,

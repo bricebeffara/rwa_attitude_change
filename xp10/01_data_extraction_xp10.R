@@ -155,7 +155,7 @@ iqr <- IQR(RWA$RWAscore)
 
 # Remove highly extreme values of RWA
 RWA$RWAscore <-  ifelse (RWA$RWAscore<quart1-3*iqr | RWA$RWAscore>quart3+3*iqr, NA, RWA$RWAscore)
-RWA <- RWA[which(!is.na(RWA$RWA)),]
+RWA <- RWA[which(!is.na(RWA$RWAscore)),]
 
 # scale RWA score
 RWA$RWAscore<-scale(RWA$RWAscore, center = TRUE, scale = TRUE)

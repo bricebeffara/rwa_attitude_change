@@ -46,31 +46,29 @@ p_load(ggplot2, # main package for plots
        character.only = FALSE)
 
 #------------------------------------------------------------------------------------
-# First we determine all the possible combinations of modalities
-# between the two categorical independent variables :
-# "spreading" and "usvalence"
+# First we determine the condition of the spreading variable
 #------------------------------------------------------------------------------------
 
-# !!orginally!! conditioned stimuli with !!negative!! valence
+# !!Level 1!! conditioned stimuli
 cond_lvone <- data.frame(spreading = -0.5,
                       cond__ = "Level 1")
 
-# !!orginally!! conditioned stimuli with !!positive!! valence
+# !!Level 2!! conditioned stimuli
 cond_lvtwo <- data.frame(spreading = 0.5,
                       cond__ = "Level 2")
 
 #------------------------------------------------------------------------------------
-# We then select the marginal effects of RWA from the model
-# for each combination of modalities
+# We then select the marginal effects of RWA*usvalence from the model
+# for each condition of spreading
 #------------------------------------------------------------------------------------
 
-# !!orginally!! conditioned stimuli with !!negative!! valence
+# !!Level 1!! conditioned stimuli
 marg_lvone <- marginal_effects(spread_resp, effects = "RWAscore:usvalence", 
                             conditions = cond_lvone, method = c("fitted"), # here his where we specify the combination
                             re_formula = NULL,
                             spaghetti = TRUE, nsamples = 500)
 
-# !!orginally!! conditioned stimuli with !!positive!! valence
+# !!Level 2!! conditioned stimuli
 marg_lvtwo <- marginal_effects(spread_resp, effects = "RWAscore:usvalence", 
                             conditions = cond_lvtwo, method = c("fitted"), # here his where we specify the combination
                             re_formula = NULL,
