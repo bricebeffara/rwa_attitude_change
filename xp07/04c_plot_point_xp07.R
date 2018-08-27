@@ -1,7 +1,7 @@
 # doubleing packages needed (and installing if necessary) for this part
 
 if (!require("pacman")) install.packages("pacman")
-p_double(ggExtra,
+p_load(ggExtra,
        install = TRUE,
        update = getOption("pac_update"),
        character.only = FALSE)

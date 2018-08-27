@@ -1,0 +1,204 @@
+id,age,sex,education,handedness,sexual orientation,ethnicity,nationality,other1,other2,other3,other4,other5,browser,version,screenWidth,screenHeight,OS,OS_lang,calibration,ip,completionCode
+583dc41d541de800013d4719,30,female,,right-handed,,1,British,,,,,,Chrome,54,1366,768,Windows,en-US,0.74,,A152UGzyDBeFwyRo
+
+type,trialNo,subjectGroup,condition1,title,content,trialText,stimFormat,stim1,stim2,key,ITI,ISI,presTime,random,feedbackIncorrect,feedbackCorrect,button1,button2,keyboard,orderPres,orderFile,timestamp,response,RT,correct
+test,1,0,apprentissage,na,na,Watch carefully these two families,.jpg,learn02,na,na,0,na,na,na,na,na,NEXT,na,na,1,1,189245,1,49106,0
+test,10,0,apprentissage,na,na,To which family does this character belong?,.jpg,M1,na,2,0,na,na,1,Your answer is wrong,Your answer is correct,FAMILY A, FAMILY B,na,2,10,191817,2,2553,1
+test,5,0,apprentissage,na,na,To which family does this character belong?,.jpg,B4,na,1,0,na,na,1,Your answer is wrong,Your answer is correct,FAMILY A, FAMILY B,na,3,5,194359,1,1183,1
+test,13,0,apprentissage,na,na,To which family does this character belong?,.jpg,M4,na,2,0,na,na,1,Your answer is wrong,Your answer is correct,FAMILY A, FAMILY B,na,4,13,196722,2,1173,1
+test,15,0,apprentissage,na,na,To which family does this character belong?,.jpg,M5,na,2,0,na,na,1,Your answer is wrong,Your answer is correct,FAMILY A, FAMILY B,na,5,15,198597,2,888,1
+test,18,0,apprentissage,na,na,To which family does this character belong?,.jpg,M8,na,2,0,na,na,1,Your answer is wrong,Your answer is correct,FAMILY A, FAMILY B,na,6,18,200149,2,805,1
+test,12,0,apprentissage,na,na,To which family does this character belong?,.jpg,M3,na,2,0,na,na,1,Your answer is wrong,Your answer is correct,FAMILY A, FAMILY B,na,7,12,201863,2,951,1
+test,4,0,apprentissage,na,na,To which family does this character belong?,.jpg,B3,na,1,0,na,na,1,Your answer is wrong,Your answer is correct,FAMILY A, FAMILY B,na,8,4,203962,1,1168,1
+test,2,0,apprentissage,na,na,To which family does this character belong?,.jpg,B1,na,1,0,na,na,1,Your answer is wrong,Your answer is correct,FAMILY A, FAMILY B,na,9,2,205726,1,1139,1
+test,16,0,apprentissage,na,na,To which family does this character belong?,.jpg,M6,na,2,0,na,na,1,Your answer is wrong,Your answer is correct,FAMILY A, FAMILY B,na,10,16,207546,2,1073,1
+test,8,0,apprentissage,na,na,To which family does this character belong?,.jpg,B7,na,1,0,na,na,1,Your answer is wrong,Your answer is correct,FAMILY A, FAMILY B,na,11,8,209114,1,901,1
+test,9,0,apprentissage,na,na,To which family does this character belong?,.jpg,B8,na,1,0,na,na,1,Your answer is wrong,Your answer is correct,FAMILY A, FAMILY B,na,12,9,210703,1,970,1
+test,6,0,apprentissage,na,na,To which family does this character belong?,.jpg,B5,na,1,0,na,na,1,Your answer is wrong,Your answer is correct,FAMILY A, FAMILY B,na,13,6,212574,1,964,1
+test,17,0,apprentissage,na,na,To which family does this character belong?,.jpg,M7,na,2,0,na,na,1,Your answer is wrong,Your answer is correct,FAMILY A, FAMILY B,na,14,17,214418,2,1178,1
+test,7,0,apprentissage,na,na,To which family does this character belong?,.jpg,B6,na,1,0,na,na,1,Your answer is wrong,Your answer is correct,FAMILY A, FAMILY B,na,15,7,216083,1,975,1
+test,11,0,apprentissage,na,na,To which family does this character belong?,.jpg,M2,na,2,0,na,na,1,Your answer is wrong,Your answer is correct,FAMILY A, FAMILY B,na,16,11,218286,2,972,1
+test,3,0,apprentissage,na,na,To which family does this character belong?,.jpg,B2,na,1,0,na,na,1,Your answer is wrong,Your answer is correct,FAMILY A, FAMILY B,na,17,3,220979,1,1842,1
+test,14,0,apprentissage,na,na,To which family does this character belong?,.jpg,M5,na,2,0,na,na,1,Your answer is wrong,Your answer is correct,FAMILY A, FAMILY B,na,18,14,222691,2,982,1
+test,8,4,affectiveprimingtaskTraining,na,na,This word is:<br><br>negative "press n" ; positive "press p",.jpg,P10,Cancer,na,2000,50,120,66,na,na,na,na,n p ,19,482,470449,n,1326,0
+test,3,4,affectiveprimingtaskTraining,na,na,This word is:<br><br>negative "press n" ; positive "press p",.jpg,P10,Comfort,na,2000,50,120,66,na,na,na,na,n p ,20,477,474494,p,1824,0
+test,6,4,affectiveprimingtaskTraining,na,na,This word is:<br><br>negative "press n" ; positive "press p",.jpg,P9,Accident,na,2000,50,120,66,na,na,na,na,n p ,21,480,477649,p,918,0
+test,5,4,affectiveprimingtaskTraining,na,na,This word is:<br><br>negative "press n" ; positive "press p",.jpg,P9,Accident,na,2000,50,120,66,na,na,na,na,n p ,22,479,485017,n,5156,0
+test,7,4,affectiveprimingtaskTraining,na,na,This word is:<br><br>negative "press n" ; positive "press p",.jpg,P10,Cancer,na,2000,50,120,66,na,na,na,na,n p ,23,481,488400,n,1161,0
+test,1,4,affectiveprimingtaskTraining,na,na,This word is:<br><br>negative "press n" ; positive "press p",.jpg,P9,Achievement,na,2000,50,120,66,na,na,na,na,n p ,24,475,493000,p,2396,0
+test,2,4,affectiveprimingtaskTraining,na,na,This word is:<br><br>negative "press n" ; positive "press p",.jpg,P9,Achievement,na,2000,50,120,66,na,na,na,na,n p ,25,476,497867,p,2667,0
+test,4,4,affectiveprimingtaskTraining,na,na,This word is:<br><br>negative "press n" ; positive "press p",.jpg,P10,Comfort,na,2000,50,120,66,na,na,na,na,n p ,26,478,502582,p,2499,0
+test,4,4,IMPLIratings,na,na,This word is:<br><br>negative "press n" ; positive "press p",.jpg,B4,Injury,na,2000,50,120,67,na,na,na,na,n p ,27,542,535610,n,3497,0
+test,7,4,IMPLIratings,na,na,This word is:<br><br>negative "press n" ; positive "press p",.jpg,B7,Suicide,na,2000,50,120,67,na,na,na,na,n p ,28,577,539682,n,1859,0
+test,4,4,IMPLIratings,na,na,This word is:<br><br>negative "press n" ; positive "press p",.jpg,B4,Delight,na,2000,50,120,67,na,na,na,na,n p ,29,494,543435,p,1542,0
+test,5,4,IMPLIratings,na,na,This word is:<br><br>negative "press n" ; positive "press p",.jpg,B5,Cheerful,na,2000,50,120,67,na,na,na,na,n p ,30,559,546655,p,1007,0
+test,2,4,IMPLIratings,na,na,This word is:<br><br>negative "press n" ; positive "press p",.jpg,B2,Praise,na,2000,50,120,67,na,na,na,na,n p ,31,556,550460,p,1595,0
+test,2,4,IMPLIratings,na,na,This word is:<br><br>negative "press n" ; positive "press p",.jpg,M2,Excellent,na,2000,50,120,67,na,na,na,na,n p ,32,484,553661,p,973,0
+test,3,4,IMPLIratings,na,na,This word is:<br><br>negative "press n" ; positive "press p",.jpg,B3,Fatal,na,2000,50,120,67,na,na,na,na,n p ,33,573,558723,n,2842,0
+test,3,4,IMPLIratings,na,na,This word is:<br><br>negative "press n" ; positive "press p",.jpg,B3,Fatal,na,2000,50,120,67,na,na,na,na,n p ,34,605,562671,n,1722,0
+test,4,4,IMPLIratings,na,na,This word is:<br><br>negative "press n" ; positive "press p",.jpg,M4,Killer,na,2000,50,120,67,na,na,na,na,n p ,35,598,566116,n,1236,0
+test,7,4,IMPLIratings,na,na,This word is:<br><br>negative "press n" ; positive "press p",.jpg,M7,Smiling,na,2000,50,120,67,na,na,na,na,n p ,36,585,569727,p,1405,0
+test,8,4,IMPLIratings,na,na,This word is:<br><br>negative "press n" ; positive "press p",.jpg,B8,Violence,na,2000,50,120,67,na,na,na,na,n p ,37,610,573001,n,1069,0
+test,6,4,IMPLIratings,na,na,This word is:<br><br>negative "press n" ; positive "press p",.jpg,M6,Lethal,na,2000,50,120,67,na,na,na,na,n p ,38,504,576257,n,1044,0
+test,6,4,IMPLIratings,na,na,This word is:<br><br>negative "press n" ; positive "press p",.jpg,M6,Lethal,na,2000,50,120,67,na,na,na,na,n p ,39,536,580695,n,2235,0
+test,5,4,IMPLIratings,na,na,This word is:<br><br>negative "press n" ; positive "press p",.jpg,B5,Smiling,na,2000,50,120,67,na,na,na,na,n p ,40,495,583979,p,1069,0
+test,7,4,IMPLIratings,na,na,This word is:<br><br>negative "press n" ; positive "press p",.jpg,M7,Suicide,na,2000,50,120,67,na,na,na,na,n p ,41,601,587108,n,928,0
+test,7,4,IMPLIratings,na,na,This word is:<br><br>negative "press n" ; positive "press p",.jpg,B7,Killer,na,2000,50,120,67,na,na,na,na,n p ,42,513,590377,n,1056,0
+test,8,4,IMPLIratings,na,na,This word is:<br><br>negative "press n" ; positive "press p",.jpg,B8,Confident,na,2000,50,120,67,na,na,na,na,n p ,43,562,593440,p,857,0
+test,1,4,IMPLIratings,na,na,This word is:<br><br>negative "press n" ; positive "press p",.jpg,B1,Excellent,na,2000,50,120,67,na,na,na,na,n p ,44,555,596881,p,1230,0
+test,5,4,IMPLIratings,na,na,This word is:<br><br>negative "press n" ; positive "press p",.jpg,M5,Killer,na,2000,50,120,67,na,na,na,na,n p ,45,503,599923,n,832,0
+test,6,4,IMPLIratings,na,na,This word is:<br><br>negative "press n" ; positive "press p",.jpg,B6,Generous,na,2000,50,120,67,na,na,na,na,n p ,46,528,603055,p,926,0
+test,6,4,IMPLIratings,na,na,This word is:<br><br>negative "press n" ; positive "press p",.jpg,B6,Fatal,na,2000,50,120,67,na,na,na,na,n p ,47,544,608163,n,2889,0
+test,6,4,IMPLIratings,na,na,This word is:<br><br>negative "press n" ; positive "press p",.jpg,B6,Generous,na,2000,50,120,67,na,na,na,na,n p ,48,560,611044,p,682,0
+test,6,4,IMPLIratings,na,na,This word is:<br><br>negative "press n" ; positive "press p",.jpg,B6,Cruelty,na,2000,50,120,67,na,na,na,na,n p ,49,608,614305,n,1037,0
+test,1,4,IMPLIratings,na,na,This word is:<br><br>negative "press n" ; positive "press p",.jpg,M1,Pain,na,2000,50,120,67,na,na,na,na,n p ,50,563,617479,n,950,0
+test,5,4,IMPLIratings,na,na,This word is:<br><br>negative "press n" ; positive "press p",.jpg,B5,Lethal,na,2000,50,120,67,na,na,na,na,n p ,51,575,620623,n,911,0
+test,7,4,IMPLIratings,na,na,This word is:<br><br>negative "press n" ; positive "press p",.jpg,B7,Suicide,na,2000,50,120,67,na,na,na,na,n p ,52,609,623930,n,1085,0
+test,5,4,IMPLIratings,na,na,This word is:<br><br>negative "press n" ; positive "press p",.jpg,B5,Lethal,na,2000,50,120,67,na,na,na,na,n p ,53,607,627529,n,1384,0
+test,3,4,IMPLIratings,na,na,This word is:<br><br>negative "press n" ; positive "press p",.jpg,M3,Praise,na,2000,50,120,67,na,na,na,na,n p ,54,517,630563,p,831,0
+test,7,4,IMPLIratings,na,na,This word is:<br><br>negative "press n" ; positive "press p",.jpg,M7,Cruelty,na,2000,50,120,67,na,na,na,na,n p ,55,505,633522,n,743,0
+test,7,4,IMPLIratings,na,na,This word is:<br><br>negative "press n" ; positive "press p",.jpg,M7,Suicide,na,2000,50,120,67,na,na,na,na,n p ,56,569,636456,n,731,0
+test,2,4,IMPLIratings,na,na,This word is:<br><br>negative "press n" ; positive "press p",.jpg,B2,Cruelty,na,2000,50,120,67,na,na,na,na,n p ,57,508,639513,n,831,0
+test,2,4,IMPLIratings,na,na,This word is:<br><br>negative "press n" ; positive "press p",.jpg,B2,Praise,na,2000,50,120,67,na,na,na,na,n p ,58,588,642537,p,793,0
+test,4,4,IMPLIratings,na,na,This word is:<br><br>negative "press n" ; positive "press p",.jpg,B4,Killer,na,2000,50,120,67,na,na,na,na,n p ,59,606,645881,n,1136,0
+test,8,4,IMPLIratings,na,na,This word is:<br><br>negative "press n" ; positive "press p",.jpg,M8,Confident,na,2000,50,120,67,na,na,na,na,n p ,60,586,649243,p,1150,0
+test,3,4,IMPLIratings,na,na,This word is:<br><br>negative "press n" ; positive "press p",.jpg,B3,Pleasure,na,2000,50,120,67,na,na,na,na,n p ,61,589,652627,p,1175,0
+test,8,4,IMPLIratings,na,na,This word is:<br><br>negative "press n" ; positive "press p",.jpg,B8,Confident,na,2000,50,120,67,na,na,na,na,n p ,62,594,656080,p,1236,0
+test,1,4,IMPLIratings,na,na,This word is:<br><br>negative "press n" ; positive "press p",.jpg,M1,Violence,na,2000,50,120,67,na,na,na,na,n p ,63,531,659325,n,1031,0
+test,4,4,IMPLIratings,na,na,This word is:<br><br>negative "press n" ; positive "press p",.jpg,B4,Killer,na,2000,50,120,67,na,na,na,na,n p ,64,574,662423,n,880,0
+test,1,4,IMPLIratings,na,na,This word is:<br><br>negative "press n" ; positive "press p",.jpg,M1,Pain,na,2000,50,120,67,na,na,na,na,n p ,65,595,665546,n,902,0
+test,3,4,IMPLIratings,na,na,This word is:<br><br>negative "press n" ; positive "press p",.jpg,M3,Praise,na,2000,50,120,67,na,na,na,na,n p ,66,485,668564,p,796,0
+test,7,4,IMPLIratings,na,na,This word is:<br><br>negative "press n" ; positive "press p",.jpg,M7,Smiling,na,2000,50,120,67,na,na,na,na,n p ,67,553,671685,p,914,0
+test,4,4,IMPLIratings,na,na,This word is:<br><br>negative "press n" ; positive "press p",.jpg,M4,Killer,na,2000,50,120,67,na,na,na,na,n p ,68,566,674688,n,778,0
+test,5,4,IMPLIratings,na,na,This word is:<br><br>negative "press n" ; positive "press p",.jpg,M5,Killer,na,2000,50,120,67,na,na,na,na,n p ,69,535,677832,n,927,0
+test,8,4,IMPLIratings,na,na,This word is:<br><br>negative "press n" ; positive "press p",.jpg,M8,Smiling,na,2000,50,120,67,na,na,na,na,n p ,70,522,680927,p,892,0
+test,5,4,IMPLIratings,na,na,This word is:<br><br>negative "press n" ; positive "press p",.jpg,M5,Cheerful,na,2000,50,120,67,na,na,na,na,n p ,71,551,683788,p,653,0
+test,5,4,IMPLIratings,na,na,This word is:<br><br>negative "press n" ; positive "press p",.jpg,B5,Smiling,na,2000,50,120,67,na,na,na,na,n p ,72,527,686775,p,773,0
+test,4,4,IMPLIratings,na,na,This word is:<br><br>negative "press n" ; positive "press p",.jpg,M4,Pleasure,na,2000,50,120,67,na,na,na,na,n p ,73,518,689624,p,631,0
+test,1,4,IMPLIratings,na,na,This word is:<br><br>negative "press n" ; positive "press p",.jpg,M1,Confident,na,2000,50,120,67,na,na,na,na,n p ,74,483,692636,p,763,0
+test,4,4,IMPLIratings,na,na,This word is:<br><br>negative "press n" ; positive "press p",.jpg,B4,Delight,na,2000,50,120,67,na,na,na,na,n p ,75,526,695854,p,1007,0
+test,6,4,IMPLIratings,na,na,This word is:<br><br>negative "press n" ; positive "press p",.jpg,B6,Generous,na,2000,50,120,67,na,na,na,na,n p ,76,496,700078,p,2038,0
+test,3,4,IMPLIratings,na,na,This word is:<br><br>negative "press n" ; positive "press p",.jpg,M3,Fatal,na,2000,50,120,67,na,na,na,na,n p ,77,565,705285,n,2962,0
+test,3,4,IMPLIratings,na,na,This word is:<br><br>negative "press n" ; positive "press p",.jpg,M3,Injury,na,2000,50,120,67,na,na,na,na,n p ,78,533,708869,n,1372,0
+test,8,4,IMPLIratings,na,na,This word is:<br><br>negative "press n" ; positive "press p",.jpg,B8,Pleasure,na,2000,50,120,67,na,na,na,na,n p ,79,498,711908,p,835,0
+test,5,4,IMPLIratings,na,na,This word is:<br><br>negative "press n" ; positive "press p",.jpg,M5,Cheerful,na,2000,50,120,67,na,na,na,na,n p ,80,583,714686,p,558,0
+test,1,4,IMPLIratings,na,na,This word is:<br><br>negative "press n" ; positive "press p",.jpg,B1,Excellent,na,2000,50,120,67,na,na,na,na,n p ,81,491,717799,p,890,0
+test,7,4,IMPLIratings,na,na,This word is:<br><br>negative "press n" ; positive "press p",.jpg,B7,Cheerful,na,2000,50,120,67,na,na,na,na,n p ,82,497,720641,p,638,0
+test,8,4,IMPLIratings,na,na,This word is:<br><br>negative "press n" ; positive "press p",.jpg,B8,Violence,na,2000,50,120,67,na,na,na,na,n p ,83,546,723441,n,583,0
+test,2,4,IMPLIratings,na,na,This word is:<br><br>negative "press n" ; positive "press p",.jpg,B2,Injury,na,2000,50,120,67,na,na,na,na,n p ,84,604,726211,n,558,0
+test,6,4,IMPLIratings,na,na,This word is:<br><br>negative "press n" ; positive "press p",.jpg,B6,Fatal,na,2000,50,120,67,na,na,na,na,n p ,85,512,729068,n,641,0
+test,3,4,IMPLIratings,na,na,This word is:<br><br>negative "press n" ; positive "press p",.jpg,M3,Pleasure,na,2000,50,120,67,na,na,na,na,n p ,86,581,731865,p,575,0
+test,2,4,IMPLIratings,na,na,This word is:<br><br>negative "press n" ; positive "press p",.jpg,M2,Praise,na,2000,50,120,67,na,na,na,na,n p ,87,580,734610,p,546,0
+test,2,4,IMPLIratings,na,na,This word is:<br><br>negative "press n" ; positive "press p",.jpg,B2,Praise,na,2000,50,120,67,na,na,na,na,n p ,88,524,737348,p,523,0
+test,5,4,IMPLIratings,na,na,This word is:<br><br>negative "press n" ; positive "press p",.jpg,M5,Lethal,na,2000,50,120,67,na,na,na,na,n p ,89,567,740048,n,495,0
+test,2,4,IMPLIratings,na,na,This word is:<br><br>negative "press n" ; positive "press p",.jpg,M2,Pain,na,2000,50,120,67,na,na,na,na,n p ,90,532,742595,n,315,0
+test,2,4,IMPLIratings,na,na,This word is:<br><br>negative "press n" ; positive "press p",.jpg,M2,Pain,na,2000,50,120,67,na,na,na,na,n p ,91,500,745275,n,460,0
+test,6,4,IMPLIratings,na,na,This word is:<br><br>negative "press n" ; positive "press p",.jpg,M6,Cruelty,na,2000,50,120,67,na,na,na,na,n p ,92,600,748215,n,720,0
+test,1,4,IMPLIratings,na,na,This word is:<br><br>negative "press n" ; positive "press p",.jpg,B1,Pain,na,2000,50,120,67,na,na,na,na,n p ,93,571,751038,n,598,0
+test,8,4,IMPLIratings,na,na,This word is:<br><br>negative "press n" ; positive "press p",.jpg,B8,Pleasure,na,2000,50,120,67,na,na,na,na,n p ,94,530,753686,n,429,0
+test,1,4,IMPLIratings,na,na,This word is:<br><br>negative "press n" ; positive "press p",.jpg,M1,Excellent,na,2000,50,120,67,na,na,na,na,n p ,95,579,756408,n,500,0
+test,3,4,IMPLIratings,na,na,This word is:<br><br>negative "press n" ; positive "press p",.jpg,B3,Confident,na,2000,50,120,67,na,na,na,na,n p ,96,493,759747,n,1129,0
+test,3,4,IMPLIratings,na,na,This word is:<br><br>negative "press n" ; positive "press p",.jpg,M3,Pleasure,na,2000,50,120,67,na,na,na,na,n p ,97,549,763581,p,1628,0
+test,4,4,IMPLIratings,na,na,This word is:<br><br>negative "press n" ; positive "press p",.jpg,M4,Fatal,na,2000,50,120,67,na,na,na,na,n p ,98,534,766505,n,698,0
+test,5,4,IMPLIratings,na,na,This word is:<br><br>negative "press n" ; positive "press p",.jpg,B5,Lethal,na,2000,50,120,67,na,na,na,na,n p ,99,543,769322,n,615,0
+test,8,4,IMPLIratings,na,na,This word is:<br><br>negative "press n" ; positive "press p",.jpg,M8,Smiling,na,2000,50,120,67,na,na,na,na,n p ,100,490,772665,p,1126,0
+test,8,4,IMPLIratings,na,na,This word is:<br><br>negative "press n" ; positive "press p",.jpg,M8,Confident,na,2000,50,120,67,na,na,na,na,n p ,101,554,775782,p,909,0
+test,6,4,IMPLIratings,na,na,This word is:<br><br>negative "press n" ; positive "press p",.jpg,M6,Cruelty,na,2000,50,120,67,na,na,na,na,n p ,102,568,778984,n,964,0
+test,5,4,IMPLIratings,na,na,This word is:<br><br>negative "press n" ; positive "press p",.jpg,M5,Delight,na,2000,50,120,67,na,na,na,na,n p ,103,519,782765,p,1558,0
+test,2,4,IMPLIratings,na,na,This word is:<br><br>negative "press n" ; positive "press p",.jpg,B2,Cruelty,na,2000,50,120,67,na,na,na,na,n p ,104,540,786040,n,1058,0
+test,7,4,IMPLIratings,na,na,This word is:<br><br>negative "press n" ; positive "press p",.jpg,M7,Generous,na,2000,50,120,67,na,na,na,na,n p ,105,521,788899,p,648,0
+test,2,4,IMPLIratings,na,na,This word is:<br><br>negative "press n" ; positive "press p",.jpg,M2,Injury,na,2000,50,120,67,na,na,na,na,n p ,106,596,792605,n,1504,0
+test,7,4,IMPLIratings,na,na,This word is:<br><br>negative "press n" ; positive "press p",.jpg,B7,Cheerful,na,2000,50,120,67,na,na,na,na,n p ,107,529,795597,p,774,0
+test,6,4,IMPLIratings,na,na,This word is:<br><br>negative "press n" ; positive "press p",.jpg,M6,Generous,na,2000,50,120,67,na,na,na,na,n p ,108,552,798593,p,770,0
+test,8,4,IMPLIratings,na,na,This word is:<br><br>negative "press n" ; positive "press p",.jpg,B8,Violence,na,2000,50,120,67,na,na,na,na,n p ,109,514,801597,n,819,0
+test,4,4,IMPLIratings,na,na,This word is:<br><br>negative "press n" ; positive "press p",.jpg,M4,Fatal,na,2000,50,120,67,na,na,na,na,n p ,110,502,805284,n,1480,0
+test,6,4,IMPLIratings,na,na,This word is:<br><br>negative "press n" ; positive "press p",.jpg,M6,Cheerful,na,2000,50,120,67,na,na,na,na,n p ,111,520,808213,p,708,0
+test,3,4,IMPLIratings,na,na,This word is:<br><br>negative "press n" ; positive "press p",.jpg,M3,Fatal,na,2000,50,120,67,na,na,na,na,n p ,112,597,811223,n,802,0
+test,1,4,IMPLIratings,na,na,This word is:<br><br>negative "press n" ; positive "press p",.jpg,B1,Pain,na,2000,50,120,67,na,na,na,na,n p ,113,603,814020,n,594,0
+test,1,4,IMPLIratings,na,na,This word is:<br><br>negative "press n" ; positive "press p",.jpg,B1,Suicide,na,2000,50,120,67,na,na,na,na,n p ,114,507,816935,n,700,0
+test,3,4,IMPLIratings,na,na,This word is:<br><br>negative "press n" ; positive "press p",.jpg,M3,Injury,na,2000,50,120,67,na,na,na,na,n p ,115,501,819742,n,606,0
+test,4,4,IMPLIratings,na,na,This word is:<br><br>negative "press n" ; positive "press p",.jpg,M4,Delight,na,2000,50,120,67,na,na,na,na,n p ,116,582,822828,p,861,0
+test,1,4,IMPLIratings,na,na,This word is:<br><br>negative "press n" ; positive "press p",.jpg,B1,Suicide,na,2000,50,120,67,na,na,na,na,n p ,117,539,825595,n,551,0
+test,3,4,IMPLIratings,na,na,This word is:<br><br>negative "press n" ; positive "press p",.jpg,B3,Pleasure,na,2000,50,120,67,na,na,na,na,n p ,118,557,828380,p,572,0
+test,4,4,IMPLIratings,na,na,This word is:<br><br>negative "press n" ; positive "press p",.jpg,M4,Delight,na,2000,50,120,67,na,na,na,na,n p ,119,550,831372,p,768,0
+test,7,4,IMPLIratings,na,na,This word is:<br><br>negative "press n" ; positive "press p",.jpg,B7,Smiling,na,2000,50,120,67,na,na,na,na,n p ,120,593,834376,p,806,0
+test,5,4,IMPLIratings,na,na,This word is:<br><br>negative "press n" ; positive "press p",.jpg,B5,Lethal,na,2000,50,120,67,na,na,na,na,n p ,121,511,837447,n,860,0
+test,2,4,IMPLIratings,na,na,This word is:<br><br>negative "press n" ; positive "press p",.jpg,M2,Excellent,na,2000,50,120,67,na,na,na,na,n p ,122,516,840315,p,664,0
+test,7,4,IMPLIratings,na,na,This word is:<br><br>negative "press n" ; positive "press p",.jpg,B7,Killer,na,2000,50,120,67,na,na,na,na,n p ,123,545,843320,n,779,0
+test,5,4,IMPLIratings,na,na,This word is:<br><br>negative "press n" ; positive "press p",.jpg,M5,Lethal,na,2000,50,120,67,na,na,na,na,n p ,124,599,846124,n,587,0
+test,3,4,IMPLIratings,na,na,This word is:<br><br>negative "press n" ; positive "press p",.jpg,B3,Pain,na,2000,50,120,67,na,na,na,na,n p ,125,509,849218,n,883,0
+test,2,4,IMPLIratings,na,na,This word is:<br><br>negative "press n" ; positive "press p",.jpg,B2,Praise,na,2000,50,120,67,na,na,na,na,n p ,126,492,852283,p,851,0
+test,6,4,IMPLIratings,na,na,This word is:<br><br>negative "press n" ; positive "press p",.jpg,B6,Generous,na,2000,50,120,67,na,na,na,na,n p ,127,592,855081,p,601,0
+test,8,4,IMPLIratings,na,na,This word is:<br><br>negative "press n" ; positive "press p",.jpg,M8,Suicide,na,2000,50,120,67,na,na,na,na,n p ,128,538,858005,n,701,0
+test,7,4,IMPLIratings,na,na,This word is:<br><br>negative "press n" ; positive "press p",.jpg,B7,Smiling,na,2000,50,120,67,na,na,na,na,n p ,129,561,860800,p,582,0
+test,4,4,IMPLIratings,na,na,This word is:<br><br>negative "press n" ; positive "press p",.jpg,B4,Delight,na,2000,50,120,67,na,na,na,na,n p ,130,590,863627,p,607,0
+test,6,4,IMPLIratings,na,na,This word is:<br><br>negative "press n" ; positive "press p",.jpg,M6,Cheerful,na,2000,50,120,67,na,na,na,na,n p ,131,488,866749,p,911,0
+test,4,4,IMPLIratings,na,na,This word is:<br><br>negative "press n" ; positive "press p",.jpg,B4,Delight,na,2000,50,120,67,na,na,na,na,n p ,132,558,870613,p,1627,0
+test,3,4,IMPLIratings,na,na,This word is:<br><br>negative "press n" ; positive "press p",.jpg,B3,Confident,na,2000,50,120,67,na,na,na,na,n p ,133,525,873716,p,881,0
+test,8,4,IMPLIratings,na,na,This word is:<br><br>negative "press n" ; positive "press p",.jpg,M8,Suicide,na,2000,50,120,67,na,na,na,na,n p ,134,506,876614,n,683,0
+test,4,4,IMPLIratings,na,na,This word is:<br><br>negative "press n" ; positive "press p",.jpg,B4,Injury,na,2000,50,120,67,na,na,na,na,n p ,135,510,879623,n,801,0
+test,1,4,IMPLIratings,na,na,This word is:<br><br>negative "press n" ; positive "press p",.jpg,M1,Excellent,na,2000,50,120,67,na,na,na,na,n p ,136,547,883005,p,1173,0
+test,7,4,IMPLIratings,na,na,This word is:<br><br>negative "press n" ; positive "press p",.jpg,M7,Generous,na,2000,50,120,67,na,na,na,na,n p ,137,489,885960,p,740,0
+test,2,4,IMPLIratings,na,na,This word is:<br><br>negative "press n" ; positive "press p",.jpg,M2,Praise,na,2000,50,120,67,na,na,na,na,n p ,138,548,890349,p,2182,0
+test,5,4,IMPLIratings,na,na,This word is:<br><br>negative "press n" ; positive "press p",.jpg,M5,Delight,na,2000,50,120,67,na,na,na,na,n p ,139,487,893311,p,748,0
+test,8,4,IMPLIratings,na,na,This word is:<br><br>negative "press n" ; positive "press p",.jpg,M8,Violence,na,2000,50,120,67,na,na,na,na,n p ,140,602,896316,n,782,0
+test,3,4,IMPLIratings,na,na,This word is:<br><br>negative "press n" ; positive "press p",.jpg,B3,Pain,na,2000,50,120,67,na,na,na,na,n p ,141,541,899595,n,1044,0
+test,1,4,IMPLIratings,na,na,This word is:<br><br>negative "press n" ; positive "press p",.jpg,M1,Violence,na,2000,50,120,67,na,na,na,na,n p ,142,499,902449,n,629,0
+test,4,4,IMPLIratings,na,na,This word is:<br><br>negative "press n" ; positive "press p",.jpg,M4,Pleasure,na,2000,50,120,67,na,na,na,na,n p ,143,486,905606,p,947,0
+test,7,4,IMPLIratings,na,na,This word is:<br><br>negative "press n" ; positive "press p",.jpg,M7,Cruelty,na,2000,50,120,67,na,na,na,na,n p ,144,537,908557,n,733,0
+test,1,4,IMPLIratings,na,na,This word is:<br><br>negative "press n" ; positive "press p",.jpg,B1,Excellent,na,2000,50,120,67,na,na,na,na,n p ,145,587,911670,p,905,0
+test,2,4,IMPLIratings,na,na,This word is:<br><br>negative "press n" ; positive "press p",.jpg,M2,Injury,na,2000,50,120,67,na,na,na,na,n p ,146,564,914692,n,825,0
+test,6,4,IMPLIratings,na,na,This word is:<br><br>negative "press n" ; positive "press p",.jpg,B6,Cruelty,na,2000,50,120,67,na,na,na,na,n p ,147,576,917557,n,640,0
+test,6,4,IMPLIratings,na,na,This word is:<br><br>negative "press n" ; positive "press p",.jpg,M6,Generous,na,2000,50,120,67,na,na,na,na,n p ,148,584,920479,p,706,0
+test,1,4,IMPLIratings,na,na,This word is:<br><br>negative "press n" ; positive "press p",.jpg,B1,Excellent,na,2000,50,120,67,na,na,na,na,n p ,149,523,923510,p,810,0
+test,2,4,IMPLIratings,na,na,This word is:<br><br>negative "press n" ; positive "press p",.jpg,B2,Injury,na,2000,50,120,67,na,na,na,na,n p ,150,572,926481,n,755,0
+test,5,4,IMPLIratings,na,na,This word is:<br><br>negative "press n" ; positive "press p",.jpg,B5,Cheerful,na,2000,50,120,67,na,na,na,na,n p ,151,591,929297,p,606,0
+test,8,4,IMPLIratings,na,na,This word is:<br><br>negative "press n" ; positive "press p",.jpg,M8,Violence,na,2000,50,120,67,na,na,na,na,n p ,152,570,932102,n,585,0
+test,8,4,IMPLIratings,na,na,This word is:<br><br>negative "press n" ; positive "press p",.jpg,B8,Violence,na,2000,50,120,67,na,na,na,na,n p ,153,578,935398,n,1065,0
+test,1,4,IMPLIratings,na,na,This word is:<br><br>negative "press n" ; positive "press p",.jpg,M1,Confident,na,2000,50,120,67,na,na,na,na,n p ,154,515,938265,p,648,0
+test,14,4,EXPLIratings,na,na,Your general feelings about this member are:<br><br>Very negatives 1 - 2 - 3 - 4 - 5 - 6 - 7 - 8 - 9 Very positives,.jpg,B6,na,na,0,na,na,5,na,na,na,na,1 2 3 4 5 6 7 8 9,155,624,965242,7,9830,0
+test,12,4,EXPLIratings,na,na,Your general feelings about this member are:<br><br>Very negatives 1 - 2 - 3 - 4 - 5 - 6 - 7 - 8 - 9 Very positives,.jpg,B4,na,na,0,na,na,5,na,na,na,na,1 2 3 4 5 6 7 8 9,156,622,966694,7,1428,0
+test,8,4,EXPLIratings,na,na,Your general feelings about this member are:<br><br>Very negatives 1 - 2 - 3 - 4 - 5 - 6 - 7 - 8 - 9 Very positives,.jpg,M8,na,na,0,na,na,5,na,na,na,na,1 2 3 4 5 6 7 8 9,157,618,969774,2,3049,0
+test,10,4,EXPLIratings,na,na,Your general feelings about this member are:<br><br>Very negatives 1 - 2 - 3 - 4 - 5 - 6 - 7 - 8 - 9 Very positives,.jpg,B2,na,na,0,na,na,5,na,na,na,na,1 2 3 4 5 6 7 8 9,158,620,974257,6,4452,0
+test,11,4,EXPLIratings,na,na,Your general feelings about this member are:<br><br>Very negatives 1 - 2 - 3 - 4 - 5 - 6 - 7 - 8 - 9 Very positives,.jpg,B3,na,na,0,na,na,5,na,na,na,na,1 2 3 4 5 6 7 8 9,159,621,975909,7,1619,0
+test,5,4,EXPLIratings,na,na,Your general feelings about this member are:<br><br>Very negatives 1 - 2 - 3 - 4 - 5 - 6 - 7 - 8 - 9 Very positives,.jpg,M5,na,na,0,na,na,5,na,na,na,na,1 2 3 4 5 6 7 8 9,160,615,978058,2,2112,0
+test,15,4,EXPLIratings,na,na,Your general feelings about this member are:<br><br>Very negatives 1 - 2 - 3 - 4 - 5 - 6 - 7 - 8 - 9 Very positives,.jpg,B7,na,na,0,na,na,5,na,na,na,na,1 2 3 4 5 6 7 8 9,161,625,979799,8,1703,0
+test,2,4,EXPLIratings,na,na,Your general feelings about this member are:<br><br>Very negatives 1 - 2 - 3 - 4 - 5 - 6 - 7 - 8 - 9 Very positives,.jpg,M2,na,na,0,na,na,5,na,na,na,na,1 2 3 4 5 6 7 8 9,162,612,982153,2,2316,0
+test,7,4,EXPLIratings,na,na,Your general feelings about this member are:<br><br>Very negatives 1 - 2 - 3 - 4 - 5 - 6 - 7 - 8 - 9 Very positives,.jpg,M7,na,na,0,na,na,5,na,na,na,na,1 2 3 4 5 6 7 8 9,163,617,983688,3,1506,0
+test,1,4,EXPLIratings,na,na,Your general feelings about this member are:<br><br>Very negatives 1 - 2 - 3 - 4 - 5 - 6 - 7 - 8 - 9 Very positives,.jpg,M1,na,na,0,na,na,5,na,na,na,na,1 2 3 4 5 6 7 8 9,164,611,984793,2,1082,0
+test,16,4,EXPLIratings,na,na,Your general feelings about this member are:<br><br>Very negatives 1 - 2 - 3 - 4 - 5 - 6 - 7 - 8 - 9 Very positives,.jpg,B8,na,na,0,na,na,5,na,na,na,na,1 2 3 4 5 6 7 8 9,165,626,988489,7,3669,0
+test,6,4,EXPLIratings,na,na,Your general feelings about this member are:<br><br>Very negatives 1 - 2 - 3 - 4 - 5 - 6 - 7 - 8 - 9 Very positives,.jpg,M6,na,na,0,na,na,5,na,na,na,na,1 2 3 4 5 6 7 8 9,166,616,989707,2,1185,0
+test,4,4,EXPLIratings,na,na,Your general feelings about this member are:<br><br>Very negatives 1 - 2 - 3 - 4 - 5 - 6 - 7 - 8 - 9 Very positives,.jpg,M4,na,na,0,na,na,5,na,na,na,na,1 2 3 4 5 6 7 8 9,167,614,991082,3,1347,0
+test,9,4,EXPLIratings,na,na,Your general feelings about this member are:<br><br>Very negatives 1 - 2 - 3 - 4 - 5 - 6 - 7 - 8 - 9 Very positives,.jpg,B1,na,na,0,na,na,5,na,na,na,na,1 2 3 4 5 6 7 8 9,168,619,994613,6,3502,0
+test,3,4,EXPLIratings,na,na,Your general feelings about this member are:<br><br>Very negatives 1 - 2 - 3 - 4 - 5 - 6 - 7 - 8 - 9 Very positives,.jpg,M3,na,na,0,na,na,5,na,na,na,na,1 2 3 4 5 6 7 8 9,169,613,995612,2,962,0
+test,13,4,EXPLIratings,na,na,Your general feelings about this member are:<br><br>Very negatives 1 - 2 - 3 - 4 - 5 - 6 - 7 - 8 - 9 Very positives,.jpg,B5,na,na,0,na,na,5,na,na,na,na,1 2 3 4 5 6 7 8 9,170,623,997898,7,2252,0
+test,7,0,RWA7,na,na,It would be best if newspapers were censored so that people would not be able to get hold of destructive and disgusting material.<br><br>Very negative 1 - 2 - 3 - 4 - 5 - 6 - 7 Very positive,word,na,na,na,0,na,na,61,na,na,na,na,1 2 3 4 5 6 7,171,633,1032116,5,9108,0
+test,6,0,RWA6R,na,na,The society needs to show openness towards people thinking differently rather than a strong leader the world is not particularly evil or dangerous.<br><br>Very negative 1 - 2 - 3 - 4 - 5 - 6 - 7 Very positive,word,na,na,na,0,na,na,61,na,na,na,na,1 2 3 4 5 6 7,172,632,1038473,7,6336,0
+test,9,0,RWA9,na,na,Our forefathers ought to be honored more for the way they have built our society at the same time we ought to put an end to those forces destroying it.<br><br>Very negative 1 - 2 - 3 - 4 - 5 - 6 - 7 Very positive,word,na,na,na,0,na,na,61,na,na,na,na,1 2 3 4 5 6 7,173,635,1056075,6,17582,0
+test,12,0,RWA12R,na,na,It is better to accept bad literature than to censor it.<br><br>Very negative 1 - 2 - 3 - 4 - 5 - 6 - 7 Very positive,word,na,na,na,0,na,na,61,na,na,na,na,1 2 3 4 5 6 7,174,638,1067127,5,11026,0
+test,4,0,RWA4R,na,na,Our society would be better off if we showed tolerance and understanding for untraditional values and opinions.<br><br>Very negative 1 - 2 - 3 - 4 - 5 - 6 - 7 Very positive,word,na,na,na,0,na,na,61,na,na,na,na,1 2 3 4 5 6 7 ,175,630,1090066,7,22920,0
+test,14,0,RWA14R,na,na,The situation in the society of today would be improved if troublemakers were treated with reason and humanity.<br><br>Very negative 1 - 2 - 3 - 4 - 5 - 6 - 7 Very positive,word,na,na,na,0,na,na,61,na,na,na,na,1 2 3 4 5 6 7,176,640,1098152,7,8070,0
+test,11,0,RWA11,na,na,There are many radical immoral people trying to ruin things the society ought to stop them.<br><br>Very negative 1 - 2 - 3 - 4 - 5 - 6 - 7 Very positive,word,na,na,na,0,na,na,61,na,na,na,na,1 2 3 4 5 6 7,177,637,1107049,5,8881,0
+test,10,0,RWA10R,na,na,People ought to put less attention to the Bible and religion instead they ought to develop their own moral standards.<br><br>Very negative 1 - 2 - 3 - 4 - 5 - 6 - 7 Very positive,word,na,na,na,0,na,na,61,na,na,na,na,1 2 3 4 5 6 7,178,636,1113289,5,6223,0
+test,5,0,RWA5,na,na,Gods laws about abortion pornography and marriage must be strictly followed before it is too late. Violations must be punished.<br><br>Very negative 1 - 2 - 3 - 4 - 5 - 6 - 7 Very positive,word,na,na,na,0,na,na,61,na,na,na,na,1 2 3 4 5 6 7,179,631,1127592,2,14277,0
+test,2,0,RWA2R,na,na,Our country needs free thinkers who will have the courage to stand up against traditional ways even if this upsets many people.<br><br>Very negative 1 - 2 - 3 - 4 - 5 - 6 - 7 Very positive,word,na,na,na,0,na,na,61,na,na,na,na,1 2 3 4 5 6 7,180,628,1134961,6,7354,0
+test,3,0,RWA3,na,na,The old-fashioned ways and old-fashioned values still show the best way to live.<br><br>Very negative 1 - 2 - 3 - 4 - 5 - 6 - 7 Very positive,word,na,na,na,0,na,na,61,na,na,na,na,1 2 3 4 5 6 7,181,629,1143945,4,8971,0
+test,15,0,RWA15,na,na,If the society so wants it is the duty of every true citizen to help eliminate the evil that poisons our country from within.<br><br>Very negative 1 - 2 - 3 - 4 - 5 - 6 - 7 Very positive,word,na,na,na,0,na,na,61,na,na,na,na,1 2 3 4 5 6 7,182,641,1185498,5,41528,0
+test,8,0,RWA8R,na,na,Many good people challenge the state criticize the church and ignore the normal way of living.<br><br>Very negative 1 - 2 - 3 - 4 - 5 - 6 - 7 Very positive,word,na,na,na,0,na,na,61,na,na,na,na,1 2 3 4 5 6 7,183,634,1192958,4,7446,0
+test,1,0,RWA1,na,na,Our country needs a powerful leader in order to destroy the radical and immoral currents prevailing in society today.<br><br>Very negative 1 - 2 - 3 - 4 - 5 - 6 - 7 Very positive,word,na,na,na,0,na,na,61,na,na,na,na,1 2 3 4 5 6 7,184,627,1235358,4,42384,0
+test,13,0,RWA13,na,na,Facts show that we have to be harder against crime and sexual immorality in order to uphold law and order.<br><br>Very negative 1 - 2 - 3 - 4 - 5 - 6 - 7 Very positive,word,na,na,na,0,na,na,61,na,na,na,na,1 2 3 4 5 6 7,185,639,1243763,7,8382,0
+test,6,0,NFC6,na,na,I dont like to go into a situation without knowing what I can expect from it.<br><br>Completely disagree 1 - 2 - 3 - 4 - 5 - 6  Completely agree,word,na,na,na,0,na,na,62,na,na,na,na,1 2 3 4 5 6,186,647,1248388,6,4609,0
+test,5,0,NFC5,na,na,I feel irritated when one person disagrees with what everyone else in a group believes.<br><br>Completely disagree 1 - 2 - 3 - 4 - 5 - 6  Completely agree,word,na,na,na,0,na,na,62,na,na,na,na,1 2 3 4 5 6,187,646,1255241,5,6829,0
+test,15,0,NFC15,na,na,I dislike unpredictable situations.<br><br>Completely disagree 1 - 2 - 3 - 4 - 5 - 6  Completely agree,word,na,na,na,0,na,na,62,na,na,na,na,1 2 3 4 5 6,188,656,1281541,5,26285,0
+test,14,0,NFC14,na,na,I do not usually consult many different opinions before forming my own view.<br><br>Completely disagree 1 - 2 - 3 - 4 - 5 - 6  Completely agree,word,na,na,na,0,na,na,62,na,na,na,na,1 2 3 4 5 6,189,655,1285921,2,4363,0
+test,8,0,NFC8,na,na,When I am confronted with a problem I am dying to reach a solution very quickly.<br><br>Completely disagree 1 - 2 - 3 - 4 - 5 - 6  Completely agree,word,na,na,na,0,na,na,62,na,na,na,na,1 2 3 4 5 6,190,649,1323589,5,37654,0
+test,7,0,NFC7,na,na,When I have made a decision I feel relieved.<br><br>Completely disagree 1 - 2 - 3 - 4 - 5 - 6  Completely agree,word,na,na,na,0,na,na,62,na,na,na,na,1 2 3 4 5 6,191,648,1332757,6,9153,0
+test,10,0,NFC10,na,na,I dont like to be with people who are capable of unexpected actions.<br><br>Completely disagree 1 - 2 - 3 - 4 - 5 - 6  Completely agree,word,na,na,na,0,na,na,62,na,na,na,na,1 2 3 4 5 6,192,651,1344152,1,11380,0
+test,9,0,NFC9,na,na,I would quickly become impatient and irritated if I would not find a solution to a problem immediately.<br><br>Completely disagree 1 - 2 - 3 - 4 - 5 - 6  Completely agree,word,na,na,na,0,na,na,62,na,na,na,na,1 2 3 4 5 6,193,650,1368748,2,24582,0
+test,11,0,NFC11,na,na,I dislike it when a persons statement could mean many different things.<br><br>Completely disagree 1 - 2 - 3 - 4 - 5 - 6  Completely agree,word,na,na,na,0,na,na,62,na,na,na,na,1 2 3 4 5 6,194,652,1375687,5,6916,0
+test,13,0,NFC13,na,na,I enjoy having a clear and structured mode of life.<br><br>Completely disagree 1 - 2 - 3 - 4 - 5 - 6  Completely agree,word,na,na,na,0,na,na,62,na,na,na,na,1 2 3 4 5 6,195,654,1398054,5,22348,0
+test,4,0,NFC4,na,na,I feel uncomfortable when I dont understand the reason why an event occurred in my life.<br><br>Completely disagree 1 - 2 - 3 - 4 - 5 - 6  Completely agree,word,na,na,na,0,na,na,62,na,na,na,na,1 2 3 4 5 6,196,645,1402604,5,4523,0
+test,2,0,NFC2,na,na,I dislike questions which could be answered in many different ways.<br><br>Completely disagree 1 - 2 - 3 - 4 - 5 - 6  Completely agree,word,na,na,na,0,na,na,62,na,na,na,na,1 2 3 4 5 6,197,643,1423454,4,20844,0
+test,12,0,NFC12,na,na,I find that establishing a consistent routine enables me to enjoy life more.<br><br>Completely disagree 1 - 2 - 3 - 4 - 5 - 6  Completely agree,word,na,na,na,0,na,na,62,na,na,na,na,1 2 3 4 5 6,198,653,1439438,5,15968,0
+test,3,0,NFC3,na,na,I find that a well ordered life with regular hours suits my temperament.<br><br>Completely disagree 1 - 2 - 3 - 4 - 5 - 6  Completely agree,word,na,na,na,0,na,na,62,na,na,na,na,1 2 3 4 5 6,199,644,1446982,6,7520,0
+test,1,0,NFC1,na,na,I don t like situations that are uncertain.<br><br>Completely disagree 1 - 2 - 3 - 4 - 5 - 6  Completely agree,word,na,na,na,0,na,na,62,na,na,na,na,1 2 3 4 5 6,200,642,1450290,4,3289,0

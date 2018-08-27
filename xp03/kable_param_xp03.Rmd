@@ -1,0 +1,28 @@
+---
+title: "Summary results xp 10"
+output:
+  html_notebook: default
+  pdf_document: default
+---
+
+
+
+
+```{r echo=FALSE, results = 'asis'}
+library(kableExtra)
+
+kable(t_all,  align = "c", format = "html",
+  booktabs=T, escape = F) %>%
+  kable_styling(bootstrap_options = c("striped", "hover", "condensed"))
+
+```
+
+
+```{r echo=FALSE, results = 'asis'}
+library(kableExtra)
+
+kable(t_all_bloc1,  align = "c", format = "html",
+  booktabs=T, escape = F) %>%
+  kable_styling(bootstrap_options = c("striped", "hover", "condensed"))
+
+```
