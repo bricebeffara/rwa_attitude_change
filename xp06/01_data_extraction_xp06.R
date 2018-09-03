@@ -162,6 +162,10 @@ indir_df <- data.table(subset(indir_df,   condition1=="affectivemisattributionpr
 
 ##Final data frame. Direct ratings
 indir_df <- full_join(indir_df, RWA, by ="ppt")
+indir_df <- data.table(indir_df)
+
+indir_df[response %in% "p", ampresp := 1]
+indir_df[response %in% "u", ampresp := 0]
 
 ###################direct_dfRatings DF##########################
 
