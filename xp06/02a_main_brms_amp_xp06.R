@@ -72,7 +72,7 @@ rrwa <- round(max ( indir_df$RWAscore) - min ( indir_df$RWAscore))
 # and avoid to be too conservative just above/below lower/upperlimits.
 # e.g. we consider that somme intermediate values could be of interest on the latent metric scale (i.e. between 0.5 and 1))
 
-roperwaN <- c( round( -16/rrwa/2, digits = 1), round( 16/rrwa/2, digits = 1))
+roperwaN <- c( round( -1/rrwa/2, digits = 1), round( 1/rrwa/2, digits = 1))
 roperwaC <- paste( roperwaN[1], ", ", roperwaN[2], sep = "")
 
 
@@ -81,7 +81,7 @@ roperwaC <- paste( roperwaN[1], ", ", roperwaN[2], sep = "")
 #------------------------------------------------------------------------------------
 
 # model
-amp_resp <- brm(ampresp ~ usvalence * order * RWAscore + (1|ppt) + (1|stim1),
+amp_resp <- brm(ampresp ~ usvalence * order * RWAscore + (1|ppt),
                    data = indir_df, 
                    family = bernoulli(),
                    prior = priors,
@@ -107,13 +107,13 @@ grid.arrange(p)
 dev.off()
 
 # test with rope
-equi_gen_xp06_rwa <- equi_test(amp_resp, rope = roperwaN)
+equi_gen_xp06_rwa <- equi_test(amp_resp, rope = c(-0.01, 0.01))
 equi_gen_xp06_rwa <- equi_gen_xp06_rwa[c(4,6:8),]
-equi_gen_xp06_rwa$ROPE <- roperwaC
+equi_gen_xp06_rwa$ROPE <- "-0.01, 0.01"
 
-equi_gen_xp06_0.5 <- equi_test(amp_resp, rope = c(-8, 8))
+equi_gen_xp06_0.5 <- equi_test(amp_resp, rope = c(-0.05, 0.05))
 equi_gen_xp06_0.5 <- equi_gen_xp06_0.5[c(2,3,5),]
-equi_gen_xp06_0.5$ROPE <- "-8, 8"
+equi_gen_xp06_0.5$ROPE <- "-0.05, 0.05"
 
 equi_gen_xp06 <- rbind(equi_gen_xp06_rwa, equi_gen_xp06_0.5)
 equi_gen_xp06[,c(3:5)] <- round(equi_gen_xp06[,c(3:5)], 2)

@@ -20,7 +20,7 @@ kable(t_all,  align = "c", format = "html",
 ```{r echo=FALSE, results = 'asis'}
 library(kableExtra)
 
-kable(tapt_gen,  align = "c", format = "html",
+kable(tamp_gen,  align = "c", format = "html",
   booktabs=T, escape = F) %>%
   kable_styling(bootstrap_options = c("striped", "hover", "condensed"))
 
