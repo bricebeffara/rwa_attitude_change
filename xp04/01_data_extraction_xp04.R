@@ -248,25 +248,16 @@ diriat_df$ppt <- diriat_df$Subject
 diriat_df$stim1 <- diriat_df$CS.Trial.
 diriat_df$response <- diriat_df$Slide1.RESP
 
+# for IDA
 
-# Data analyses for direct ratings ----------------------------------------
+xp4_df <- diriat_df[diriat_df$order == 0.5,]
+col2k <- c("ppt", "stim1", "RWAscore", "usvalence", "response")
+xp4_df <- xp4_df[,col2k]
+xp4_df$XP <- "XP04"
 
-##install, load and update necessary packages if required##
+setwd("../ida")
+write.csv(xp4_df,file="XP04.csv", row.names=F)
 
-if (!require("pacman")) install.packages("pacman")
-p_load(lme4, install = TRUE, update = getOption("pac_update"), character.only = FALSE)
 
-## Fitting the model
 
-model <- lmer(Slide1.RESP~usvalence*RWAscore + (1|Subject) + (1|family), diriat_dffinal)
-summary(model)
 
-#### dataframe for order = 1 (diriat_df measure then indiriat_df measure)
-diriat_df_order1 <- filter(diriat_dffinal, order == "1")
-model1 <- lmer(Slide1.RESP~usvalence*RWAscore + (1|Subject) + (1|family), diriat_df_order1)
-summary(model1)
-
-#### dataframe for order = 2 (indiriat_df measure then diriat_df measure)
-diriat_df_order2 <- filter(diriat_dffinal, order == "2")
-model2 <- lmer(Slide1.RESP~usvalence*RWAscore + (1|Subject) + (1|family), diriat_df_order2)
-summary(model2)

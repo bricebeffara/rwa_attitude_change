@@ -8,7 +8,7 @@ aggregate(response ~ order, FUN = quantile, data = diriat_df)
 
 
 
-aggregate(response ~ usvalence*diriat_df, FUN = quantile, data = diriat_df)
+aggregate(response ~ usvalence, FUN = quantile, data = diriat_df)
 
 
 aggregate(RT ~ congruent, FUN = mean, data = apt_df)

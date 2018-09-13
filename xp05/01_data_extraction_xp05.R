@@ -207,5 +207,15 @@ apt_df <- apt_df[which(!is.na(apt_df$RT)),]
 expli_df<-full_join(direct, RWA)
 expli_df$response <- as.numeric(as.character(expli_df$response))
 
+# for IDA
+
+xp5_df <- expli_df[expli_df$order == 0.5,]
+col2k <- c("ppt", "stim1", "RWAscore", "usvalence", "response")
+xp5_df <- xp5_df[,col2k]
+xp5_df$XP <- "XP05"
+
+setwd("../ida")
+write.csv(xp5_df,file="XP05.csv", row.names=F)
+
 
 

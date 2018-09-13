@@ -153,4 +153,13 @@ ratings <- df[condition1 %in% c("ratings1","ratings2","ratings3","ratings4"), ]
 
 double_df<-full_join(ratings, RWA)
 
+# for IDA
+
+xp7_df <- double_df[double_df$counter2 == -0.5,]
+col2k <- c("ppt", "stim1", "RWAscore", "usvalence", "response")
+xp7_df <- xp7_df[,col2k]
+xp7_df$XP <- "XP07"
+
+setwd("../ida")
+write.csv(xp7_df,file="XP07.csv", row.names=F)
 

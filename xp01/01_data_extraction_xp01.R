@@ -59,3 +59,9 @@ base_df$RWAscore <-  ifelse (base_df$RWAscore<quart1-3*iqr | base_df$RWAscore>qu
 base_df <- base_df[which(!is.na(base_df$RWAscore)),]
 base_df$RWAscore <- scale (base_df$RWAscore, center = TRUE, scale = TRUE)
 
+# for IDA
+
+base_df$XP <- "XP01"
+
+setwd("../ida")
+write.csv(base_df,file="XP01.csv", row.names=F)

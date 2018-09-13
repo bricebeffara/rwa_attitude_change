@@ -124,3 +124,13 @@ bloc_df$RWAscore <-  ifelse (bloc_df$RWAscore<quart1-3*iqr | bloc_df$RWAscore>qu
 bloc_df <- bloc_df[which(!is.na(bloc_df$RWAscore)),]
 bloc_df$RWAscore <- scale (bloc_df$RWAscore, center = TRUE, scale = TRUE)
 
+# for IDA
+
+xp3_df <- bloc_df[bloc_df$bloc == 0.5,]
+xp3_df$usvalence <- xp3_df$usvalence1
+col2k <- c("ppt", "stim1", "RWAscore", "usvalence", "response")
+xp3_df <- xp3_df[,col2k]
+xp3_df$XP <- "XP03"
+
+setwd("../ida")
+write.csv(xp3_df,file="XP03.csv", row.names=F)

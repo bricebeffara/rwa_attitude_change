@@ -2,7 +2,7 @@
 
 aggregate(response ~ usvalencedir, FUN = quantile, data = direct_df)
 
-aggregate(ampresp ~ usvalencedir, FUN = quantile, data = direct_df)
+aggregate(ampresp ~ usvalence, FUN = mean, data = indir_df)
 
 
 

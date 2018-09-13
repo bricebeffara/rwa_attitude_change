@@ -182,5 +182,14 @@ double_onetime_df$counter2 <- ifelse( double_onetime_df$condition == "one_time",
 double_timeone_df <- subset(doubletime_df, condition == "time_one" | condition == "two")
 double_timeone_df$counter2 <- ifelse( double_timeone_df$condition == "time_one", -0.5, 0.5)
 
+# for IDA
+
+xp8_df <- doubletime_df[doubletime_df$condition == "one",]
+col2k <- c("ppt", "stim1", "RWAscore", "usvalence", "response")
+xp8_df <- xp8_df[,col2k]
+xp8_df$XP <- "XP08"
+
+setwd("../ida")
+write.csv(xp8_df,file="XP08.csv", row.names=F)
 
 

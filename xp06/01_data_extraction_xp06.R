@@ -192,3 +192,15 @@ direct_df$response <- as.numeric(as.character(direct_df$response))
 
 ##Final data frame. Direct ratings
 direct_df <- full_join(direct_df, RWA, by ="ppt")
+
+# for IDA
+
+xp6_df <- direct_df[direct_df$order == 0.5,]
+xp6_df$usvalence <- xp6_df$usvalencedir
+col2k <- c("ppt", "stim1", "RWAscore", "usvalence", "response")
+xp6_df <- xp6_df[,col2k]
+xp6_df$XP <- "XP06"
+
+setwd("../ida")
+write.csv(xp6_df,file="XP06.csv", row.names=F)
+

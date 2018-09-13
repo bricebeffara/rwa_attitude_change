@@ -68,3 +68,12 @@ social_df$RWAscore <- scale (social_df$RWAscore, center = TRUE, scale = TRUE)
 
 social_df$social <- ifelse (grepl("Greebles", social_df$ppt), 0.5, -0.5)
 
+# for IDA
+
+xp2_df <- social_df[social_df$social == 0.5,]
+col2k <- c("ppt", "stim1", "RWAscore", "usvalence", "response")
+xp2_df <- xp2_df[,col2k]
+xp2_df$XP <- "XP02"
+
+setwd("../ida")
+write.csv(xp2_df,file="XP02.csv", row.names=F)

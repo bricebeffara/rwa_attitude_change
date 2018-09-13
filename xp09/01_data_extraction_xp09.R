@@ -75,3 +75,13 @@ load_df <- load_df[which(!is.na(load_df$Slide1.RESP)),]
 
 col2k <- c("ppt", "usvalence", "load", "RWAscore", "response", "stim1")
 load_df <- load_df[,col2k]
+
+# for IDA
+
+xp9_df <- load_df[load_df$load == -0.5,]
+col2k <- c("ppt", "stim1", "RWAscore", "usvalence", "response")
+xp9_df <- xp9_df[,col2k]
+xp9_df$XP <- "XP09"
+
+setwd("../ida")
+write.csv(xp9_df,file="XP09.csv", row.names=F)

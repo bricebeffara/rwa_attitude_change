@@ -141,7 +141,7 @@ iqr <- IQR(RWA$RWAscore)
 
 # Remove highly extreme values of RWA
 RWA$RWAscore <-  ifelse (RWA$RWAscore<quart1-3*iqr | RWA$RWAscore>quart3+3*iqr, NA, RWA$RWAscore)
-RWA <- RWA[which(!is.na(RWA$RWA)),]
+RWA <- RWA[which(!is.na(RWA$RWAscore)),]
 
 # scale RWA score
 RWA$RWAscore<-scale(RWA$RWAscore, center = TRUE, scale = TRUE)
@@ -155,6 +155,16 @@ ratings <- df[condition1 %in% c("ratings1","ratings2","ratings3","ratings4"), ]
 warn_df <- full_join(ratings, RWA)
 warn_df <- warn_df[!is.na(warn_df$response),]
 warn_df$response <- as.numeric(as.character(warn_df$response))
+
+# for IDA
+
+xp11_df <- warn_df[warn_df$warn == -0.5,]
+col2k <- c("ppt", "stim1", "RWAscore", "usvalence", "response")
+xp11_df <- xp11_df[,col2k]
+xp11_df$XP <- "XP11"
+
+setwd("../ida")
+write.csv(xp11_df,file="XP11.csv", row.names=F)
 
 
 
