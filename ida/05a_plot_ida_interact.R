@@ -129,17 +129,17 @@ plot_IDA <- datIDA %>%
   annotate("point", y = 2, x = hdi11m, colour = "grey10", size = 1.2) +
   annotate("errorbarh", y = 1, xmin = hdIDA[1], xmax = hdIDA[2], colour = "grey10", size = 0.6, height = 0) +
   annotate("point", y = 1, x = hdIDAm, colour = "grey10", size = 1.2) +
-  annotate("text", label = paste("N = ", nbppt01), x = 1.3, y = 11.2, colour = "grey10", size = 3.2, family = font_rc_light) +
-  annotate("text", label = paste("N = ", nbppt02), x = 1.3, y = 10.2, colour = "grey10", size = 3.2, family = font_rc_light) +
-  annotate("text", label = paste("N = ", nbppt03), x = 1.3, y = 09.2, colour = "grey10", size = 3.2, family = font_rc_light) +
-  annotate("text", label = paste("N = ", nbppt04), x = 1.3, y = 08.2, colour = "grey10", size = 3.2, family = font_rc_light) +
-  annotate("text", label = paste("N = ", nbppt05), x = 1.3, y = 07.2, colour = "grey10", size = 3.2, family = font_rc_light) +
-  annotate("text", label = paste("N = ", nbppt06), x = 1.3, y = 06.2, colour = "grey10", size = 3.2, family = font_rc_light) +
-  annotate("text", label = paste("N = ", nbppt07), x = 1.3, y = 05.2, colour = "grey10", size = 3.2, family = font_rc_light) +
-  annotate("text", label = paste("N = ", nbppt08), x = 1.3, y = 04.2, colour = "grey10", size = 3.2, family = font_rc_light) +
-  annotate("text", label = paste("N = ", nbppt09), x = 1.3, y = 03.2, colour = "grey10", size = 3.2, family = font_rc_light) +
-  annotate("text", label = paste("N = ", nbppt10), x = 1.3, y = 02.2, colour = "grey10", size = 3.2, family = font_rc_light) +
-  annotate("text", label = paste("N = ", nbpptIDA), x = 1.3, y = 01.2, colour = "grey10", size = 3.2, family = font_rc_light) +
+  annotate("text", label = paste("N = ", nbppt01), x = 1.4, y = 11.2, colour = "grey10", size = 3.2, family = font_rc_light) +
+  annotate("text", label = paste("N = ", nbppt02), x = 1.4, y = 10.2, colour = "grey10", size = 3.2, family = font_rc_light) +
+  annotate("text", label = paste("N = ", nbppt03), x = 1.4, y = 09.2, colour = "grey10", size = 3.2, family = font_rc_light) +
+  annotate("text", label = paste("N = ", nbppt04), x = 1.4, y = 08.2, colour = "grey10", size = 3.2, family = font_rc_light) +
+  annotate("text", label = paste("N = ", nbppt05), x = 1.4, y = 07.2, colour = "grey10", size = 3.2, family = font_rc_light) +
+  annotate("text", label = paste("N = ", nbppt06), x = 1.4, y = 06.2, colour = "grey10", size = 3.2, family = font_rc_light) +
+  annotate("text", label = paste("N = ", nbppt07), x = 1.4, y = 05.2, colour = "grey10", size = 3.2, family = font_rc_light) +
+  annotate("text", label = paste("N = ", nbppt08), x = 1.4, y = 04.2, colour = "grey10", size = 3.2, family = font_rc_light) +
+  annotate("text", label = paste("N = ", nbppt09), x = 1.4, y = 03.2, colour = "grey10", size = 3.2, family = font_rc_light) +
+  annotate("text", label = paste("N = ", nbppt10), x = 1.4, y = 02.2, colour = "grey10", size = 3.2, family = font_rc_light) +
+  annotate("text", label = paste("N = ", nbpptIDA), x = 1.4, y = 01.2, colour = "grey10", size = 3.2, family = font_rc_light) +
   geom_vline(xintercept = 0, linetype="dashed", color = "red") + 
   labs(x = expression(beta[RWA%*%"Valence"]),
        y = "Expérience")+

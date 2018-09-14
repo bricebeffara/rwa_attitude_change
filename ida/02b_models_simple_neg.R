@@ -567,17 +567,17 @@ grid.arrange(p)
 dev.off()
 
 # test with rope
-equi_neg_IDA_rwa <- equi_test(ida_resp_neg, rope = roperwaN)
+equi_neg_IDA_rwa <- equi_test(IDA_resp_neg, rope = roperwaN)
 equi_neg_IDA_rwa <- equi_neg_IDA_rwa[c(10,11),]
 equi_neg_IDA_rwa$ROPE <- roperwaC
 
-equi_neg_IDA_0.5 <- equi_test(ida_resp_neg, rope = c(-0.5, 0.5))
+equi_neg_IDA_0.5 <- equi_test(IDA_resp_neg, rope = c(-0.5, 0.5))
 equi_neg_IDA_0.5 <- equi_neg_IDA_0.5[9,]
 equi_neg_IDA_0.5$ROPE <- "-0.5, 0.5"
 
 equi_neg_IDA <- rbind(equi_neg_IDA_rwa, equi_neg_IDA_0.5)
 equi_neg_IDA[,c(3:5)] <- round(equi_neg_IDA[,c(3:5)], 2)
-ordrow <- c("3", "1", "2")
+ordrow <- c(3, 1, 2)
 equi_neg_IDA <- equi_neg_IDA[ordrow,]
 
 # export test
