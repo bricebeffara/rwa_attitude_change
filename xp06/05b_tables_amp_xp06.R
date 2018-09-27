@@ -68,7 +68,7 @@ tamp_gen <- tamp_gen[,ordc]
 colnames(tamp_gen) <- c("n° &#946;", "Paramètre", "&#946;<sub>Bayes</sub> [95% HDI]",
                      "SE<sub>Bayes</sub>", "&#946;<sub>freq</sub> [95% CI]",
                      "SE<sub>freq</sub>", "z", 
-                     "&#946 &#8800; 0", "ROPE", "% &#946;<sub>Bayes</sub> dans ROPE")
+                     "&#946 &#8800; 0", "ROPE", "% &#946;<sub>Bayes</sub> &sube; ROPE")
 
 rownames(tamp_gen) <- NULL
 

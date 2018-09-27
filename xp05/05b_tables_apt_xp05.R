@@ -42,13 +42,13 @@ col2k <- c("term", "b [95% HDI]", "std.error",
 
 tapt_gen <- format(tapt_gen[,col2k], nsmall = 2)
 
-tapt_gen$term <- c("Congruence",
+tapt_gen$term <- c("Congr",
                 "Ordre",
                 "RWA",
-                "Congruence × Ordre",
-                "Congruence × RWA",
+                "Congr × Ordre",
+                "Congr × RWA",
                 "Ordre × RWA",
-                "Congruence × Ordre × RWA")
+                "Congr × Ordre × RWA")
 
 tapt_gen$decision <- ifelse(tapt_gen$decision == "reject", "oui",
                          ifelse(tapt_gen$decision == "accept", "non",
@@ -68,7 +68,7 @@ tapt_gen <- tapt_gen[,ordc]
 colnames(tapt_gen) <- c("n° &#946;", "Paramètre", "&#946;<sub>Bayes</sub> [95% HDI]",
                      "SE<sub>Bayes</sub>", "&#946;<sub>freq</sub> [95% CI]",
                      "SE<sub>freq</sub>", "t", 
-                     "&#946 &#8800; 0", "ROPE", "% &#946;<sub>Bayes</sub> dans ROPE")
+                     "&#946 &#8800; 0", "ROPE", "% &#946;<sub>Bayes</sub> &sube; ROPE")
 
 rownames(tapt_gen) <- NULL
 

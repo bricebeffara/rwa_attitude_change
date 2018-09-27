@@ -8,7 +8,7 @@
 # Coding !!1 bloc!! conditioning as 0
 # bloc_df$bloc1 <- ifelse (bloc_df$bloc == -0.5, 0, 1) #already coded in 02b_decint2_brms_models_xp03
 
-bloc1_resp_b1<- brm(response ~ usvalence1 * bloc1 + (1|ppt) + (1|stim1), #here we change the bloc variable with the recoded one
+bloc1_resp_b1 <- brm(response ~ usvalence1 * bloc1 + (1|ppt) + (1|stim1), #here we change the bloc variable with the recoded one
                          data = bloc_df, 
                          family = cumulative (link = "logit", threshold = "flexible"),
                          prior = priors,

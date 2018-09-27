@@ -1,14 +1,14 @@
 
 
-aggregate(response ~ usvalence, FUN = quantile, data = spreading)
+aggregate(response ~ usvalence, FUN = quantile, data = double_df)
 
 
 
-aggregate(response ~ spreading, FUN = quantile, data = spreading)
+aggregate(response ~ counter2, FUN = quantile, data = double_df)
 
 
 
-aggregate(response ~ usvalence*spreading, FUN = quantile, data = spreading)
+aggregate(response ~ usvalence*double_df, FUN = quantile, data = double_df)
 
 length(unique(double_df$ppt))
 

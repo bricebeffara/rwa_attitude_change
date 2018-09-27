@@ -101,8 +101,8 @@ apt_gen_xp05 <- tidy_stan(apt_resp,
 
 
 # export output
-png("tables/brms/model_gen_xp05.png", height=480, width=720)
-p<-tableGrob(model_gen_xp05)
+png("tables/brms/apt_gen_xp05.png", height=480, width=720)
+p<-tableGrob(apt_gen_xp05)
 grid.arrange(p)
 dev.off()
 
@@ -117,7 +117,7 @@ equi_gen_xp05_0.5$ROPE <- "-8, 8"
 
 equi_gen_xp05 <- rbind(equi_gen_xp05_rwa, equi_gen_xp05_0.5)
 equi_gen_xp05[,c(3:5)] <- round(equi_gen_xp05[,c(3:5)], 2)
-ordrow <- c("5","6","1","7","2","3","4")
+ordrow <- c(5, 6, 1, 7, 2, 3, 4)
 equi_gen_xp05 <- equi_gen_xp05[ordrow,]
 
 # export test

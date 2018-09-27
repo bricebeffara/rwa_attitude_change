@@ -52,7 +52,7 @@ equi_ctone_neg_xp08_0.5$ROPE <- "-0.5, 0.5"
 
 equi_ctone_neg_xp08 <- rbind(equi_ctone_neg_xp08_rwa, equi_ctone_neg_xp08_0.5)
 equi_ctone_neg_xp08[,c(3:5)] <- round(equi_ctone_neg_xp08[,c(3:5)], 2)
-ordrow <- c("5","6","1","7","2","3","4")
+ordrow <- c(5, 6, 1, 7, 2, 3, 4)
 equi_ctone_neg_xp08 <- equi_ctone_neg_xp08[ordrow,]
 
 # export test
@@ -106,7 +106,7 @@ equi_ctone_pos_xp08_0.5$ROPE <- "-0.5, 0.5"
 
 equi_ctone_pos_xp08 <- rbind(equi_ctone_pos_xp08_rwa, equi_ctone_pos_xp08_0.5)
 equi_ctone_pos_xp08[,c(3:5)] <- round(equi_ctone_pos_xp08[,c(3:5)], 2)
-ordrow <- c("5","6","1","7","2","3","4")
+ordrow <- c(5, 6, 1, 7, 2, 3, 4)
 equi_ctone_pos_xp08 <- equi_ctone_pos_xp08[ordrow,]
 
 # export test
@@ -158,7 +158,7 @@ equi_cttwo_neg_xp08_0.5$ROPE <- "-0.5, 0.5"
 
 equi_cttwo_neg_xp08 <- rbind(equi_cttwo_neg_xp08_rwa, equi_cttwo_neg_xp08_0.5)
 equi_cttwo_neg_xp08[,c(3:5)] <- round(equi_cttwo_neg_xp08[,c(3:5)], 2)
-ordrow <- c("5","6","1","7","2","3","4")
+ordrow <- c(5, 6, 1, 7, 2, 3, 4)
 equi_cttwo_neg_xp08 <- equi_cttwo_neg_xp08[ordrow,]
 
 # export test
@@ -206,7 +206,7 @@ equi_cttwo_pos_xp08_0.5$ROPE <- "-0.5, 0.5"
 
 equi_cttwo_pos_xp08 <- rbind(equi_cttwo_pos_xp08_rwa, equi_cttwo_pos_xp08_0.5)
 equi_cttwo_pos_xp08[,c(3:5)] <- round(equi_cttwo_pos_xp08[,c(3:5)], 2)
-ordrow <- c("5","6","1","7","2","3","4")
+ordrow <- c(5, 6, 1, 7, 2, 3, 4)
 equi_cttwo_pos_xp08 <- equi_cttwo_pos_xp08[ordrow,]
 
 # export test

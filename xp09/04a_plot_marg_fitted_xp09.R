@@ -106,7 +106,7 @@ marg_plot_nolneg = plot(marg_nolneg, plot = FALSE)[[1]] + # here his where we sp
   scale_y_continuous(name="Évaluations", breaks = c(1, 2, 3, 4, 5, 6, 7, 8, 9), expand = c(0,0)) +
   scale_x_continuous(name="RWA", breaks = scales::pretty_breaks(n = 10), expand=c(0,0)) +
   labs(fill="Probabilité",
-       subtitle="Conditionnnement négatif sans charge lors contre-conditionnement positif") + # here his where we mention the marginal effects of interest
+       subtitle="Conditionnnement négatif sans charge lors du contre-conditionnement positif") + # here his where we mention the marginal effects of interest
   theme_ipsum_rc(base_size = 13,
                  subtitle_size = 20,
                  axis_title_size = 15) +
@@ -119,7 +119,7 @@ marg_plot_nolpos = plot(marg_nolpos, plot = FALSE)[[1]] + # here his where we sp
   scale_y_continuous(name="Évaluations", breaks = c(1, 2, 3, 4, 5, 6, 7, 8, 9), expand = c(0,0)) +
   scale_x_continuous(name="RWA", breaks = scales::pretty_breaks(n = 10), expand=c(0,0)) +
   labs(fill="Probabilité",
-       subtitle="Conditionnnement positif sans charge lors contre-conditionnement négatif") + # here his where we mention the marginal effects of interest
+       subtitle="Conditionnnement positif sans charge lors du contre-conditionnement négatif") + # here his where we mention the marginal effects of interest
   theme_ipsum_rc(base_size = 13,
                  subtitle_size = 20,
                  axis_title_size = 15) +
@@ -132,7 +132,7 @@ marg_plot_yelneg = plot(marg_yelneg, plot = FALSE)[[1]] + # here his where we sp
   scale_y_continuous(name="Évaluations", breaks = c(1, 2, 3, 4, 5, 6, 7, 8, 9), expand = c(0,0)) +
   scale_x_continuous(name="RWA", breaks = scales::pretty_breaks(n = 10), expand=c(0,0)) +
   labs(fill="Probabilité",
-       subtitle="Conditionnnement négatif avec charge lors contre-conditionnement positif") + # here his where we mention the marginal effects of interest
+       subtitle="Conditionnnement négatif avec charge lors du contre-conditionnement positif") + # here his where we mention the marginal effects of interest
   theme_ipsum_rc(base_size = 13,
                  subtitle_size = 20,
                  axis_title_size = 15) +
@@ -145,7 +145,7 @@ marg_plot_yelpos = plot(marg_yelpos, plot = FALSE)[[1]] + # here his where we sp
   scale_y_continuous(name="Évaluations", breaks = c(1, 2, 3, 4, 5, 6, 7, 8, 9), expand = c(0,0)) +
   scale_x_continuous(name="RWA", breaks = scales::pretty_breaks(n = 10), expand=c(0,0)) +
   labs(fill="Probabilité",
-       subtitle="Conditionnnement positif avec charge lors contre-conditionnement négatif") + # here his where we mention the marginal effects of interest
+       subtitle="Conditionnnement positif avec charge lors du contre-conditionnement négatif") + # here his where we mention the marginal effects of interest
   theme_ipsum_rc(base_size = 13,
                  subtitle_size = 20,
                  axis_title_size = 15) +

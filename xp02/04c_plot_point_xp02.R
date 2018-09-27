@@ -46,11 +46,11 @@ data_plot <- ggarrange(data_plot,
 # Combine with spaghetti
 data_spag_all <- ggarrange(marg_plot,
                            data_plot,
-                           ncol = 2, nrow = 1)
+                           ncol = 1, nrow = 2)
 
 # uncomment to display and save plot
 # data_spag_all
-# ggsave("plots/data_spag_xp02_french.jpg", width = 50, height = 15, units = "cm")
-# ggsave("plots/data_spag_xp02_french.pdf", width = 50, height = 15, units = "cm")
-# ggsave("plots/data_spag_xp02_french.tex", width = 50, height = 15, units = "cm")
+# ggsave("plots/data_spag_xp02_french.jpg", width = 25, height = 30, units = "cm")
+# ggsave("plots/data_spag_xp02_french.pdf", width = 25, height = 30, units = "cm")
+# ggsave("plots/data_spag_xp02_french.tex", width = 25, height = 30, units = "cm")
 

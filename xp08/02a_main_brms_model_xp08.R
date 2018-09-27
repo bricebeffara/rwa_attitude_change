@@ -120,7 +120,7 @@ equi_gen_xp08_0.5$ROPE <- "-0.5, 0.5"
 
 equi_gen_xp08 <- rbind(equi_gen_xp08_rwa, equi_gen_xp08_0.5)
 equi_gen_xp08[,c(3:5)] <- round(equi_gen_xp08[,c(3:5)], 2)
-ordrow <- c("5","6","1","7","2","3","4")
+ordrow <- c(5, 6, 1, 7, 2, 3, 4)
 equi_gen_xp08 <- equi_gen_xp08[ordrow,]
 
 # export test
@@ -168,7 +168,7 @@ equi_one_xp08_0.5$ROPE <- "-0.5, 0.5"
 
 equi_one_xp08 <- rbind(equi_one_xp08_rwa, equi_one_xp08_0.5)
 equi_one_xp08[,c(3:5)] <- round(equi_one_xp08[,c(3:5)], 2)
-ordrow <- c("5","6","1","7","2","3","4")
+ordrow <- c(5, 6, 1, 7, 2, 3, 4)
 equi_one_xp08 <- equi_one_xp08[ordrow,]
 
 # export test
@@ -216,7 +216,7 @@ equi_onetime_xp08_0.5$ROPE <- "-0.5, 0.5"
 
 equi_onetime_xp08 <- rbind(equi_onetime_xp08_rwa, equi_onetime_xp08_0.5)
 equi_onetime_xp08[,c(3:5)] <- round(equi_onetime_xp08[,c(3:5)], 2)
-ordrow <- c("5","6","1","7","2","3","4")
+ordrow <- c(5, 6, 1, 7, 2, 3, 4)
 equi_onetime_xp08 <- equi_onetime_xp08[ordrow,]
 
 # export test
@@ -264,7 +264,7 @@ equi_timeone_xp08_0.5$ROPE <- "-0.5, 0.5"
 
 equi_timeone_xp08 <- rbind(equi_timeone_xp08_rwa, equi_timeone_xp08_0.5)
 equi_timeone_xp08[,c(3:5)] <- round(equi_timeone_xp08[,c(3:5)], 2)
-ordrow <- c("5","6","1","7","2","3","4")
+ordrow <- c(5, 6, 1, 7, 2, 3, 4)
 equi_timeone_xp08 <- equi_timeone_xp08[ordrow,]
 
 # export test

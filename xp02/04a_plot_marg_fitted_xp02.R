@@ -116,13 +116,13 @@ marg_plot_pos = plot(marg_pos, plot = FALSE)[[1]] + # here his where we specify 
 # Combine plot
 marg_all <- ggarrange(marg_plot_neg,
                       marg_plot_pos,
-                      ncol = 2, nrow = 1)
+                      ncol = 1, nrow = 2)
 
 # uncomment to display and save plot
 # marg_all
-# ggsave("plots/marg_xp02_french.jpg", width = 50, height = 15, units = "cm")
-# ggsave("plots/marg_xp02_french.pdf", width = 50, height = 15, units = "cm")
-# ggsave("plots/marg_xp02_french.tex", width = 50, height = 15, units = "cm")
+# ggsave("plots/marg_xp02_french.jpg", width = 25, height = 30, units = "cm")
+# ggsave("plots/marg_xp02_french.pdf", width = 25, height = 30, units = "cm")
+# ggsave("plots/marg_xp02_french.tex", width = 25, height = 30, units = "cm")
 
 
 

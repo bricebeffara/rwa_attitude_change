@@ -1,16 +1,21 @@
 
 
-aggregate(response ~ usvalence, FUN = quantile, data = spreading)
+aggregate(response ~ usvalence, FUN = quantile, data = doubletime_df)
 
 
 
-aggregate(response ~ spreading, FUN = quantile, data = spreading)
+aggregate(response ~ doubletime_df, FUN = quantile, data = doubletime_df)
 
 
 
-aggregate(response ~ usvalence*spreading, FUN = quantile, data = spreading)
+aggregate(response ~ usvalence*doubletime_df, FUN = quantile, data = doubletime_df)
 
 length(unique(doubletime_df$ppt))
+
+length(unique(doubletime_df$ppt[which(doubletime_df$condition=="one_time")]))
+length(unique(doubletime_df$ppt[which(doubletime_df$condition=="two")]))
+length(unique(doubletime_df$ppt[which(doubletime_df$condition=="one")]))
+length(unique(doubletime_df$ppt[which(doubletime_df$condition=="time_one")]))
 
 length(unique(doubletime_df_ctone$ppt))
 

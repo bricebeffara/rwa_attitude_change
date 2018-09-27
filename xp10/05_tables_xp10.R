@@ -247,22 +247,22 @@ t_all <- rbind(tgen,
                tlvtwo_pos_rwa)
 
 t_all$term <- c("Val",
-                "Lev",
+                "Niveau",
                 "RWA",
-                "Val × Lev",
+                "Val × Niveau",
                 "Val × RWA",
-                "Lev × RWA",
-                "Val × Lev × RWA",
-                "Val <sub>lev 1</sub>",
-                "Val <sub>lev 2</sub>",
-                "RWA <sub>lev 1</sub>",
-                "RWA <sub>lev 2</sub>",
-                "(Val × RWA) <sub>lev 1</sub>",
-                "(Val × RWA) <sub>lev 2</sub>",
-                "RWA <sub>lev 1 neg</sub>",
-                "RWA <sub>lev 1 pos</sub>",
-                "RWA <sub>lev 2 neg</sub>",
-                "RWA <sub>lev 2 pos</sub>")
+                "Niveau × RWA",
+                "Val × Niveau × RWA",
+                "Val <sub>niv 1</sub>",
+                "Val <sub>niv 2</sub>",
+                "RWA <sub>niv 1</sub>",
+                "RWA <sub>niv 2</sub>",
+                "(Val × RWA) <sub>niv 1</sub>",
+                "(Val × RWA) <sub>niv 2</sub>",
+                "RWA <sub>niv 1 neg</sub>",
+                "RWA <sub>niv 1 pos</sub>",
+                "RWA <sub>niv 2 neg</sub>",
+                "RWA <sub>niv 2 pos</sub>")
 
 t_all$decision <- ifelse(t_all$decision == "reject", "oui",
                          ifelse(t_all$decision == "accept", "non",
@@ -282,7 +282,7 @@ t_all <- t_all[,ordc]
 colnames(t_all) <- c("n° &#946;", "Paramètre", "&#946;<sub>Bayes</sub> [95% HDI]",
                      "SE<sub>Bayes</sub>", "&#946;<sub>freq</sub> [95% CI]",
                      "SE<sub>freq</sub>", "t", 
-                     "&#946 &#8800; 0", "ROPE", "% &#946;<sub>Bayes</sub> dans ROPE")
+                     "&#946 &#8800; 0", "ROPE", "% &#946;<sub>Bayes</sub> &sube; ROPE")
 
 rownames(t_all) <- NULL
 

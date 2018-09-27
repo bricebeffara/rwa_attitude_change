@@ -52,7 +52,7 @@ equi_nolo_neg_xp09_0.5$ROPE <- "-0.5, 0.5"
 
 equi_nolo_neg_xp09 <- rbind(equi_nolo_neg_xp09_rwa, equi_nolo_neg_xp09_0.5)
 equi_nolo_neg_xp09[,c(3:5)] <- round(equi_nolo_neg_xp09[,c(3:5)], 2)
-ordrow <- c("5","6","1","7","2","3","4")
+ordrow <- c(5, 6, 1, 7, 2, 3, 4)
 equi_nolo_neg_xp09 <- equi_nolo_neg_xp09[ordrow,]
 
 # export test
@@ -106,7 +106,7 @@ equi_nolo_pos_xp09_0.5$ROPE <- "-0.5, 0.5"
 
 equi_nolo_pos_xp09 <- rbind(equi_nolo_pos_xp09_rwa, equi_nolo_pos_xp09_0.5)
 equi_nolo_pos_xp09[,c(3:5)] <- round(equi_nolo_pos_xp09[,c(3:5)], 2)
-ordrow <- c("5","6","1","7","2","3","4")
+ordrow <- c(5, 6, 1, 7, 2, 3, 4)
 equi_nolo_pos_xp09 <- equi_nolo_pos_xp09[ordrow,]
 
 # export test
@@ -158,7 +158,7 @@ equi_yelo_neg_xp09_0.5$ROPE <- "-0.5, 0.5"
 
 equi_yelo_neg_xp09 <- rbind(equi_yelo_neg_xp09_rwa, equi_yelo_neg_xp09_0.5)
 equi_yelo_neg_xp09[,c(3:5)] <- round(equi_yelo_neg_xp09[,c(3:5)], 2)
-ordrow <- c("5","6","1","7","2","3","4")
+ordrow <- c(5, 6, 1, 7, 2, 3, 4)
 equi_yelo_neg_xp09 <- equi_yelo_neg_xp09[ordrow,]
 
 # export test
@@ -206,7 +206,7 @@ equi_yelo_pos_xp09_0.5$ROPE <- "-0.5, 0.5"
 
 equi_yelo_pos_xp09 <- rbind(equi_yelo_pos_xp09_rwa, equi_yelo_pos_xp09_0.5)
 equi_yelo_pos_xp09[,c(3:5)] <- round(equi_yelo_pos_xp09[,c(3:5)], 2)
-ordrow <- c("5","6","1","7","2","3","4")
+ordrow <- c(5, 6, 1, 7, 2, 3, 4)
 equi_yelo_pos_xp09 <- equi_yelo_pos_xp09[ordrow,]
 
 # export test

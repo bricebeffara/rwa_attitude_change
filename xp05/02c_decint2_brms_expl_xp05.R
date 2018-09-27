@@ -48,7 +48,7 @@ equi_ord1_xp05_0.5$ROPE <- "-0.5, 0.5"
 
 equi_ord1_xp05 <- rbind(equi_ord1_xp05_rwa, equi_ord1_xp05_0.5)
 equi_ord1_xp05[,c(3:5)] <- round(equi_ord1_xp05[,c(3:5)], 2)
-ordrow <- c("5","6","1","7","2","3","4")
+ordrow <- c(5, 6, 1, 7, 2, 3, 4)
 equi_ord1_xp05 <- equi_ord1_xp05[ordrow,]
 
 # export test
@@ -103,7 +103,7 @@ equi_ord2_xp05_0.5$ROPE <- "-0.5, 0.5"
 
 equi_ord2_xp05 <- rbind(equi_ord2_xp05_rwa, equi_ord2_xp05_0.5)
 equi_ord2_xp05[,c(3:5)] <- round(equi_ord2_xp05[,c(3:5)], 2)
-ordrow <- c("5","6","1","7","2","3","4")
+ordrow <- c(5, 6, 1, 7, 2, 3, 4)
 equi_ord2_xp05 <- equi_ord2_xp05[ordrow,]
 
 # export test

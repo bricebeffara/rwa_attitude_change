@@ -78,7 +78,8 @@ marg_plot = plot(marg_base, plot = FALSE, mean = F)[[1]] + # here his where we s
   labs(colour="Valence conditionnement") +
   theme_ipsum_rc(base_size = 13,
                  subtitle_size = 20,
-                 axis_title_size = 15)
+                 axis_title_size = 15) +
+  guides(color=guide_legend(override.aes=list(fill=NA)))
 
 # uncomment to display and save plot
 # marg_plot

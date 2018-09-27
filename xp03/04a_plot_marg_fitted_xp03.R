@@ -106,7 +106,7 @@ marg_plot_b1neg = plot(marg_b1neg, plot = FALSE)[[1]] + # here his where we spec
   scale_y_continuous(name="Évaluations", breaks = c(1, 2, 3, 4, 5, 6, 7, 8, 9), expand = c(0,0)) +
   scale_x_continuous(name="RWA", breaks = scales::pretty_breaks(n = 10), expand=c(0,0)) +
   labs(fill="Probabilité",
-       subtitle="1 Bloc - Dernière information négative") + # here his where we mention the marginal effects of interest
+       title="1 Bloc - Dernière information négative") + # here his where we mention the marginal effects of interest
   theme_ipsum_rc(base_size = 13,
                  subtitle_size = 20,
                  axis_title_size = 15) +
@@ -119,7 +119,7 @@ marg_plot_b1pos = plot(marg_b1pos, plot = FALSE)[[1]] + # here his where we spec
   scale_y_continuous(name="Évaluations", breaks = c(1, 2, 3, 4, 5, 6, 7, 8, 9), expand = c(0,0)) +
   scale_x_continuous(name="RWA", breaks = scales::pretty_breaks(n = 10), expand=c(0,0)) +
   labs(fill="Probabilité",
-       subtitle="1 Bloc - Dernière information positive") + # here his where we mention the marginal effects of interest
+       title="1 Bloc - Dernière information positive") + # here his where we mention the marginal effects of interest
   theme_ipsum_rc(base_size = 13,
                  subtitle_size = 20,
                  axis_title_size = 15) +
@@ -132,7 +132,7 @@ marg_plot_b2neg = plot(marg_b2neg, plot = FALSE)[[1]] + # here his where we spec
   scale_y_continuous(name="Évaluations", breaks = c(1, 2, 3, 4, 5, 6, 7, 8, 9), expand = c(0,0)) +
   scale_x_continuous(name="RWA", breaks = scales::pretty_breaks(n = 10), expand=c(0,0)) +
   labs(fill="Probabilité",
-       subtitle="2 Blocs - Dernière information négative") + # here his where we mention the marginal effects of interest
+       title="2 Blocs - Dernière information négative") + # here his where we mention the marginal effects of interest
   theme_ipsum_rc(base_size = 13,
                  subtitle_size = 20,
                  axis_title_size = 15) +
@@ -145,7 +145,7 @@ marg_plot_b2pos = plot(marg_b2pos, plot = FALSE)[[1]] + # here his where we spec
   scale_y_continuous(name="Évaluations", breaks = c(1, 2, 3, 4, 5, 6, 7, 8, 9), expand = c(0,0)) +
   scale_x_continuous(name="RWA", breaks = scales::pretty_breaks(n = 10), expand=c(0,0)) +
   labs(fill="Probabilité",
-       subtitle="2 Blocs - Dernière information positive") + # here his where we mention the marginal effects of interest
+       title="2 Blocs - Dernière information positive") + # here his where we mention the marginal effects of interest
   theme_ipsum_rc(base_size = 13,
                  subtitle_size = 20,
                  axis_title_size = 15) +
@@ -164,11 +164,23 @@ marg_all <- ggarrange(marg_plot_b1neg,
                       marg_plot_b2pos,
                       ncol = 2, nrow = 2)
 
-# uncomment to display and save plot
+marg_b1 <- ggarrange(marg_plot_b1neg,
+                      marg_plot_b1pos,
+                      ncol = 1, nrow = 2)
+
+marg_b2 <- ggarrange(marg_plot_b2neg,
+                     marg_plot_b2pos,
+                     ncol = 1, nrow = 2)
+
+# uncomment to display and save plots
 # marg_all
 # ggsave("plots/marg_xp03_french.jpg", width = 50, height = 30, units = "cm")
 # ggsave("plots/marg_xp03_french.pdf", width = 50, height = 30, units = "cm")
 # ggsave("plots/marg_xp03_french.tex", width = 50, height = 30, units = "cm")
+# marg_b1
+# ggsave("plots/marg_b1_xp03_french.pdf", width = 25, height = 30, units = "cm")
+# marg_b2
+# ggsave("plots/marg_b2_xp03_french.pdf", width = 25, height = 30, units = "cm")
 
 
 

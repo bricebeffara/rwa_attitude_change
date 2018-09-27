@@ -117,7 +117,7 @@ equi_gen_xp06_0.5$ROPE <- "-0.05, 0.05"
 
 equi_gen_xp06 <- rbind(equi_gen_xp06_rwa, equi_gen_xp06_0.5)
 equi_gen_xp06[,c(3:5)] <- round(equi_gen_xp06[,c(3:5)], 2)
-ordrow <- c("5","6","1","7","2","3","4")
+ordrow <- c(5, 6, 1, 7, 2, 3, 4)
 equi_gen_xp06 <- equi_gen_xp06[ordrow,]
 
 # export test

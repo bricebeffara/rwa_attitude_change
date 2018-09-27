@@ -13,17 +13,25 @@ library(kableExtra)
 
 kable(t_all,  align = "c", format = "html",
   booktabs=T, escape = F) %>%
-  kable_styling(bootstrap_options = c("striped", "hover", "condensed"))
+  kable_styling(bootstrap_options = c("striped", "hover", "condensed"), font =21)
 
 ```
 
 ```{r echo=FALSE, results = 'asis'}
 library(kableExtra)
 
-kable(tapt_gen,  align = "c", format = "html",
+kable(tiat_gen,  align = "c", format = "html",
   booktabs=T, escape = F) %>%
-  kable_styling(bootstrap_options = c("striped", "hover", "condensed"))
+  kable_styling(bootstrap_options = c("striped", "hover", "condensed"), font =21)
 
 ```
 
 
+```{r echo=FALSE, results = 'asis'}
+library(kableExtra)
+
+kable(tgen,  align = "c", format = "html",
+  booktabs=T, escape = F) %>%
+  kable_styling(bootstrap_options = c("striped", "hover", "condensed"), font =21)
+
+```

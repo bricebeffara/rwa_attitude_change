@@ -1,0 +1,512 @@
+###    run as-is in R. You may "source" it to run the whole thing at once,
+###    or, preferably, run lines consecutively from the beginning.
+################################################################################
+# Loading packages needed (and installing if necessary) for this part
+if (!require("pacman")) install.packages("pacman")
+p_load(ggplot2, # main package for plots
+colorRamps, # to add color palettes
+ggpubr, # to combine plots
+extrafontdb, # to get more available fonts for plots
+hrbrthemes, # for ggplot2 theme
+extrafont,
+ggExtra,
+install = TRUE,
+update = getOption("pac_update"),
+character.only = FALSE)
+#------------------------------------------------------------------------------------
+# First we determine the different modalities of the categorical independent variable :
+# "usvalence"
+#------------------------------------------------------------------------------------
+# !!negative!! valence
+cond_neg <- data.frame(usvalence = -0.5,
+cond__ = "negative")
+# !!positive!! valence
+cond_pos <- data.frame(usvalence = 0.5,
+cond__ = "positive")
+#------------------------------------------------------------------------------------
+# We then select the marginal effects of RWA from the model
+# for each modality
+#------------------------------------------------------------------------------------
+# !!negative!! valence
+marg_neg <- marginal_effects(social_resp, effects = "RWAscore", ordinal = TRUE,
+conditions = cond_neg, method = c("fitted"), # here his where we specify the combination
+re_formula = NULL)
+# !!positive!! valence
+marg_pos <- marginal_effects(social_resp, effects = "RWAscore", ordinal = TRUE,
+conditions = cond_pos, method = c("fitted"), # here his where we specify the combination
+re_formula = NULL)
+#------------------------------------------------------------------------------------
+# Now we can plot marginal effects for each modality...
+#------------------------------------------------------------------------------------
+# load fonts and themes
+hrbrthemes::import_roboto_condensed()
+loadfonts()
+# !!negative!! valence
+marg_plot_neg = plot(marg_neg, plot = FALSE)[[1]] + # here his where we specify the marginal effects of interest
+scale_fill_gradientn(colors = matlab.like(10), na.value = "transparent") +
+scale_y_continuous(name="Évaluations", breaks = c(1, 2, 3, 4, 5, 6, 7, 8, 9), expand = c(0,0)) +
+scale_x_continuous(name="RWA", breaks = scales::pretty_breaks(n = 10), expand=c(0,0)) +
+labs(fill="Probabilité",
+subtitle="Conditionnnement négatif") + # here his where we mention the marginal effects of interest
+theme_ipsum_rc(base_size = 13,
+subtitle_size = 20,
+axis_title_size = 15) +
+theme(panel.grid.major = element_blank(),
+panel.grid.minor = element_blank())
+# !!positive!! valence
+marg_plot_pos = plot(marg_pos, plot = FALSE)[[1]] + # here his where we specify the marginal effects of interest
+scale_fill_gradientn(colors = matlab.like(10), na.value = "transparent") +
+scale_y_continuous(name="Évaluations", breaks = c(1, 2, 3, 4, 5, 6, 7, 8, 9), expand = c(0,0)) +
+scale_x_continuous(name="RWA", breaks = scales::pretty_breaks(n = 10), expand=c(0,0)) +
+labs(fill="Probabilité",
+subtitle="Conditionnnement positif") + # here his where we mention the marginal effects of interest
+theme_ipsum_rc(base_size = 13,
+subtitle_size = 20,
+axis_title_size = 15) +
+theme(panel.grid.major = element_blank(),
+panel.grid.minor = element_blank())
+#------------------------------------------------------------------------------------
+# ...and combine plots together
+#------------------------------------------------------------------------------------
+# Combine plot
+marg_all <- ggarrange(marg_plot_neg,
+marg_plot_pos,
+ncol = 1, nrow = 2)
+# uncomment to display and save plot
+# marg_all
+# ggsave("plots/marg_xp02_french.jpg", width = 25, height = 30, units = "cm")
+# ggsave("plots/marg_xp02_french.pdf", width = 25, height = 30, units = "cm")
+# ggsave("plots/marg_xp02_french.tex", width = 25, height = 30, units = "cm")
+ggsave("plots/marg_xp02_french.jpg", width = 25, height = 30, units = "cm")
+ggsave("plots/marg_xp02_french.pdf", width = 25, height = 30, units = "cm")
+aware_resp
+# File name: brms_models_xp02.R
+# Online archive: gitlab
+# Authors: Brice Beffara & Amélie Bret
+# Mon Aug 06 13:59:37 2018 ------------------------------
+# Contact: brice.beffara@slowpen.science amelie.bret@univ-grenoble-alpes.fr http://slowpen.science
+#
+# This R script was used to build and compute brms models
+# corresponding to the 2d experiment of Amelie Bret's doctoral work
+#
+# This R script defines and computes brms models
+# main effects, interaction effects, and simple slopes of interest
+#
+# 3 independent variables of interest :
+# RWA (continuous, centered and scaled)
+# usvalence : positive (0.5) vs. negative (-0.5)
+# and social : social(0.5) vs. object (-0.5)
+#
+# and 1 pseudo-continuous dependent variables :
+# Awareness of pairing from 0% to 100%
+#
+# This program is believed to be free of errors, but it comes with no guarantee!
+# The user bears all responsibility for interpreting the results.
+#
+# This preambule is largely inspired by John K. Kruschke's work at https://osf.io/wp2ry/
+#
+### To run this program, please do the following:
+### 1. Install the general-purpose programming language R from
+###      http://www.r-project.org/
+###    Install the version of R appropriate for your computer's operating
+###    system (Windows, MacOS, or Linux).
+### 2. Install the R editor, RStudio, from
+###      http://rstudio.org/
+###    This editor is not necessary, but highly recommended.
+### 3. After the above actions are accomplished, this program should
+###    run as-is in R. You may "source" it to run the whole thing at once,
+###    or, preferably, run lines consecutively from the beginning.
+################################################################################
+# Loading packages needed (and installing if necessary) for this part
+p_load(brms, # main package for models
+htmlTable, # helps to extract results
+xtable,
+install = TRUE,
+gridExtra,
+sjstats,
+sjmisc,
+update = getOption("pac_update"),
+character.only = FALSE)
+#------------------------------------------------------------------------------------
+# First we define priors for our models
+#------------------------------------------------------------------------------------
+priors <- c(
+prior(normal(0, 10), class = Intercept, coef = ""),
+prior(normal(0, 0.5), class = b),
+prior(cauchy(0, 5), class = sd) )
+# In case we want to save summaries
+# col2keep <- c("Estimate", "l-95% CI", "u-95% CI")
+# Define ROPE for effects involving RWA
+# We compute a global maximum range of RWA
+rrwa <- round(max ( social_df$RWAscore) - min ( social_df$RWAscore))
+# ROPE = 1 (minimum change on rating scale) / rrwa (global RWA range) / 2 (e.g. see Kruschke, 2018 p.6)
+#(rounded in order to have integers simpler to visualise. We don't need very high precision)
+# (here we devide or smallest possible effect by two in order to take variations into account,
+# e.g. RWA range above limits
+# and avoid to be too conservative just above/below lower/upperlimits.
+# e.g. we consider that somme intermediate values could be of interest on the latent metric scale (i.e. between 0.5 and 1))
+round2 = function(x, n) {
+posneg = sign(x)
+z = abs(x)*10^n
+z = z + 0.5
+z = trunc(z)
+z = z/10^n
+z*posneg
+}
+roperwaN <- c( round2( -10/rrwa/2, n = 1), round2( 10/rrwa/2, n = 1))
+roperwaC <- paste( roperwaN[1], ", ", roperwaN[2], sep = "")
+#------------------------------------------------------------------------------------
+# Then we run our first model for fixed main and interaction effects
+#------------------------------------------------------------------------------------
+# model
+aware_resp <- brm(aware ~ usvalence * social  * RWAscore + (1|ppt) + (1|stim1),
+data = social_df,
+family = gaussian(),
+prior = priors,
+warmup = 1000, iter = 2000,
+chains = 4, cores = parallel::detectCores(),
+control = list(adapt_delta = 0.8, max_treedepth = 10),
+sample_prior = TRUE)
+# In case we want to save summary ! change the name if you export both summary and tidy_stan
+# model_awa_xp02 <- summary(social_resp)$fixed[,col2keep]
+# model_awa_xp02 <- round(model_awa_xp02, 3)
+# arrange output
+model_awa_xp02 <- tidy_stan(aware_resp,
+typical = "mean",
+prob = .95)
+# export output
+png("tables/brms/model_awa_xp02.png", height=480, width=720)
+p<-tableGrob(model_awa_xp02)
+grid.arrange(p)
+dev.off()
+# test with rope
+equi_awa_xp02_int <- equi_test(aware_resp, rope = c(47.5, 52.5))
+equi_awa_xp02_int <- equi_awa_xp02_int[1,]
+equi_awa_xp02_int$ROPE <- "47.5, 52.5"
+equi_awa_xp02_rwa <- equi_test(aware_resp, rope = roperwaN)
+equi_awa_xp02_rwa <- equi_awa_xp02_rwa[c(4,6:8),]
+equi_awa_xp02_rwa$ROPE <- roperwaC
+equi_awa_xp02_0.5 <- equi_test(aware_resp, rope = c(-5, 5))
+equi_awa_xp02_0.5 <- equi_awa_xp02_0.5[c(2:3,5),]
+equi_awa_xp02_0.5$ROPE <- "-5, 5"
+equi_awa_xp02 <- rbind(equi_awa_xp02_rwa, equi_awa_xp02_0.5)
+equi_awa_xp02 <- rbind(equi_awa_xp02_int, equi_awa_xp02)
+equi_awa_xp02[,c(3:5)] <- round(equi_awa_xp02[,c(3:5)], 2)
+ordrow <- c(1, 6, 7, 2, 8, 3, 4, 5)
+equi_awa_xp02 <- equi_awa_xp02[ordrow,]
+# export test
+png("tables/rope/equi_awa_xp02.png", height=480, width=720)
+p<-tableGrob(equi_awa_xp02)
+grid.arrange(p)
+dev.off()
+p_load(plyr,
+knitr,
+kableExtra,
+formattable,
+dplyr,
+webshot,
+qdapRegex,
+stringr,
+install = TRUE,
+update = getOption("pac_update"),
+character.only = FALSE)
+tawa_lme4 <- as.data.frame(model_awa_xp02_lme4[c(1:8),])
+tawa_brms <- as.data.frame(model_awa_xp02[c(1:8),])
+tawa_equi <- as.data.frame(equi_awa_xp02)
+tawa_lme4$term <- tawa_brms$term
+tawa_equi$term <- tawa_brms$term
+# general regression ------------------------------------------------------
+tawa <- join (tawa_brms, tawa_lme4, by = "term")
+tawa <- join (tawa, tawa_equi, by ="term")
+tawa$"b [95% HDI]" <- paste (format(tawa$estimate, nsmall = 2), " [", format(tawa$hdi.low, nsmall = 2), ", ",
+format(tawa$hdi.high, nsmall = 2), "]", sep = "")
+tawa$"b [95% HDI]" <- gsub("\\s+", " ", str_trim(tawa$"b [95% HDI]"))
+tawa$"b [95% HDI]" <- gsub("\\[ ", "\\[", str_trim(tawa$"b [95% HDI]"))
+ifelse ( grepl( "  \\d", tawa$"b [95% HDI]"), "  " == " ", tawa$"b [95% HDI]")
+tawa$"b [95% CI]" <- paste (format( tawa$Estimate, nsmall = 2), " [", format(tawa$"2.5 %", nsmall = 2), ", ",
+format(tawa$"97.5 %", nsmall = 2), "]", sep = "")
+tawa$"b [95% CI]" <- gsub("\\s+", " ", str_trim(tawa$"b [95% CI]"))
+tawa$"b [95% CI]" <- gsub("\\[ ", "\\[", str_trim(tawa$"b [95% CI]"))
+# join -------------------------------------------------------------------
+col2k <- c("term", "b [95% HDI]", "std.error",
+"b [95% CI]", "Std. Error", "t value",
+"decision", "ROPE", "inside.rope")
+tawa$inside.rope <- as.numeric (tawa$inside.rope)
+tawa$inside.rope <- round2 (tawa$inside.rope, n=2)
+tawa <- format(tawa[,col2k], nsmall = 2)
+t_all_awa <- tawa
+t_all_awa$term <- c("Intercept",
+"Val",
+"Soc",
+"RWA",
+"Val × Soc",
+"Val × RWA",
+"Soc × RWA",
+"Val × Soc × RWA")
+t_all_awa$decision <- ifelse(t_all_awa$decision == "reject", "oui",
+ifelse(t_all_awa$decision == "accept", "non",
+"indécision"))
+t_all_awa <- t_all_awa %>%
+mutate(inside.rope = color_tile("lightgreen", "orange")(inside.rope))
+t_all_awa$"n° &#946;" <- 1:length( t_all_awa$term)
+ordc <- c("n° &#946;", "term", "b [95% HDI]", "std.error",
+"b [95% CI]", "Std. Error", "t value",
+"decision", "ROPE", "inside.rope")
+t_all_awa <- t_all_awa[,ordc]
+colnames(t_all_awa) <- c("n° &#946;", "Paramètre", "&#946;<sub>Bayes</sub> [95% HDI]",
+"SE<sub>Bayes</sub>", "&#946;<sub>freq</sub> [95% CI]",
+"SE<sub>freq</sub>", "t",
+"&#946 &#8800; 0", "ROPE", "% &#946;<sub>Bayes</sub> dans ROPE")
+rownames(t_all_awa) <- NULL
+# File name: brms_models_xp02.R
+# Online archive: gitlab
+# Authors: Brice Beffara & Amélie Bret
+# Mon Aug 06 15:12:36 2018 ------------------------------
+# Contact: brice.beffara@slowpen.science amelie.bret@univ-grenoble-alpes.fr http://slowpen.science
+#
+# This R script was used to build and compute brms models
+# corresponding to the 2s experiment of Amelie Bret's doctoral work
+#
+# This R script defines and computes brms models
+# main effects, interaction effects, and simple slopes of interest
+#
+# 2independent variables of interest :
+# RWA (continuous, centered and scaled)
+# usvalence : positive (0.5) vs. negative (-0.5)
+# social : social (0.5) vs. not social (-0.5)
+#
+# and 1 ordinal dependent variables :
+# Ratings of Greebles from 1 (very negative) to 9 (very positive)
+#
+# This program is believed to be free of errors, but it comes with no guarantee!
+# The user bears all responsibility for interpreting the results.
+#
+# This preambule is largely inspired by John K. Kruschke's work at https://osf.io/wp2ry/
+#
+### To run this program, please do the following:
+### 1. Install the general-purpose programming language R from
+###      http://www.r-project.org/
+###    Install the version of R appropriate for your computer's operating
+###    system (Wposows, MacOS, or Linux).
+### 2. Install the R editor, RStudio, from
+###      http://rstudio.org/
+###    This editor is not necessary, but highly recommended.
+### 3. After the above actions are accomplished, this program should
+###    run as-is in R. You may "source" it to run the whole thing at once,
+###    or, preferably, run lines consecutively from the beginning.
+################################################################################
+# Loading packages needed (and installing if necessary) for this part
+p_load(lme4, # main package for models
+htmlTable, # helps to extract results
+xtable,
+install = TRUE,
+gridExtra,
+sjstats,
+sjmisc,
+update = getOption("pac_update"),
+character.only = FALSE)
+# In case we want to save summaries
+col2keep <- c("Estimate", "l-95% CI", "u-95% CI")
+#------------------------------------------------------------------------------------
+# We run our first model for fixed main and interaction effects
+#------------------------------------------------------------------------------------
+# model
+aware_resp_lme4 <- lmer(aware ~ usvalence * social * RWAscore + (1|ppt) + (1|stim1),
+data = social_df)
+# Save summary & confint
+model_awa_xp02_lme4 <- round(cbind(summary(aware_resp_lme4)$coefficients,
+confint(aware_resp_lme4)[c(4:11),]), 2)
+# export output
+png("tables/lme4/model_awa_xp02_lme4.png", height=480, width=720)
+p<-tableGrob(model_awa_xp02_lme4)
+grid.arrange(p)
+dev.off()
+p_load(plyr,
+knitr,
+kableExtra,
+formattable,
+dplyr,
+webshot,
+qdapRegex,
+stringr,
+install = TRUE,
+update = getOption("pac_update"),
+character.only = FALSE)
+tawa_lme4 <- as.data.frame(model_awa_xp02_lme4[c(1:8),])
+tawa_brms <- as.data.frame(model_awa_xp02[c(1:8),])
+tawa_equi <- as.data.frame(equi_awa_xp02)
+tawa_lme4$term <- tawa_brms$term
+tawa_equi$term <- tawa_brms$term
+# general regression ------------------------------------------------------
+tawa <- join (tawa_brms, tawa_lme4, by = "term")
+tawa <- join (tawa, tawa_equi, by ="term")
+tawa$"b [95% HDI]" <- paste (format(tawa$estimate, nsmall = 2), " [", format(tawa$hdi.low, nsmall = 2), ", ",
+format(tawa$hdi.high, nsmall = 2), "]", sep = "")
+tawa$"b [95% HDI]" <- gsub("\\s+", " ", str_trim(tawa$"b [95% HDI]"))
+tawa$"b [95% HDI]" <- gsub("\\[ ", "\\[", str_trim(tawa$"b [95% HDI]"))
+ifelse ( grepl( "  \\d", tawa$"b [95% HDI]"), "  " == " ", tawa$"b [95% HDI]")
+tawa$"b [95% CI]" <- paste (format( tawa$Estimate, nsmall = 2), " [", format(tawa$"2.5 %", nsmall = 2), ", ",
+format(tawa$"97.5 %", nsmall = 2), "]", sep = "")
+tawa$"b [95% CI]" <- gsub("\\s+", " ", str_trim(tawa$"b [95% CI]"))
+tawa$"b [95% CI]" <- gsub("\\[ ", "\\[", str_trim(tawa$"b [95% CI]"))
+# join -------------------------------------------------------------------
+col2k <- c("term", "b [95% HDI]", "std.error",
+"b [95% CI]", "Std. Error", "t value",
+"decision", "ROPE", "inside.rope")
+tawa$inside.rope <- as.numeric (tawa$inside.rope)
+tawa$inside.rope <- round2 (tawa$inside.rope, n=2)
+tawa <- format(tawa[,col2k], nsmall = 2)
+t_all_awa <- tawa
+t_all_awa$term <- c("Intercept",
+"Val",
+"Soc",
+"RWA",
+"Val × Soc",
+"Val × RWA",
+"Soc × RWA",
+"Val × Soc × RWA")
+t_all_awa$decision <- ifelse(t_all_awa$decision == "reject", "oui",
+ifelse(t_all_awa$decision == "accept", "non",
+"indécision"))
+t_all_awa <- t_all_awa %>%
+mutate(inside.rope = color_tile("lightgreen", "orange")(inside.rope))
+t_all_awa$"n° &#946;" <- 1:length( t_all_awa$term)
+ordc <- c("n° &#946;", "term", "b [95% HDI]", "std.error",
+"b [95% CI]", "Std. Error", "t value",
+"decision", "ROPE", "inside.rope")
+t_all_awa <- t_all_awa[,ordc]
+colnames(t_all_awa) <- c("n° &#946;", "Paramètre", "&#946;<sub>Bayes</sub> [95% HDI]",
+"SE<sub>Bayes</sub>", "&#946;<sub>freq</sub> [95% CI]",
+"SE<sub>freq</sub>", "t",
+"&#946 &#8800; 0", "ROPE", "% &#946;<sub>Bayes</sub> dans ROPE")
+rownames(t_all_awa) <- NULL
+library(kableExtra)
+kable(t_all_awa,  align = "c", format = "html",
+booktabs=T, escape = F) %>%
+kable_styling(bootstrap_options = c("striped", "hover", "condensed"), font =21)
+p_load(plyr,
+knitr,
+kableExtra,
+formattable,
+dplyr,
+webshot,
+qdapRegex,
+stringr,
+install = TRUE,
+update = getOption("pac_update"),
+character.only = FALSE)
+tawa_lme4 <- as.data.frame(model_awa_xp02_lme4[c(1:8),])
+tawa_brms <- as.data.frame(model_awa_xp02[c(1:8),])
+tawa_equi <- as.data.frame(equi_awa_xp02)
+tawa_lme4$term <- tawa_brms$term
+tawa_equi$term <- tawa_brms$term
+# general regression ------------------------------------------------------
+tawa <- join (tawa_brms, tawa_lme4, by = "term")
+tawa <- join (tawa, tawa_equi, by ="term")
+tawa$"b [95% HDI]" <- paste (format(tawa$estimate, nsmall = 2), " [", format(tawa$hdi.low, nsmall = 2), ", ",
+format(tawa$hdi.high, nsmall = 2), "]", sep = "")
+tawa$"b [95% HDI]" <- gsub("\\s+", " ", str_trim(tawa$"b [95% HDI]"))
+tawa$"b [95% HDI]" <- gsub("\\[ ", "\\[", str_trim(tawa$"b [95% HDI]"))
+ifelse ( grepl( "  \\d", tawa$"b [95% HDI]"), "  " == " ", tawa$"b [95% HDI]")
+tawa$"b [95% CI]" <- paste (format( tawa$Estimate, nsmall = 2), " [", format(tawa$"2.5 %", nsmall = 2), ", ",
+format(tawa$"97.5 %", nsmall = 2), "]", sep = "")
+tawa$"b [95% CI]" <- gsub("\\s+", " ", str_trim(tawa$"b [95% CI]"))
+tawa$"b [95% CI]" <- gsub("\\[ ", "\\[", str_trim(tawa$"b [95% CI]"))
+# join -------------------------------------------------------------------
+col2k <- c("term", "b [95% HDI]", "std.error",
+"b [95% CI]", "Std. Error", "t value",
+"decision", "ROPE", "inside.rope")
+tawa$inside.rope <- as.numeric (tawa$inside.rope)
+tawa$inside.rope <- round2 (tawa$inside.rope, n=2)
+tawa <- format(tawa[,col2k], nsmall = 2)
+t_all_awa <- tawa
+t_all_awa$term <- c("Intercept",
+"Val",
+"Soc",
+"RWA",
+"Val × Soc",
+"Val × RWA",
+"Soc × RWA",
+"Val × Soc × RWA")
+t_all_awa$decision <- ifelse(t_all_awa$decision == "reject", "oui",
+ifelse(t_all_awa$decision == "accept", "non",
+"indécision"))
+t_all_awa <- t_all_awa %>%
+mutate(inside.rope = color_tile("lightgreen", "orange")(inside.rope))
+t_all_awa$"n° &#946;" <- 1:length( t_all_awa$term)
+ordc <- c("n° &#946;", "term", "b [95% HDI]", "std.error",
+"b [95% CI]", "Std. Error", "t value",
+"decision", "ROPE", "inside.rope")
+t_all_awa <- t_all_awa[,ordc]
+colnames(t_all_awa) <- c("n° &#946;", "Paramètre", "&#946;<sub>Bayes</sub> [95% HDI]",
+"SE<sub>Bayes</sub>", "&#946;<sub>freq</sub> [95% CI]",
+"SE<sub>freq</sub>", "t",
+"&#946 &#8800; 0", "ROPE", "% &#946;<sub>Bayes</sub> &sube ROPE")
+rownames(t_all_awa) <- NULL
+library(kableExtra)
+kable(t_all_awa,  align = "c", format = "html",
+booktabs=T, escape = F) %>%
+kable_styling(bootstrap_options = c("striped", "hover", "condensed"), font =21)
+p_load(plyr,
+knitr,
+kableExtra,
+formattable,
+dplyr,
+webshot,
+qdapRegex,
+stringr,
+install = TRUE,
+update = getOption("pac_update"),
+character.only = FALSE)
+tawa_lme4 <- as.data.frame(model_awa_xp02_lme4[c(1:8),])
+tawa_brms <- as.data.frame(model_awa_xp02[c(1:8),])
+tawa_equi <- as.data.frame(equi_awa_xp02)
+tawa_lme4$term <- tawa_brms$term
+tawa_equi$term <- tawa_brms$term
+# general regression ------------------------------------------------------
+tawa <- join (tawa_brms, tawa_lme4, by = "term")
+tawa <- join (tawa, tawa_equi, by ="term")
+tawa$"b [95% HDI]" <- paste (format(tawa$estimate, nsmall = 2), " [", format(tawa$hdi.low, nsmall = 2), ", ",
+format(tawa$hdi.high, nsmall = 2), "]", sep = "")
+tawa$"b [95% HDI]" <- gsub("\\s+", " ", str_trim(tawa$"b [95% HDI]"))
+tawa$"b [95% HDI]" <- gsub("\\[ ", "\\[", str_trim(tawa$"b [95% HDI]"))
+ifelse ( grepl( "  \\d", tawa$"b [95% HDI]"), "  " == " ", tawa$"b [95% HDI]")
+tawa$"b [95% CI]" <- paste (format( tawa$Estimate, nsmall = 2), " [", format(tawa$"2.5 %", nsmall = 2), ", ",
+format(tawa$"97.5 %", nsmall = 2), "]", sep = "")
+tawa$"b [95% CI]" <- gsub("\\s+", " ", str_trim(tawa$"b [95% CI]"))
+tawa$"b [95% CI]" <- gsub("\\[ ", "\\[", str_trim(tawa$"b [95% CI]"))
+# join -------------------------------------------------------------------
+col2k <- c("term", "b [95% HDI]", "std.error",
+"b [95% CI]", "Std. Error", "t value",
+"decision", "ROPE", "inside.rope")
+tawa$inside.rope <- as.numeric (tawa$inside.rope)
+tawa$inside.rope <- round2 (tawa$inside.rope, n=2)
+tawa <- format(tawa[,col2k], nsmall = 2)
+t_all_awa <- tawa
+t_all_awa$term <- c("Intercept",
+"Val",
+"Soc",
+"RWA",
+"Val × Soc",
+"Val × RWA",
+"Soc × RWA",
+"Val × Soc × RWA")
+t_all_awa$decision <- ifelse(t_all_awa$decision == "reject", "oui",
+ifelse(t_all_awa$decision == "accept", "non",
+"indécision"))
+t_all_awa <- t_all_awa %>%
+mutate(inside.rope = color_tile("lightgreen", "orange")(inside.rope))
+t_all_awa$"n° &#946;" <- 1:length( t_all_awa$term)
+ordc <- c("n° &#946;", "term", "b [95% HDI]", "std.error",
+"b [95% CI]", "Std. Error", "t value",
+"decision", "ROPE", "inside.rope")
+t_all_awa <- t_all_awa[,ordc]
+colnames(t_all_awa) <- c("n° &#946;", "Paramètre", "&#946;<sub>Bayes</sub> [95% HDI]",
+"SE<sub>Bayes</sub>", "&#946;<sub>freq</sub> [95% CI]",
+"SE<sub>freq</sub>", "t",
+"&#946 &#8800; 0", "ROPE", "% &#946;<sub>Bayes</sub> &sube; ROPE")
+rownames(t_all_awa) <- NULL
+library(kableExtra)
+kable(t_all_awa,  align = "c", format = "html",
+booktabs=T, escape = F) %>%
+kable_styling(bootstrap_options = c("striped", "hover", "condensed"), font =21)

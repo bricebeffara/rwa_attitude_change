@@ -132,7 +132,7 @@ equi_awa_xp02_0.5$ROPE <- "-5, 5"
 equi_awa_xp02 <- rbind(equi_awa_xp02_rwa, equi_awa_xp02_0.5)
 equi_awa_xp02 <- rbind(equi_awa_xp02_int, equi_awa_xp02)
 equi_awa_xp02[,c(3:5)] <- round(equi_awa_xp02[,c(3:5)], 2)
-ordrow <- c("1","6","7","2","8","3","4","5")
+ordrow <- c(1, 6, 7, 2, 8, 3, 4, 5)
 equi_awa_xp02 <- equi_awa_xp02[ordrow,]
 
 # export test

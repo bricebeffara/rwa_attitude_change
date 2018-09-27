@@ -213,12 +213,12 @@ t_all <- rbind(tgen,
                tyelo_pos_rwa)
 
 t_all$term <- c("Val",
-                "Lev",
+                "Charge",
                 "RWA",
-                "Val × Lev",
+                "Val × Charge",
                 "Val × RWA",
-                "Lev × RWA",
-                "Val × Lev × RWA",
+                "Charge × RWA",
+                "Val × Charge × RWA",
                 "Val <sub>contrôle</sub>",
                 "Val <sub>charge</sub>",
                 "(Val × RWA) <sub>contrôle</sub>",
@@ -246,7 +246,7 @@ t_all <- t_all[,ordc]
 colnames(t_all) <- c("n° &#946;", "Paramètre", "&#946;<sub>Bayes</sub> [95% HDI]",
                      "SE<sub>Bayes</sub>", "&#946;<sub>freq</sub> [95% CI]",
                      "SE<sub>freq</sub>", "t", 
-                     "&#946 &#8800; 0", "ROPE", "% &#946;<sub>Bayes</sub> dans ROPE")
+                     "&#946 &#8800; 0", "ROPE", "% &#946;<sub>Bayes</sub> &sube; ROPE")
 
 rownames(t_all) <- NULL
 

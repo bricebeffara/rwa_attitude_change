@@ -77,7 +77,7 @@ t_all_awa <- t_all_awa[,ordc]
 colnames(t_all_awa) <- c("n° &#946;", "Paramètre", "&#946;<sub>Bayes</sub> [95% HDI]",
                      "SE<sub>Bayes</sub>", "&#946;<sub>freq</sub> [95% CI]",
                      "SE<sub>freq</sub>", "t", 
-                     "&#946 &#8800; 0", "ROPE", "% &#946;<sub>Bayes</sub> dans ROPE")
+                     "&#946 &#8800; 0", "ROPE", "% &#946;<sub>Bayes</sub> &sube; ROPE")
 
 rownames(t_all_awa) <- NULL
 

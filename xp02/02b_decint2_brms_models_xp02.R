@@ -48,7 +48,7 @@ equi_neg_xp02_0.5$ROPE <- "-0.5, 0.5"
 
 equi_neg_xp02 <- rbind(equi_neg_xp02_rwa, equi_neg_xp02_0.5)
 equi_neg_xp02[,c(3:5)] <- round(equi_neg_xp02[,c(3:5)], 2)
-ordrow <- c("3", "1", "2")
+ordrow <- c(3, 1, 2)
 equi_neg_xp02 <- equi_neg_xp02[ordrow,]
 
 # export test
@@ -102,7 +102,7 @@ equi_pos_xp02_0.5$ROPE <- "-0.5, 0.5"
 
 equi_pos_xp02 <- rbind(equi_pos_xp02_rwa, equi_pos_xp02_0.5)
 equi_pos_xp02[,c(3:5)] <- round(equi_pos_xp02[,c(3:5)], 2)
-ordrow <- c("3", "1", "2")
+ordrow <- c(3, 1, 2)
 equi_pos_xp02 <- equi_pos_xp02[ordrow,]
 
 # export test

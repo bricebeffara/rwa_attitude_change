@@ -57,9 +57,9 @@ tgen$"b [95% CI]" <- gsub("\\[ ", "\\[", str_trim(tgen$"b [95% CI]"))
 
 # simple slope valence in the 1 block condition ----------
 
-tb1A_lme4 <- format(tb1_lme4[tb1_lme4$term == "b_usvalence",], nsmall = 2)
-tb1A_brms <- format(tb1_brms[tb1_brms$term == "b_usvalence",], nsmall = 2)
-tb1A_equi <- format(tb1_equi[tb1_equi$term == "b_usvalence",], nsmall = 2)
+tb1A_lme4 <- format(tb1_lme4[tb1_lme4$term == "b_usvalence2",], nsmall = 2)
+tb1A_brms <- format(tb1_brms[tb1_brms$term == "b_usvalence2",], nsmall = 2)
+tb1A_equi <- format(tb1_equi[tb1_equi$term == "b_usvalence2",], nsmall = 2)
 
 tb1A <- join (tb1A_brms, tb1A_lme4, by = "term")
 tb1A <- join (tb1A, tb1A_equi, by ="term")
@@ -72,9 +72,9 @@ tb1A$"b [95% CI]" <- paste (format( tb1A$Estimate, nsmall = 2), " [", format(tb1
 
 # simple slope valence in the 2 blocks condition ----------
 
-tb2A_lme4 <- format(tb2_lme4[tb2_lme4$term == "b_usvalence",], nsmall = 2)
-tb2A_brms <- format(tb2_brms[tb2_brms$term == "b_usvalence",], nsmall = 2)
-tb2A_equi <- format(tb2_equi[tb2_equi$term == "b_usvalence",], nsmall = 2)
+tb2A_lme4 <- format(tb2_lme4[tb2_lme4$term == "b_usvalence2",], nsmall = 2)
+tb2A_brms <- format(tb2_brms[tb2_brms$term == "b_usvalence2",], nsmall = 2)
+tb2A_equi <- format(tb2_equi[tb2_equi$term == "b_usvalence2",], nsmall = 2)
 
 tb2A <- join (tb2A_brms, tb2A_lme4, by = "term")
 tb2A <- join (tb2A, tb2A_equi, by ="term")
@@ -88,9 +88,9 @@ tb2A$"b [95% CI]" <- paste (format( tb2A$Estimate, nsmall = 2), " [", format(tb2
 
 # simple slope RWA * usvalence in the 1 block condition ----------
 
-tb1I_lme4 <- format(tb1_lme4[tb1_lme4$term == "b_usvalence.RWAscore",], nsmall = 2)
-tb1I_brms <- format(tb1_brms[tb1_brms$term == "b_usvalence.RWAscore",], nsmall = 2)
-tb1I_equi <- format(tb1_equi[tb1_equi$term == "b_usvalence.RWAscore",], nsmall = 2)
+tb1I_lme4 <- format(tb1_lme4[tb1_lme4$term == "b_usvalence2.RWAscore",], nsmall = 2)
+tb1I_brms <- format(tb1_brms[tb1_brms$term == "b_usvalence2.RWAscore",], nsmall = 2)
+tb1I_equi <- format(tb1_equi[tb1_equi$term == "b_usvalence2.RWAscore",], nsmall = 2)
 
 tb1I <- join (tb1I_brms, tb1I_lme4, by = "term")
 tb1I <- join (tb1I, tb1I_equi, by ="term")
@@ -104,9 +104,9 @@ tb1I$"b [95% CI]" <- paste (format( tb1I$Estimate, nsmall = 2), " [", format(tb1
 
 # simple slope RWA * usvalence in the 2 blocks condition ----------
 
-tb2I_lme4 <- format(tb2_lme4[tb2_lme4$term == "b_usvalence.RWAscore",], nsmall = 2)
-tb2I_brms <- format(tb2_brms[tb2_brms$term == "b_usvalence.RWAscore",], nsmall = 2)
-tb2I_equi <- format(tb2_equi[tb2_equi$term == "b_usvalence.RWAscore",], nsmall = 2)
+tb2I_lme4 <- format(tb2_lme4[tb2_lme4$term == "b_usvalence2.RWAscore",], nsmall = 2)
+tb2I_brms <- format(tb2_brms[tb2_brms$term == "b_usvalence2.RWAscore",], nsmall = 2)
+tb2I_equi <- format(tb2_equi[tb2_equi$term == "b_usvalence2.RWAscore",], nsmall = 2)
 
 tb2I <- join (tb2I_brms, tb2I_lme4, by = "term")
 tb2I <- join (tb2I, tb2I_equi, by ="term")
@@ -205,7 +205,7 @@ t_all <- t_all[,ordc]
 colnames(t_all) <- c("n° &#946;", "Paramètre", "&#946;<sub>Bayes</sub> [95% HDI]",
                      "SE<sub>Bayes</sub>", "&#946;<sub>freq</sub> [95% CI]",
                      "SE<sub>freq</sub>", "t", 
-                     "&#946 &#8800; 0", "ROPE", "% &#946;<sub>Bayes</sub> dans ROPE")
+                     "&#946 &#8800; 0", "ROPE", "% &#946;<sub>Bayes</sub> &sube; ROPE")
 
 rownames(t_all) <- NULL
 

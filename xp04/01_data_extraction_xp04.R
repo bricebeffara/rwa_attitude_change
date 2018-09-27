@@ -6,8 +6,8 @@
 
 # Data preparation for IAT analyses --------------------------------------------------------
 
-## clear out the environment
-rm(list=ls()) 
+## !! clear out the environment
+# rm(list=ls()) 
 
 ##install, load and update necessary packages if required##
 
@@ -83,14 +83,14 @@ IAT$usvalence[IAT$family == "B" & IAT$assignment =="2"] <- 0.5
 
 ##Code congruent and incongruent trials. 0.5 = congruent, -0.5 = incongruent. 
 
-IAT$cong[IAT$family == "M" & IAT$usvalence =="1" & IAT$LeftLabel == "famille A ou j'aime"] <- -0.5
-IAT$cong[IAT$family == "M" & IAT$usvalence =="-1" & IAT$LeftLabel == "famille A ou j'aime"] <- 0.5
-IAT$cong[IAT$family == "B" & IAT$usvalence =="1" & IAT$LeftLabel == "famille A ou j'aime"] <- 0.5
-IAT$cong[IAT$family == "B" & IAT$usvalence =="-1" & IAT$LeftLabel == "famille A ou j'aime"] <- -0.5
-IAT$cong[IAT$family == "M" & IAT$usvalence =="1" & IAT$LeftLabel == "famille B ou j'aime"] <- 0.5
-IAT$cong[IAT$family == "M" & IAT$usvalence =="-1" & IAT$LeftLabel == "famille B ou j'aime"] <- -0.5
-IAT$cong[IAT$family == "B" & IAT$usvalence =="1" & IAT$LeftLabel == "famille B ou j'aime"] <- -0.5
-IAT$cong[IAT$family == "B" & IAT$usvalence =="-1" & IAT$LeftLabel == "famille B ou j'aime"] <- 0.5
+IAT$cong[IAT$family == "M" & IAT$usvalence =="0.5" & IAT$LeftLabel == "famille A ou j'aime"] <- -0.5
+IAT$cong[IAT$family == "M" & IAT$usvalence =="-0.5" & IAT$LeftLabel == "famille A ou j'aime"] <- 0.5
+IAT$cong[IAT$family == "B" & IAT$usvalence =="0.5" & IAT$LeftLabel == "famille A ou j'aime"] <- 0.5
+IAT$cong[IAT$family == "B" & IAT$usvalence =="-0.5" & IAT$LeftLabel == "famille A ou j'aime"] <- -0.5
+IAT$cong[IAT$family == "M" & IAT$usvalence =="0.5" & IAT$LeftLabel == "famille B ou j'aime"] <- 0.5
+IAT$cong[IAT$family == "M" & IAT$usvalence =="-0.5" & IAT$LeftLabel == "famille B ou j'aime"] <- -0.5
+IAT$cong[IAT$family == "B" & IAT$usvalence =="0.5" & IAT$LeftLabel == "famille B ou j'aime"] <- -0.5
+IAT$cong[IAT$family == "B" & IAT$usvalence =="-0.5" & IAT$LeftLabel == "famille B ou j'aime"] <- 0.5
 
 ##code for order of evaluative measures: 0.5 = direct measure then indirect measure. -0.5 = indirect measure then direct measure. 
 
@@ -139,69 +139,56 @@ RWA$RWAscore<-scale(RWA$RWAscore, center = TRUE, scale = TRUE)
 
 ##Keep necessary columns
 
+IAT <- full_join(IAT, RWA, by ="Subject")
+
+IAT$RWAscore <- as.numeric( as.character( IAT$RWAscore))
+
 #IAT<-select(IATtot,Subject,Age,RT,correct,stim,family,usvalence,cong,order,RWAscore)
 
+## Remove problematic data recordings (ID overlap)
 
+IAT <- data.table(IAT)
+counts <- IAT[, .(rowCount = .N), by = Subject]
+IAT <- full_join(IAT, counts, by ="Subject")
+idrem <- unique(IAT$Subject[which(IAT$rowCount == 64)])
+IAT <- filter(IAT, rowCount == 32) 
 
-# IAT analyses ------------------------------------------------------------
+'%notin%' = function(x,y) !(x %in% y)
+RWA$RWAscore <- as.numeric( as.character( RWA$RWAscore))
+RWA <- filter(RWA, Subject %notin% idrem ) 
 
-##install, load and update necessary packages if required##
+# indirect measures ------------------------------------------------------------
 
-if (!require("pacman")) install.packages("pacman")
-p_load(lme4, stats, moments, install = TRUE, update = getOption("pac_update"), character.only = FALSE)
 
 #### Applying Greenwald et al. recommendations ####
 
 IAT<-filter(IAT, RT<10000)                                          #delete trials longer than 10 seconds
-IAT$fastTrials[IAT$RT < 300] <- 1                                   #Code for trials quicker than 300ms
+IAT$fastTrials <- ifelse (IAT$RT < 300, 1, 0)                       #Code for trials quicker than 300ms
 Subjectcount<-aggregate(fastTrials ~ Subject, IAT, sum, na.rm=TRUE) #sum of trials quicker than 300ms by subject
 Subjectcount$subjectcount <- Subjectcount$fastTrials                #sum of trials quicker than 300ms by subject
 IAT<-full_join(IAT,Subjectcount, by ="Subject")                     #sum of trials quicker than 300ms by subject
-IAT$Subjectcount[is.na(IAT$subjectcount)] <- 0
-IAT<-filter(IAT, Subjectcount < 32*10/100)                          #delete subjects who have more than 10% of the 32 trials quicker than 300ms
-MeanRT<-aggregate(RT ~ cong, IAT, mean )                            #Compute mean of correct latencies for each block
-RTSD<-sd(IAT$RT)                                                    #Compute one pooled SD for all trials
-IAT$RT[IAT$cong == "1" & IAT$correct =="0"] <- MeanRT[1,2] + 600    #Replace each error latency with block mean(computed in Step 5) + 600 ms
-IAT$RT[IAT$cong == "-1" & IAT$correct =="0"] <- MeanRT[2,2] + 600   #Replace each error latency with block mean(computed in Step 5) + 600 ms
-d_IAT<-dcast(IAT,Subject~cong,value.var = "RT",fun.aggregate = mean)#Average the resulting values for each of the blocks
-d_IAT$d<-d_IAT$`-1`-d_IAT$`1`                                       #Compute difference between congruent and incongruent blocks
-d_IAT$d<-d_IAT$d / RTSD                                             #Divide difference by its associated pooled trials SD
+#IAT$Subjectcount[is.na(IAT$subjectcount)] <- 0
+IAT<-filter(IAT, subjectcount < 32*10/100)                          #delete subjects who have more than 10% of the 32 trials quicker than 300ms
+#MeanRT<-aggregate(RT ~ cong * correct, IAT, mean )                  #Compute mean of correct latencies for each block
+#RTSD<-sd(IAT$RT)                                                    #Compute one pooled SD for all trials
+#IAT$RT[IAT$cong == "0.5" & IAT$correct =="0"] <- MeanRT[4,3] + 600    #Replace each error latency with block mean(computed in Step 5) + 600 ms
+#IAT$RT[IAT$cong == "-0.5" & IAT$correct =="0"] <- MeanRT[3,3] + 600   #Replace each error latency with block mean(computed in Step 5) + 600 ms
+#d_IAT<-dcast(IAT,Subject~cong,value.var = "RT",fun.aggregate = mean)#Average the resulting values for each of the blocks
+#d_IAT$d<-d_IAT$`-0.5`-d_IAT$`0.5`                                       #Compute difference between incongruent and congruent blocks
+#d_IAT$d<-d_IAT$d / RTSD                                             #Divide difference by its associated pooled trials SD
 
 
 #### Final data frame
-IATfinal<-full_join(d_IAT,RWA, by ="Subject")
-IATfinal<-full_join(IATfinal,IAT, by="Subject")
-IATfinal<-select(IATfinal, Subject, d, RWAscore.x,order)
-IATfinal<-distinct(IATfinal)
-
-#### RWA score distribution
-
-hist(IATfinal$RWAscore.x)
-kurtosis(IATfinal$RWAscore.x)
-skewness(IATfinal$RWAscore.x)
-
-##creating a normally distributed variable and compare distribution with RWA
-x <- rnorm(710000, mean = mean(IATfinal$RWAscore.x), sd=sd(IATfinal$RWAscore.x))
-ks.test(IATfinal$RWAscore.x, x)
-
-#### fitting the model with all data
-
-model <-lm(d ~ RWAscore.x, IATfinal)
-summary(model)
-
-#### dataframe for order = 1 (direct measure then indirect measure)
-IAT_order1 <- filter(IATfinal, order == "1")
-
-#### dataframe for order = 2 (indirect measure then direct measure)
-IAT_order2 <- filter(IATfinal, order == "2")
-
-#### fitting the model with restricted data
-
-model1 <-lm(d ~ RWAscore.x, IAT_order1)
-summary(model)
-
-model2 <-lm(d ~ RWAscore.x, IAT_order2)
-summary(model2)
+#IATfinal<-full_join(d_IAT,RWA, by ="Subject")
+#IATfinal<-full_join(IATfinal,IAT, by="Subject")
+IATfinal<-full_join(IAT,RWA, by ="Subject")
+IATfinal$RWAscore <- IATfinal$RWAscore.x
+IATfinal$congruent <- IATfinal$cong
+IATfinal$ppt <- IATfinal$Subject
+IATfinal<-select(IATfinal, ppt, RT, correct, RWAscore, congruent, order, stim)
+#IATfinal<-distinct(IATfinal)
+iat_df <- IATfinal
+iat_rt <- iat_df[which(iat_df$correct == 1),]
 
 
 # Data preparation for direct evaluative measure --------------------------
